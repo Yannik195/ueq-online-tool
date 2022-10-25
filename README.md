@@ -5,3 +5,5 @@ npm start
 Start Frontend:
 cd frontend
 npm start
+
+pasi test
