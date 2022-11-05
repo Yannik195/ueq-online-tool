@@ -5,7 +5,7 @@ const surveySchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  results: [{
+  result: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Result'
   }],

@@ -25,7 +25,7 @@ router.post("/", async (req, res) => {
 
 
   let result = new Result({
-    results: req.body.results,
+    result: req.body.result,
     survey: req.body.survey,
     subject: savedSubject._id,
   })
@@ -41,7 +41,7 @@ router.post("/", async (req, res) => {
 
   //Save Result to Survey
   Survey.findByIdAndUpdate(req.body.survey,
-    { "$push": { "results": savedResult._id } },
+    { "$push": { "result": savedResult._id } },
     { "new": true, "upsert": true },
     function (err) {
       if (err) {

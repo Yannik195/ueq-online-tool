@@ -1,22 +1,70 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
+import axios from 'axios';
 
 function App() {
+
+  let items_german = [["unerfreulich", "erfreulich"], ["unverständlich", "verständlich"], ["kreativ", "phantasielos"], ["leicht zu lernen", "schwer zu lernen"], ["wertvoll", "minderwertig"], ["langweilig", "spannend"], ["uninteressant", "interessant"], ["unberechenbar", "voraussagbar"], ["schnell", "langsam"], ["originell", "konventionell"], ["behindernd", "unterstützend"], ["gut", "schlecht"], ["kompliziert", "einfach"], ["abstoßend", "anziehend"], ["herkömmlich", "neuartig"], ["unangenehm", "angenehm"], ["sicher", "unsicher"], ["aktivierend", "einschläfernd"], ["erwartungskonform", "nicht erwartungskonform"], ["ineffizient", "effizient"], ["übersichtlich", "verwirrend"], ["unpragmatisch", "pragmatisch"], ["aufgeräumt", "überladen"], ["attraktiv", "unattraktiv"], ["sympathisch", "unsympathisch"], ["konservativ", "innovativ"]]
+
+  const [result, setResult] = useState([4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4])
+
+
+  const handleFormChange = (index, event) => {
+    let newArray = result.map((item, i) => {
+      if (index === i) {
+        return parseInt(event.target.value)
+      } else {
+        return item
+      }
+    })
+    setResult(newArray)
+    console.log(index, event.target.value, result);
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    axios.post(`http://localhost:3001/api/result`, {
+      result,
+      survey: "6353ec16b25146a0b7226acc",
+      subject: {
+        age: 23,
+        gender: "female"
+      }
+    })
+      .then(res => {
+        console.log(res);
+        console.log(res.data);
+      })
+  }
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <form onSubmit={handleSubmit}>
+
+          {items_german.map((items, i) => {
+            return (
+              <div key={i}>
+                <span>{items[0]}</span>
+
+                <input type="radio" id={i} name={i} value="1" onChange={event => handleFormChange(i, event)} />
+                <input type="radio" id={i} name={i} value="2" onChange={event => handleFormChange(i, event)} />
+                <input type="radio" id={i} name={i} value="3" onChange={event => handleFormChange(i, event)} />
+                <input type="radio" id={i} name={i} value="4" onChange={event => handleFormChange(i, event)} />
+                <input type="radio" id={i} name={i} value="5" onChange={event => handleFormChange(i, event)} />
+                <input type="radio" id={i} name={i} value="6" onChange={event => handleFormChange(i, event)} />
+                <input type="radio" id={i} name={i} value="7" onChange={event => handleFormChange(i, event)} />
+
+                <span>{items[1]}</span>
+              </div>
+            )
+          }
+          )}
+
+          <input type="submit" value="Submit" />
+
+        </form>
+
       </header>
     </div>
   );
