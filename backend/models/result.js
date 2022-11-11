@@ -1,10 +1,10 @@
 const mongoose = require("mongoose")
 
 const resultSchema = new mongoose.Schema({
-  results: [Number],
-  survey: {
+  result: [Number],
+  questionnaire: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Survey'
+    ref: 'Questionnaire'
   },
   subject: {
     type: mongoose.Schema.Types.ObjectId,

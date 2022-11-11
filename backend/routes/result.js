@@ -1,7 +1,7 @@
 const router = require("express").Router()
 const Result = require("../models/result")
 const Subject = require("../models/subject")
-const Survey = require("../models/survey")
+const Questionnaire = require("../models/questionnaire")
 
 
 //Save Result
@@ -23,10 +23,9 @@ router.post("/", async (req, res) => {
     res.status(400).send(err)
   }
 
-
   let result = new Result({
-    results: req.body.results,
-    survey: req.body.survey,
+    result: req.body.result,
+    questionnaire: req.body.questionnaire,
     subject: savedSubject._id,
   })
 
@@ -39,8 +38,8 @@ router.post("/", async (req, res) => {
     res.status(400).send(err)
   }
 
-  //Save Result to Survey
-  Survey.findByIdAndUpdate(req.body.survey,
+  //Save Result to questionnaire
+  Questionnaire.findByIdAndUpdate(req.body.questionnaire,
     { "$push": { "results": savedResult._id } },
     { "new": true, "upsert": true },
     function (err) {
