@@ -2,9 +2,9 @@ const mongoose = require("mongoose")
 
 const resultSchema = new mongoose.Schema({
   result: [Number],
-  survey: {
+  questionnaire: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Survey'
+    ref: 'Questionnaire'
   },
   subject: {
     type: mongoose.Schema.Types.ObjectId,
