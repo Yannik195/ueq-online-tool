@@ -12,11 +12,11 @@ mongoose.connect(process.env.DB_CONNECT,
   () => console.log("Connected to MongoDB"))
 
 //Import Routes
-const surveyRoutes = require("./routes/survey")
+const questionnaireRoutes = require("./routes/questionnaire")
 const resultRoutes = require("./routes/result")
 
 //Route Middleware
-app.use("/api/survey", surveyRoutes)
+app.use("/api/questionnaire", questionnaireRoutes)
 app.use("/api/result", resultRoutes)
 
 //Start Server
