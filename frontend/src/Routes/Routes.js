@@ -4,6 +4,7 @@ import { About } from "../Pages/About"
 import { Fill } from "../Pages/q/fill"
 import { Create } from "../Pages/q/create"
 import { Evaluate } from "../Pages/q/evaluate"
+import { Confirmation } from "../Pages/q/confirmation"
 
 export default function Routes() {
   return (
@@ -13,6 +14,7 @@ export default function Routes() {
       <Route path="/q/fill/:id" element={<Fill />} />
       <Route path="/q/create/" element={<Create />} />
       <Route path="/q/evaluate/:id" element={<Evaluate />} />
+      <Route path="/q/confirmation/" element={<Confirmation />} />
     </RoutesDom>
   )
 }
