@@ -1,12 +1,41 @@
 $dark-1: rgba(6, 10, 14, 0.9);
 $dark-2: rgba(6, 10, 14, 0.8);
 $dark-3: rgba(6, 10, 14, 0.7);
+$white-1: rgb(255, 255, 255);
 
+h1 {
+  color: $white-1;
+  font-size: 50px;
+}
 
-h1, h2, h3, h4, h5, h6{
+h2, h3, h4, h5, h6{
   color: $dark-1;
 }
 
 p {
-  color: $dark-2;
+  color: $white-1;
+  font-size: 20px;
+}
+
+body {
+  color: black;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 30vh;
+}
+
+.page-header {
+  flex-grow: 1;
+  background: #FFA149;
+  text-align: center;
+  padding: 10px;
+}
+
+.page-main {
+  flex-grow: 2;
+  background: $white-1;
+
 }
