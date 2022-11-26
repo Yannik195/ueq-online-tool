@@ -53,3 +53,16 @@ body {
   font-weight: bold;
   border-radius: 12px;
 }
+
+.confirmation_header {
+  flex-grow: 1;
+  background: #FFA149;
+  text-align: center;
+  padding: 10px;
+}
+
+.confirmation_main {
+  flex-grow: 2;
+  flex-direction: row;
+  background: white;
+}
