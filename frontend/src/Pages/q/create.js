@@ -32,8 +32,6 @@ export function Create() {
     setValue("email", faker.internet.email())
   }
 
-  //TODO redirect -> fill
-
   return (
     <div>
       <h1>Create a new questionnaire</h1>
