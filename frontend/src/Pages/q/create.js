@@ -1,9 +1,12 @@
 import axios from 'axios';
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import { faker } from '@faker-js/faker';
 
 
 export function Create() {
+  let navigate = useNavigate();
+
   const {
     register,
     setValue,
@@ -14,11 +17,12 @@ export function Create() {
 
   const onSubmit = (data) => {
     console.log(data);
-    // axios.post(`http://localhost:3001/api/questionnaire`, data)
-    //   .then(res => {
-    //     console.log(res);
-    //     console.log(res.data);
-    //   })
+    axios.post(`http://localhost:3001/api/questionnaire`, data)
+      .then(res => {
+        console.log(res);
+        console.log(res.data);
+        navigate(`/q/fill/${res.data._id}`);
+      })
   };
 
   const fakeData = () => {
@@ -68,7 +72,7 @@ export function Create() {
             aria-invalid={errors.description ? "true" : "false"}
             {...register("description", {
               required: true,
-              maxLength: 35,
+              maxLength: 255,
             })}
           />
 
