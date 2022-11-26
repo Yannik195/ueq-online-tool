@@ -23,12 +23,19 @@ router.get("/:id", async (req, res) => {
 router.post("/", async (req, res) => {
   console.log("Save questionnaire", req.body);
 
-  //TODO Link anlegen
-  //http://localhost:3000/questionnaire/bosch-standmixer-29-1232
+  //Create unique link
+  link = [
+    req.body.product.replaceAll(" ", "-"), //Replace whitespace with -
+    "-", //Add -
+    Math.floor(1000 + Math.random() * 9000) //4 Random numbers
+  ].join("") //bosch-standmixer-29-1232 -> http://localhost:3000/q/fill/bosch-standmixer-29-1232
+
+  console.log(link);
 
   let questionnaire = new Questionnaire({
     product: req.body.product,
     description: req.body.description,
+    link: link,
     password: req.body.password,
     email: req.body.email,
   })
