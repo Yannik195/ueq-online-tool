@@ -21,7 +21,7 @@ export function Create() {
       .then(res => {
         console.log(res);
         console.log(res.data);
-        navigate(`/q/fill/${res.data._id}`);
+        navigate(`/q/fill/${res.data.link}`);
       })
   };
 
