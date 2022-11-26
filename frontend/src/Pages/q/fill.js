@@ -109,7 +109,6 @@ export function Fill() {
           />
         </label>
 
-
         {items_german.map((items, i) => {
           return (
             <div key={i}>
