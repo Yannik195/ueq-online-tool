@@ -26,7 +26,7 @@ export function Create() {
       <form onSubmit={handleSubmit(onSubmit)}>
 
         <label htmlFor='product'>
-          <strong>Product</strong>
+          <strong>Product</strong> {errors.product && <span>required</span>}
           <br />
           <input
             id='product'
@@ -37,10 +37,12 @@ export function Create() {
             })}
           />
           <p>Die Bezechnung des Produkts, für das ein Questionnaire erstellt werden soll.</p>
+
+
         </label>
 
         <label htmlFor='password'>
-          <strong>Password</strong>
+          <strong>Password</strong> {errors.password && <span>required</span>}
           <br />
           <input
             id='password'
@@ -49,11 +51,11 @@ export function Create() {
               required: true,
             })}
           />
-          <p>Das Passwort schützt die Ergebnisse.</p>
+          <p>Ein Passwort wird benötigt um die Ergebnisse zu schützen.</p>
         </label>
 
         <label htmlFor="email">
-          <strong>E-Mail</strong>
+          <strong>E-Mail</strong> {errors.email && <span>required</span>}
           <br />
           <input
             id='email'
@@ -70,7 +72,7 @@ export function Create() {
           <legend><strong>UEQ Version</strong></legend>
 
           <label htmlFor="version_long">
-            <input {...register("ueq_version")} type="radio" id="version_long" value="long" />
+            <input {...register("ueq_version")} type="radio" id="version_long" value="long" checked="checked" />
             Long
           </label>
 
