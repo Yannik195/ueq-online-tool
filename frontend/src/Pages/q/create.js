@@ -1,9 +1,12 @@
 import axios from 'axios';
 import { useForm } from "react-hook-form";
+import { faker } from '@faker-js/faker';
+
 
 export function Create() {
   const {
     register,
+    setValue,
     handleSubmit,
     watch,
     formState: { errors }
@@ -18,12 +21,23 @@ export function Create() {
     //   })
   };
 
+  const fakeData = () => {
+    setValue("product", faker.commerce.productName())
+    setValue("description", faker.commerce.productDescription())
+    setValue("password", faker.internet.password())
+    setValue("email", faker.internet.email())
+  }
+
+  //TODO redirect -> fill
+
   return (
-    <header className="App-header">
+    <div>
       <h1>Create a new questionnaire</h1>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>
 
       <form onSubmit={handleSubmit(onSubmit)}>
+        <button type="button" onClick={fakeData}>Fill with Dummy Data</button>
+        <br></br>
 
         <label htmlFor='product'>
           <strong>Product</strong> {errors.product && <span>required</span>}
@@ -67,6 +81,7 @@ export function Create() {
           <br />
 
           <input
+            type="password"
             id='password'
             placeholder="Password"
             aria-invalid={errors.password ? "true" : "false"}
@@ -137,6 +152,6 @@ export function Create() {
         <button type="submit">Submit</button>
 
       </form>
-    </header>
+    </div>
   );
 }
