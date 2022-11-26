@@ -56,13 +56,13 @@ export const data = {
 
 
 export function Evaluate() {
-  const { id } = useParams()
+  const { link_uuid } = useParams()
   const [questionnaire, setQuestionnaire] = useState({});
 
   //Fetch Data 
   useEffect(() => {
-    console.log(id);
-    fetch(`http://localhost:3001/api/questionnaire/${id}`)
+    console.log(link_uuid);
+    fetch(`http://localhost:3001/api/q/${link_uuid}`)
       .then(response => response.json())
       .then(data => setQuestionnaire(data));
   }, []);

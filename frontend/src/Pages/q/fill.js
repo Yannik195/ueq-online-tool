@@ -1,9 +1,11 @@
 import { useParams } from "react-router-dom"
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
+import moment from 'moment'
+
 
 export function Fill() {
-  const { id } = useParams()
+  const { link_uuid } = useParams()
   let items_german = [["unerfreulich", "erfreulich"], ["unverständlich", "verständlich"], ["kreativ", "phantasielos"], ["leicht zu lernen", "schwer zu lernen"], ["wertvoll", "minderwertig"], ["langweilig", "spannend"], ["uninteressant", "interessant"], ["unberechenbar", "voraussagbar"], ["schnell", "langsam"], ["originell", "konventionell"], ["behindernd", "unterstützend"], ["gut", "schlecht"], ["kompliziert", "einfach"], ["abstoßend", "anziehend"], ["herkömmlich", "neuartig"], ["unangenehm", "angenehm"], ["sicher", "unsicher"], ["aktivierend", "einschläfernd"], ["erwartungskonform", "nicht erwartungskonform"], ["ineffizient", "effizient"], ["übersichtlich", "verwirrend"], ["unpragmatisch", "pragmatisch"], ["aufgeräumt", "überladen"], ["attraktiv", "unattraktiv"], ["sympathisch", "unsympathisch"], ["konservativ", "innovativ"]]
   const [result, setResult] = useState([4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4])
   const [demographics, setDemographics] = useState({
@@ -11,6 +13,17 @@ export function Fill() {
     gender: 0,
     education: 0
   })
+
+  //Questionnaire
+  const [q, setQuestionnaire] = useState({});
+
+  //Query Data
+  useEffect(() => {
+    console.log(link_uuid);
+    fetch(`http://localhost:3001/api/q/fill/${link_uuid}`)
+      .then(response => response.json())
+      .then(data => setQuestionnaire(data));
+  }, []);
 
   function handleChange(evt) {
     const value = evt.target.value;
@@ -35,7 +48,7 @@ export function Fill() {
     event.preventDefault()
     axios.post(`http://localhost:3001/api/result`, {
       result,
-      questionnaire: id,
+      link_uuid: link_uuid,
       subject: {
         age: demographics.age,
         gender: demographics.gender
@@ -50,10 +63,10 @@ export function Fill() {
   return (
     <header className="App-header">
       <h1>UEQ Online Fragebogen</h1>
-      <span>14.10.2022</span>
-      <span>research@mail.de</span>
-      <h2>Standmixer Bosch 1200W</h2>
-      <p>Beschreibung Lorem ipsum dolor sit amet. Beschreibung consectetur adipiscing elit. </p>
+      <p>{moment(q.createdAt).format("DD.MM.YYYY")}</p>
+      <p>{q.email}</p>
+      <h2>{q.product}</h2>
+      <p>{q.description}</p>
 
       <h3>Was ist ein Questionnaire?</h3>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>

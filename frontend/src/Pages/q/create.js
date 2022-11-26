@@ -10,10 +10,13 @@ export function Create() {
   } = useForm();
 
   const onSubmit = (data) => {
-    axios.post(`http://localhost:3001/api/questionnaire`, data)
+
+    console.log(data);
+    axios.post(`http://localhost:3001/api/q`, data)
       .then(res => {
         console.log(res);
         console.log(res.data);
+        navigate(`/q/fill/${res.data.link_uuid}`);
       })
   };
 

@@ -25,7 +25,7 @@ router.post("/", async (req, res) => {
 
   let result = new Result({
     result: req.body.result,
-    questionnaire: req.body.questionnaire,
+    link_uuid: req.body.link_uuid,
     subject: savedSubject._id,
   })
 
@@ -39,7 +39,7 @@ router.post("/", async (req, res) => {
   }
 
   //Save Result to questionnaire
-  Questionnaire.findByIdAndUpdate(req.body.questionnaire,
+  Questionnaire.findOneAndUpdate({ link_uuid: req.body.link_uuid },
     { "$push": { "results": savedResult._id } },
     { "new": true, "upsert": true },
     function (err) {

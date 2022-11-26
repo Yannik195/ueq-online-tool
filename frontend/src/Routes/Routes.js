@@ -10,9 +10,9 @@ export default function Routes() {
     <RoutesDom>
       <Route path="/" element={<Home />} />
       <Route path="/about" element={<About />} />
-      <Route path="/q/fill/:id" element={<Fill />} />
+      <Route path="/q/fill/:link_uuid" element={<Fill />} />
       <Route path="/q/create/" element={<Create />} />
-      <Route path="/q/evaluate/:id" element={<Evaluate />} />
+      <Route path="/q/evaluate/:link_uuid" element={<Evaluate />} />
     </RoutesDom>
   )
 }
