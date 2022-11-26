@@ -5,6 +5,10 @@ const questionnaireSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  description: {
+    type: String,
+    required: false,
+  },
   password: {
     type: String,
     required: true,

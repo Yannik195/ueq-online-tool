@@ -28,6 +28,7 @@ router.post("/", async (req, res) => {
 
   let questionnaire = new Questionnaire({
     product: req.body.product,
+    description: req.body.description,
     password: req.body.password,
     email: req.body.email,
   })
