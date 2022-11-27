@@ -10,7 +10,7 @@ export function Fill() {
   const [result, setResult] = useState([4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4])
   const [demographics, setDemographics] = useState({
     age: 0,
-    gender: 0,
+    gender: null,
     education: 0
   })
 
@@ -25,11 +25,11 @@ export function Fill() {
       .then(data => setQuestionnaire(data));
   }, []);
 
-  function handleChange(evt) {
-    const value = evt.target.value;
+  function handleDemographicsChange(event) {
+    const value = event.target.value;
     setDemographics({
       ...demographics,
-      [evt.target.name]: value
+      [event.target.name]: value
     });
   }
 
@@ -51,7 +51,8 @@ export function Fill() {
       link_uuid: link_uuid,
       subject: {
         age: demographics.age,
-        gender: demographics.gender
+        gender: demographics.gender,
+        education: demographics.education,
       }
     })
       .then(res => {
@@ -65,6 +66,7 @@ export function Fill() {
       <h1>UEQ Online Fragebogen</h1>
       <p>{moment(q.createdAt).format("DD.MM.YYYY")}</p>
       <p>{q.email}</p>
+      <button>Evaluation</button>
       <h2>{q.product}</h2>
       <p>{q.description}</p>
 
@@ -81,32 +83,50 @@ export function Fill() {
         <h2>Angaben zu Person</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>
 
-        <label>
-          Age
+        <label htmlFor="age">
+          <strong>Age</strong>
+          <br></br>
           <input
-            type="text"
+            type="number"
+            min="0"
+            max="99"
             name="age"
             value={demographics.age}
-            onChange={handleChange}
+            onChange={handleDemographicsChange}
           />
+          <br></br>
         </label>
-        <label>
-          Gender
-          <input
-            type="text"
-            name="gender"
-            value={demographics.gender}
-            onChange={handleChange}
-          />
+
+        <label htmlFor="gender">
+          <strong>Gender</strong>
+          <br></br>
+          <select id="gender" name="gender" value={demographics.gender}
+            onChange={handleDemographicsChange}>
+            <option value="null">Auswählen</option>
+            <option value="male">Mann</option>
+            <option value="female">Frau</option>
+          </select>
+          <br></br>
         </label>
-        <label>
-          Education
-          <input
-            type="text"
-            name="education"
-            value={demographics.education}
-            onChange={handleChange}
-          />
+
+        <label htmlFor="education">
+          <strong>Education</strong>
+          <br></br>
+          <select id="education" name="education" value={demographics.education}
+            onChange={handleDemographicsChange}>
+            <option value="">Ausählen</option>
+            <option value="1">Kein Schulabschluss</option>
+            <option value="2">Grund-/Hauptschulabschluss</option>
+            <option value="3">Realschule (Mittlere Reife)</option>
+            <option value="4">Gymnasium (Abitur)</option>
+            <option value="5">Abgeschlossene Ausbildung</option>
+            <option value="6">Fachhochschulabschluss</option>
+            <option value="7">Hochschule (Diplom)</option>
+            <option value="8">Hochschule (Magister)</option>
+            <option value="9">Hochschule (Promotion)</option>
+            <option value="10">Sostige</option>
+          </select>
+          <br></br>
         </label>
 
         {items_german.map((items, i) => {
@@ -125,7 +145,22 @@ export function Fill() {
           )
         }
         )}
-        Ja, Ich bin mit der Einverständniserklärung einverstanden.
+
+        <label htmlFor="consent">
+          <input
+            type="checkbox"
+            name="consent"
+            value={demographics.age}
+            onChange={handleDemographicsChange}
+            style={{ float: "left" }}
+            required
+          />
+          <p>Ja, Ich bin mit der Einverständniserklärung einverstanden</p>
+          <br></br>
+        </label>
+
+
+
         <input type="submit" value="Submit" />
       </form>
 

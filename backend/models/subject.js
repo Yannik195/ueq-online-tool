@@ -7,7 +7,7 @@ const subjectSchema = new mongoose.Schema({
   },
   gender: {
     type: String,
-    enum: ['male', 'female', 'unknown'],
+    enum: ['male', 'female', null],
     default: 'unknown'
   },
 })
