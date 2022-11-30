@@ -1,9 +1,17 @@
+import { useNavigate } from "react-router-dom";
+
+
 export function Home() {
+  let navigate = useNavigate();
+
+  const createUEQ = () => {
+    navigate(`/q/create/`);
+  }
   return <div>
     <section>
       <h1>Jetzt online UEQ Fragebogen anlegen und analysieren</h1>
       <p>lorem ipsum dolor sit amet, consectetur adip. Lorem ipsum dolor sit amet, consectetur adip.</p>
-      <button>Jetzt kostenlos UEQ erstellen*</button>
+      <button onClick={createUEQ}>Jetzt kostenlos UEQ erstellen*</button>
       <p>*kein Account erforderlich</p>
     </section>
     <section>
