@@ -5,11 +5,11 @@ const Questionnaire = require("../models/questionnaire")
 //TODO mit passwort sichern
 //Route gibt results und sobjects zurück
 //TODO DTO to remove Password
-router.get("/evaluate/:id", async (req, res) => {
-  console.log("Get questionnaire with id", req.params.id);
+router.get("/evaluate/:link_uuid", async (req, res) => {
+  console.log("Get questionnaire with id", req.params.link_uuid);
 
   try {
-    let questionnaire = await Questionnaire.findById(req.params.id).populate({
+    let questionnaire = await Questionnaire.findOne({ link_uuid: req.params.link_uuid }).populate({
       path: 'results',
       populate: {
         path: 'subject'

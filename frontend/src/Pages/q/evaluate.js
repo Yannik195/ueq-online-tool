@@ -37,14 +37,15 @@ export const options = {
 export function Evaluate() {
   const { link_uuid } = useParams()
   let navigate = useNavigate();
-  const [questionnaire, setQuestionnaire] = useState({});
+  const [q, setQuestionnaire] = useState({});
 
   //Fetch Data 
   //TODO Query data with React Query
   useEffect(() => {
-    fetch(`http://localhost:3001/api/q/fill/${link_uuid}`)
+    console.log(link_uuid);
+    fetch(`http://localhost:3001/api/q/evaluate/${link_uuid}`)
       .then(response => response.json())
-      .then(data => setQuestionnaire(data));
+      .then(data => setQuestionnaire(data))
   }, []);
 
   let data = {
@@ -61,10 +62,13 @@ export function Evaluate() {
     }]
   }
 
+
   return (
     <header className="App-header">
       <h1>Evaluate</h1>
       <button onClick={() => navigate(`/q/fill/${link_uuid}`)}>Fill</button>
+
+      <p>{q.product}</p>
       <Bar data={data} />
 
     </header>
