@@ -3,10 +3,10 @@ import { useNavigate } from "react-router-dom";
 
 export function Home() {
   let navigate = useNavigate();
-
   const createUEQ = () => {
     navigate(`/q/create/`);
   }
+
   return <div>
     <section>
       <h1>Jetzt online UEQ Fragebogen anlegen und analysieren</h1>
