@@ -1,11 +1,13 @@
-import { useParams } from "react-router-dom"
+import { useParams, useNavigate } from "react-router-dom"
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import moment from 'moment'
 
 
+
 export function Fill() {
   const { link_uuid } = useParams()
+  let navigate = useNavigate();
   let items_german = [["unerfreulich", "erfreulich"], ["unverständlich", "verständlich"], ["kreativ", "phantasielos"], ["leicht zu lernen", "schwer zu lernen"], ["wertvoll", "minderwertig"], ["langweilig", "spannend"], ["uninteressant", "interessant"], ["unberechenbar", "voraussagbar"], ["schnell", "langsam"], ["originell", "konventionell"], ["behindernd", "unterstützend"], ["gut", "schlecht"], ["kompliziert", "einfach"], ["abstoßend", "anziehend"], ["herkömmlich", "neuartig"], ["unangenehm", "angenehm"], ["sicher", "unsicher"], ["aktivierend", "einschläfernd"], ["erwartungskonform", "nicht erwartungskonform"], ["ineffizient", "effizient"], ["übersichtlich", "verwirrend"], ["unpragmatisch", "pragmatisch"], ["aufgeräumt", "überladen"], ["attraktiv", "unattraktiv"], ["sympathisch", "unsympathisch"], ["konservativ", "innovativ"]]
   const [result, setResult] = useState([4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4])
   const [demographics, setDemographics] = useState({
@@ -66,7 +68,7 @@ export function Fill() {
       <h1>UEQ Online Fragebogen</h1>
       <p>{moment(q.createdAt).format("DD.MM.YYYY")}</p>
       <p>{q.email}</p>
-      <button>Evaluation</button>
+      <button onClick={() => navigate(`/q/evaluate/${link_uuid}`)}>Evaluation</button>
       <h2>{q.product}</h2>
       <p>{q.description}</p>
 

@@ -15,7 +15,6 @@ export function Create() {
   } = useForm();
 
   const onSubmit = (data) => {
-
     console.log(data);
     axios.post(`http://localhost:3001/api/q`, data)
       .then(res => {
