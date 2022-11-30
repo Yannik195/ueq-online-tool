@@ -151,7 +151,7 @@ export function Create() {
 
         </fieldset>
 
-        <button type="submit">Submit</button>
+        <button type="submit">Create UEQ Survey</button>
 
       </form>
     </div>
