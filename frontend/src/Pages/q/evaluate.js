@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom"
+import { useParams, useNavigate } from "react-router-dom"
 import { useState, useEffect } from 'react';
 
 import { Bar } from 'react-chartjs-2';
@@ -35,15 +35,17 @@ export const options = {
 };
 
 export function Evaluate() {
-  const { id } = useParams()
-  const [questionnaire, setQuestionnaire] = useState({});
+  const { link_uuid } = useParams()
+  let navigate = useNavigate();
+  const [q, setQuestionnaire] = useState({});
 
   //Fetch Data 
+  //TODO Query data with React Query
   useEffect(() => {
-    console.log(id);
-    fetch(`http://localhost:3001/api/questionnaire/${id}`)
+    console.log(link_uuid);
+    fetch(`http://localhost:3001/api/q/evaluate/${link_uuid}`)
       .then(response => response.json())
-      .then(data => setQuestionnaire(data));
+      .then(data => setQuestionnaire(data))
   }, []);
 
   let data = {
@@ -60,9 +62,13 @@ export function Evaluate() {
     }]
   }
 
+
   return (
     <header className="App-header">
       <h1>Evaluate</h1>
+      <button onClick={() => navigate(`/q/fill/${link_uuid}`)}>Fill</button>
+
+      <p>{q.product}</p>
       <Bar data={data} />
 
     </header>

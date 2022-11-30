@@ -11,17 +11,16 @@ export function Create() {
     register,
     setValue,
     handleSubmit,
-    watch,
     formState: { errors }
   } = useForm();
 
   const onSubmit = (data) => {
     console.log(data);
-    axios.post(`http://localhost:3001/api/questionnaire`, data)
+    axios.post(`http://localhost:3001/api/q`, data)
       .then(res => {
         console.log(res);
         console.log(res.data);
-        navigate(`/q/fill/${res.data.link}`);
+        navigate(`/q/fill/${res.data.link_uuid}`);
       })
   };
 

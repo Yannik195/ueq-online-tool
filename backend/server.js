@@ -16,7 +16,7 @@ const questionnaireRoutes = require("./routes/questionnaire")
 const resultRoutes = require("./routes/result")
 
 //Route Middleware
-app.use("/api/questionnaire", questionnaireRoutes)
+app.use("/api/q", questionnaireRoutes)
 app.use("/api/result", resultRoutes)
 
 //Start Server
