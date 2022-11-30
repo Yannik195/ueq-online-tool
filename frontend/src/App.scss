@@ -2,6 +2,10 @@ $dark-1: rgba(6, 10, 14, 0.9);
 $dark-2: rgba(6, 10, 14, 0.8);
 $dark-3: rgba(6, 10, 14, 0.7);
 
+$white-1: rgba(255, 255, 255, 1);
+
+$orange: rgba(255, 160, 73, 1);
+
 
 h1, h2, h3, h4, h5, h6{
   color: $dark-1;
@@ -9,4 +13,13 @@ h1, h2, h3, h4, h5, h6{
 
 p {
   color: $dark-2;
+}
+
+button {
+  border: none;
+  border-radius: 6px;
+  padding: 12px;
+  background-color: $orange;
+  color: $white-1;
+  font-weight: 700;
 }
