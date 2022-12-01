@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom"
 import { useState } from 'react';
 import axios from 'axios';
+import Infobanner from "../../Infobanner/Infobanner"
 
 export function Fill() {
   const { id } = useParams()
@@ -11,6 +12,8 @@ export function Fill() {
     gender: 0,
     education: 0
   })
+
+  
 
   function handleChange(evt) {
     const value = evt.target.value;
@@ -55,14 +58,24 @@ export function Fill() {
       <h2>Standmixer Bosch 1200W</h2>
       <p>Beschreibung Lorem ipsum dolor sit amet. Beschreibung consectetur adipiscing elit. </p>
 
-      <h3>Was ist ein Questionnaire?</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>
 
+    <Infobanner 
+    title="Was ist Questionnaire?"
+    content="Ein Questionaire (Fragebogen) ist ein Instrument zur Datenerhebung. Fragebogen werden vor allem in Psychologie und Sozialwissenschaften verbreitet eingesetzt, um soziale und politische Einstellungen, Meinungen, Interessen und psychologische Merkmale zu erfassen.">
+    </Infobanner>
+
+  
+
+    
+    
       <form onSubmit={handleSubmit}>
         <h2>Fragebogen</h2>
         <p>Um das Produkt zu bewerten, füllen Sie bitte den nachfolgenden Fragebogen aus. Er besteht aus Gegensatzpaaren von Eigenschaften, die das Produkt haben kann. Abstufungen zwischen den Gegensätzen sind durch Kreise dargestellt. Durch Ankreuzen eines dieser Kreise können Sie Ihre Zustimmung zu einem Begriff äußern.
           Entscheiden Sie möglichst spontan. Es ist wichtig, dass Sie nicht lange über die Begriffe nachdenken, damit Ihre unmittelbare Einschätzung zum Tragen kommt.
           Es gibt keine „richtige“ oder „falsche“ Antwort. Ihre persönliche Meinung zählt!</p>
+
+
+        
 
 
         <h2>Angaben zu Person</h2>
@@ -96,6 +109,7 @@ export function Fill() {
           />
         </label>
 
+        
 
         {items_german.map((items, i) => {
           return (
