@@ -66,3 +66,10 @@ body {
   flex-direction: row;
   background: white;
 }
+
+@media (max-width: 300px) {
+  .wrapper, .image1, .text2, .text3, .button1, .btn1, 
+  .confirmation_header, .confirmation_main  {
+    width: 100%; /* The width is 100%, when the viewport is 800px or smaller */
+  }
+}
