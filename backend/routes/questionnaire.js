@@ -41,14 +41,8 @@ router.get("/fill/:link_uuid", async (req, res) => {
 router.post("/", async (req, res) => {
   console.log("Save questionnaire", req.body);
 
-  //Create unique link
-  link_uuid = [
-    req.body.product.replaceAll(" ", "-"), //Replace whitespace with -
-    "-", //Add -
-    Math.floor(1000 + Math.random() * 9000) //4 Random numbers
-  ].join("") //bosch-standmixer-29-1232 -> http://localhost:3000/q/fill/bosch-standmixer-29-1232
-
-  console.log(link_uuid);
+  //Create LinkUUID
+  link_uuid = createLinkUUID(req.body.product)
 
   //TODO: password vershlüssenl
 
@@ -61,14 +55,44 @@ router.post("/", async (req, res) => {
   })
 
   try {
+    // Attempt to save the questionnaire to the MongoDB database using the `save()` method provided by Mongoose
     let savedQuestionnaire = await questionnaire.save()
+
+    // If the questionnaire is successfully saved, log a message and send a 201 (Created) response with the saved questionnaire
     console.log("Saved questionnaire to DB", savedQuestionnaire)
     res.status(201).send(savedQuestionnaire)
   } catch (err) {
+    // If there is an error while saving the questionnaire, log the error and send a 400 (Bad Request) response
     console.log("Error while saving questionnaire", err)
     res.status(400).send(err)
   }
+
 })
 
 
 module.exports = router
+
+function createLinkUUID(str) {
+  // Replace spaces with dashes
+  const replacedString = str.replace(/ /g, "-");
+
+  // Add a dash at the end of the string
+  const withDash = `${replacedString}-`;
+
+  // Generate a UUID
+  const uuid = generateUUID();
+
+  // Return the manipulated string with the UUID appended at the end
+  return `${withDash}${uuid}`;
+}
+
+// Import the uuid npm package
+const uuid = require("uuid");
+
+function generateUUID() {
+  // Generate a new UUID
+  const newUUID = uuid.v4();
+
+  // Return the generated UUID
+  return newUUID;
+}
