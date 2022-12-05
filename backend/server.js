@@ -15,9 +15,11 @@ mongoose.connect(process.env.DB_CONNECT,
 const questionnaireRoutes = require("./routes/questionnaire")
 const resultRoutes = require("./routes/result")
 
+
 //Route Middleware
 app.use("/api/q", questionnaireRoutes)
 app.use("/api/result", resultRoutes)
+
 
 //Start Server
 const PORT = process.env.PORT || 3001

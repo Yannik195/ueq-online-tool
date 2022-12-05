@@ -42,6 +42,7 @@ router.post("/", async (req, res) => {
   Questionnaire.findOneAndUpdate({ link_uuid: req.body.link_uuid },
     { "$push": { "results": savedResult._id } },
     { "new": true, "upsert": true },
+    console.log("FindOneAndUpdate"),
     function (err) {
       if (err) {
         console.log(err);
@@ -52,6 +53,8 @@ router.post("/", async (req, res) => {
     }
   );
 })
+
+
 
 
 module.exports = router

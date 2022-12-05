@@ -49,6 +49,7 @@ router.post("/", async (req, res) => {
   ].join("") //bosch-standmixer-29-1232 -> http://localhost:3000/q/fill/bosch-standmixer-29-1232
 
   console.log(link_uuid);
+ 
 
   //TODO: password vershlüssenl
 
@@ -70,5 +71,61 @@ router.post("/", async (req, res) => {
   }
 })
 
+
+
+//Update Name
+router.patch("/", async (req, res) => {
+  console.log("Update Productname", req.body);
+
+
+
+try {
+  const filter_ID = {link_uuid: req.body.link_uuid};
+  console.log("Update Link before")
+  console.log(filter_ID)
+
+  const update_Name = { product: req.body.product };
+  console.log("Update Name before")
+  console.log(update_Name)
+  
+
+  let updateQuestionaire = await Questionnaire.findOneAndUpdate(filter_ID, update_Name ,{
+    new: true,
+    upsert: true
+  });
+
+  
+  //updateQuestionaire.link_uuid;
+  //updateQuestionaire.product;
+
+  /*
+  updateQuestionaire = await Questionnaire.findOne(filter_ID);
+  updateQuestionaire.product;
+  */
+  console.log("Update Name after")
+  console.log(update_Name)
+
+  console.log(updateQuestionaire)
+  res.send(updateQuestionaire)
+} catch (err) {
+  res.status(400).send(err)
+ 
+}
+
+
+/*
+  try { 
+    let updateQuestionaire = await Questionnaire.findOneAndUpdate({ link_uuid: req.body.link_uuid },
+    { "new": true, "upsert": true },
+    console.log(updateQuestionaire),
+    console.log(link_uuid, req.body.link_uuid),
+    res.send(updateQuestionaire)
+    )
+  } catch (err) {
+    res.status(400).send(err)
+
+  }
+*/
+})
 
 module.exports = router
