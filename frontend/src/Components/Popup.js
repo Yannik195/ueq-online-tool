@@ -36,6 +36,8 @@ export function Popup(props) {
     })
       .then(res => {
         //Todo Close popup window
+        //Todo Update LinkUUID in Backend for the Product
+        //Todo Reload Page to update new name
       })
   }
 
