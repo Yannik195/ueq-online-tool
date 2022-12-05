@@ -1,0 +1,21 @@
+/* Participants.css */
+
+.participants {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  padding: 10px;
+}
+
+.participants-left {
+  display: flex;
+  align-items: center;
+  font-size: 24px;
+  border-radius: 5px;
+  grid-column: 1;
+}
+
+.participants-right {
+  padding: 10px;
+  grid-column: 2;
+}
