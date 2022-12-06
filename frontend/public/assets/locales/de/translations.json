@@ -1,0 +1,21 @@
+{
+    "app_title": "Titel",
+    "language": "Sprache",
+    "welcome_message": "UEQ Online Fragebogen",
+    "title": "Standmixer Bosch 1200W",
+    "questionnaire": "Was ist ein Questionnaire?",
+    "description": "Beschreibung Lorem ipsum dolor sit amet. Beschreibung consectetur adipiscing elit.",
+    
+    "header_two": "Fragebogen",
+    "your_opinion": "Um das Produkt zu bewerten,"  ,
+    "person_title" : "Angaben zu Person",
+    "person_des": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation", 
+    "days_since_release": "es sind {{number_of_days}} Tage vergangen seitdem an dem Projekt gearbeiter wurde",
+    "items_adjectives": [["unerfreulich", "erfreulich"], ["unverständlich", "verständlich"], ["kreativ", "phantasielos"], 
+    ["leicht zu lernen", "schwer zu lernen"], ["wertvoll", "minderwertig"], ["langweilig", "spannend"], ["uninteressant", "interessant"], 
+    ["unberechenbar", "voraussagbar"], ["schnell", "langsam"], ["originell", "konventionell"], ["behindernd", "unterstützend"], ["gut", "schlecht"], 
+    ["kompliziert", "einfach"], ["abstoßend", "anziehend"], ["herkömmlich", "neuartig"], ["unangenehm", "angenehm"], ["sicher", "unsicher"], 
+    ["aktivierend", "einschläfernd"], ["erwartungskonform", "nicht erwartungskonform"], ["ineffizient", "effizient"], 
+    ["übersichtlich", "verwirrend"], ["unpragmatisch", "pragmatisch"], ["aufgeräumt", "überladen"], ["attraktiv", "unattraktiv"], 
+    ["sympathisch", "unsympathisch"], ["konservativ", "innovativ"]]
+  }
