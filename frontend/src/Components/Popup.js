@@ -41,6 +41,10 @@ export function Popup(props) {
       })
   }
 
+  function reloadePage() {
+      window.location.reload(false);
+  }
+
   return (props.trigger) ? (
     <div className="popup">
       <div className="popup-inner">
@@ -56,7 +60,7 @@ export function Popup(props) {
             })}
           />
           <h3 className="newName" id='product'>{q.product}</h3>
-          <button type="submit">Speichern</button>
+          <button type="submit" onClick={reloadePage}>Speichern</button>
         </form>
         <button className="close-btn" onClick={() => props.setTrigger(false)}>Abbrechen</button>
       </div>
