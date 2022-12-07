@@ -21,7 +21,7 @@ const sendMail = async function (){
             "TrackLinks": "HtmlOnly",
             "MessageStream": "outbound"
         }, headers: {
-            "X-Postmark-Server-Token": "49326c46-0354-4771-b34e-3a5c0a101db3"
+            "X-Postmark-Server-Token": "Muss über env Datei geändert werden! TODO: Schauen wie man den Key über die env. bekommt"
         }
 
     }).then(res => {
