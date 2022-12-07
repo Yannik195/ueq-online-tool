@@ -5,6 +5,14 @@ const questionnaireSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  description: {
+    type: String,
+    required: false,
+  },
+  link_uuid: {
+    type: String,
+    required: true,
+  },
   password: {
     type: String,
     required: true,
@@ -17,6 +25,6 @@ const questionnaireSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Result'
   }],
-})
+}, { timestamps: true })
 
 module.exports = mongoose.model("Questionnaire", questionnaireSchema)

@@ -2,17 +2,11 @@ $dark-1: rgba(6, 10, 14, 0.9);
 $dark-2: rgba(6, 10, 14, 0.8);
 $dark-3: rgba(6, 10, 14, 0.7);
 
-/*
-.confirmation-page-header {
-  flex-grow: 1;
-  background: #FFA149;
-  text-align: center;
-  padding: 10px;
+
+h1, h2, h3, h4, h5, h6{
+  color: $dark-1;
 }
 
-.confirmation-page-main {
-  flex-grow: 2;
-  flex-direction: row;
-  background: white;
+p {
+  color: $dark-2;
 }
-*/

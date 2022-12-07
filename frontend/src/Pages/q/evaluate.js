@@ -1,8 +1,7 @@
-import { useParams } from "react-router-dom"
+import { useParams, useNavigate } from "react-router-dom"
 import { useState, useEffect } from 'react';
-import axios from 'axios';
-import { faker } from '@faker-js/faker';
-
+import ResultsTable from "../../Components/ResultsTable.js"
+import Participants from "../../Components/Participants.js"
 import { Bar } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
@@ -36,35 +35,25 @@ export const options = {
   },
 };
 
-const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-
-export const data = {
-  labels,
-  datasets: [
-    {
-      label: 'Dataset 1',
-      data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
-      backgroundColor: 'rgba(255, 99, 132, 0.5)',
-    },
-    {
-      label: 'Dataset 2',
-      data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
-      backgroundColor: 'rgba(53, 162, 235, 0.5)',
-    },
-  ],
+const createResults = () => {
+  return Array.from({ length: 200 }, () =>
+    Array.from({ length: 26 }, () => Math.ceil(Math.random() * 7))
+  );
 };
-
+const results = createResults();
 
 export function Evaluate() {
-  const { id } = useParams()
-  const [questionnaire, setQuestionnaire] = useState({});
+  const { link_uuid } = useParams()
+  let navigate = useNavigate();
+  const [q, setQuestionnaire] = useState({});
 
   //Fetch Data 
+  //TODO Query data with React Query
   useEffect(() => {
-    console.log(id);
-    fetch(`http://localhost:3001/api/questionnaire/${id}`)
+    console.log(link_uuid);
+    fetch(`http://localhost:3001/api/q/evaluate/${link_uuid}`)
       .then(response => response.json())
-      .then(data => setQuestionnaire(data));
+      .then(data => setQuestionnaire(data))
   }, []);
 
   let data = {
@@ -81,9 +70,16 @@ export function Evaluate() {
     }]
   }
 
+
   return (
     <header className="App-header">
       <h1>Evaluate</h1>
+      <button onClick={() => navigate(`/q/fill/${link_uuid}`)}>Fill</button>
+
+      <Participants number={results.length} />
+      <ResultsTable results={results} />;
+
+      <p>{q.product}</p>
       <Bar data={data} />
 
     </header>
