@@ -1,25 +1,38 @@
-import { useParams } from "react-router-dom"
-import { useState } from 'react';
+import { useParams, useNavigate } from "react-router-dom"
+import { useState, useEffect } from 'react';
 import axios from 'axios';
+import moment from 'moment'
+
+
 import Infobanner from "../../Infobanner/Infobanner"
 
 export function Fill() {
-  const { id } = useParams()
+  const { link_uuid } = useParams()
+  let navigate = useNavigate();
   let items_german = [["unerfreulich", "erfreulich"], ["unverständlich", "verständlich"], ["kreativ", "phantasielos"], ["leicht zu lernen", "schwer zu lernen"], ["wertvoll", "minderwertig"], ["langweilig", "spannend"], ["uninteressant", "interessant"], ["unberechenbar", "voraussagbar"], ["schnell", "langsam"], ["originell", "konventionell"], ["behindernd", "unterstützend"], ["gut", "schlecht"], ["kompliziert", "einfach"], ["abstoßend", "anziehend"], ["herkömmlich", "neuartig"], ["unangenehm", "angenehm"], ["sicher", "unsicher"], ["aktivierend", "einschläfernd"], ["erwartungskonform", "nicht erwartungskonform"], ["ineffizient", "effizient"], ["übersichtlich", "verwirrend"], ["unpragmatisch", "pragmatisch"], ["aufgeräumt", "überladen"], ["attraktiv", "unattraktiv"], ["sympathisch", "unsympathisch"], ["konservativ", "innovativ"]]
   const [result, setResult] = useState([4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4])
   const [demographics, setDemographics] = useState({
     age: 0,
-    gender: 0,
+    gender: null,
     education: 0
   })
 
-  
+  //Questionnaire
+  const [q, setQuestionnaire] = useState({});
 
-  function handleChange(evt) {
-    const value = evt.target.value;
+  //Query Data
+  useEffect(() => {
+    console.log(link_uuid);
+    fetch(`http://localhost:3001/api/q/fill/${link_uuid}`)
+      .then(response => response.json())
+      .then(data => setQuestionnaire(data));
+  }, []);
+
+  function handleDemographicsChange(event) {
+    const value = event.target.value;
     setDemographics({
       ...demographics,
-      [evt.target.name]: value
+      [event.target.name]: value
     });
   }
 
@@ -38,10 +51,11 @@ export function Fill() {
     event.preventDefault()
     axios.post(`http://localhost:3001/api/result`, {
       result,
-      questionnaire: id,
+      link_uuid: link_uuid,
       subject: {
         age: demographics.age,
-        gender: demographics.gender
+        gender: demographics.gender,
+        education: demographics.education,
       }
     })
       .then(res => {
@@ -53,10 +67,11 @@ export function Fill() {
   return (
     <header className="App-header">
       <h1>UEQ Online Fragebogen</h1>
-      <span>14.10.2022</span>
-      <span>research@mail.de</span>
-      <h2>Standmixer Bosch 1200W</h2>
-      <p>Beschreibung Lorem ipsum dolor sit amet. Beschreibung consectetur adipiscing elit. </p>
+      <p>{moment(q.createdAt).format("DD.MM.YYYY")}</p>
+      <p>{q.email}</p>
+      <button onClick={() => navigate(`/q/evaluate/${link_uuid}`)}>Evaluation</button>
+      <h2>{q.product}</h2>
+      <p>{q.description}</p>
 
 
     <Infobanner 
@@ -81,35 +96,51 @@ export function Fill() {
         <h2>Angaben zu Person</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>
 
-        <label>
-          Age
+        <label htmlFor="age">
+          <strong>Age</strong>
+          <br></br>
           <input
-            type="text"
+            type="number"
+            min="0"
+            max="99"
             name="age"
             value={demographics.age}
-            onChange={handleChange}
+            onChange={handleDemographicsChange}
           />
-        </label>
-        <label>
-          Gender
-          <input
-            type="text"
-            name="gender"
-            value={demographics.gender}
-            onChange={handleChange}
-          />
-        </label>
-        <label>
-          Education
-          <input
-            type="text"
-            name="education"
-            value={demographics.education}
-            onChange={handleChange}
-          />
+          <br></br>
         </label>
 
-        
+        <label htmlFor="gender">
+          <strong>Gender</strong>
+          <br></br>
+          <select id="gender" name="gender" value={demographics.gender}
+            onChange={handleDemographicsChange}>
+            <option value="null">Auswählen</option>
+            <option value="male">Mann</option>
+            <option value="female">Frau</option>
+          </select>
+          <br></br>
+        </label>
+
+        <label htmlFor="education">
+          <strong>Education</strong>
+          <br></br>
+          <select id="education" name="education" value={demographics.education}
+            onChange={handleDemographicsChange}>
+            <option value="">Ausählen</option>
+            <option value="1">Kein Schulabschluss</option>
+            <option value="2">Grund-/Hauptschulabschluss</option>
+            <option value="3">Realschule (Mittlere Reife)</option>
+            <option value="4">Gymnasium (Abitur)</option>
+            <option value="5">Abgeschlossene Ausbildung</option>
+            <option value="6">Fachhochschulabschluss</option>
+            <option value="7">Hochschule (Diplom)</option>
+            <option value="8">Hochschule (Magister)</option>
+            <option value="9">Hochschule (Promotion)</option>
+            <option value="10">Sostige</option>
+          </select>
+          <br></br>
+        </label>
 
         {items_german.map((items, i) => {
           return (
@@ -127,7 +158,22 @@ export function Fill() {
           )
         }
         )}
-        Ja, Ich bin mit der Einverständniserklärung einverstanden.
+
+        <label htmlFor="consent">
+          <input
+            type="checkbox"
+            name="consent"
+            value={demographics.age}
+            onChange={handleDemographicsChange}
+            style={{ float: "left" }}
+            required
+          />
+          <p>Ja, Ich bin mit der Einverständniserklärung einverstanden</p>
+          <br></br>
+        </label>
+
+
+
         <input type="submit" value="Submit" />
       </form>
 
