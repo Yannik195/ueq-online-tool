@@ -1,6 +1,7 @@
 import { useParams, useNavigate } from "react-router-dom"
 import { useState, useEffect } from 'react';
-
+import ResultsTable from "../../Components/ResultsTable.js"
+import Participants from "../../Components/Participants.js"
 import { Bar } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
@@ -33,6 +34,13 @@ export const options = {
     },
   },
 };
+
+const createResults = () => {
+  return Array.from({ length: 200 }, () =>
+    Array.from({ length: 26 }, () => Math.ceil(Math.random() * 7))
+  );
+};
+const results = createResults();
 
 export function Evaluate() {
   const { link_uuid } = useParams()
@@ -67,6 +75,9 @@ export function Evaluate() {
     <header className="App-header">
       <h1>Evaluate</h1>
       <button onClick={() => navigate(`/q/fill/${link_uuid}`)}>Fill</button>
+
+      <Participants number={results.length} />
+      <ResultsTable results={results} />;
 
       <p>{q.product}</p>
       <Bar data={data} />
