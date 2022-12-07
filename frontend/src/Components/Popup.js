@@ -36,13 +36,11 @@ export function Popup(props) {
     })
       .then(res => {
         //Todo Close popup window
+        window.location.reload(false);
+
         //Todo Update LinkUUID in Backend for the Product
         //Todo Reload Page to update new name
       })
-  }
-
-  function reloadePage() {
-      window.location.reload(false);
   }
 
   return (props.trigger) ? (
@@ -60,7 +58,7 @@ export function Popup(props) {
             })}
           />
           <h3 className="newName" id='product'>{q.product}</h3>
-          <button type="submit" onClick={reloadePage}>Speichern</button>
+          <button type="submit">Speichern</button>
         </form>
         <button className="close-btn" onClick={() => props.setTrigger(false)}>Abbrechen</button>
       </div>
