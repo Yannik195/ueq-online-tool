@@ -47,20 +47,4 @@ const Infobanner = (props) => {
   )
 }
 
-
-
-
-
-
-/*
-const [checked, setChecked] = useState(false);
-
-  const handleChange = (props) => {
-    setChecked(props.currentTarget.checked);
-  }
-
-  return <CheckBox checked={checked} onChange={handleChange} ></CheckBox>
-*/
-
-
 export default Infobanner;
