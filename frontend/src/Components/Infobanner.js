@@ -4,11 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faQuestion } from '@fortawesome/free-solid-svg-icons';
 
 const Infobanner = (props) => {
-  //Variabeln für verschiedene Infobanner
   const { title, content } = props;
-  //expand -> Hint wird angezeigt und wieder versteckt
-  //const [expand, setExpand] = useState(false);
-  //const toggleExpand = () => setExpand(prevExpand => !prevExpand);
   const [showBanner, setShowBanner] = useState(true);
 
   useEffect(() => {
@@ -23,13 +19,12 @@ const Infobanner = (props) => {
   }, [showBanner]);
 
 
-  //Code funktioniert hier noch nicht richtig
   return (
     <div className='test'>
       {showBanner && (
         <div className="infobanner">
           <div className="btnimg">
-            <FontAwesomeIcon icon={faQuestion} />
+            <FontAwesomeIcon className='img' icon={faQuestion} />
           </div>
           <div className='text'>
             <div className="title">
