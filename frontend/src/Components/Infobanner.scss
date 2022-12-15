@@ -12,43 +12,56 @@
     border-bottom-width: 5px;
     border-right-width: 5px;
     box-sizing: content-box;
-    }
-
-.btnimg img {
-    position: absolute;
-    width: 100px;
-    height: 100px;
-    margin-top: 50px;
-    float: left;
 }
 
+ .img {
+    position: center;
+    width: 100px;
+    height: 100px;
+    margin: auto;
+    margin-left: -130px;
+    float: left;
+ }
+
 .title {
-    width: 100%;
     font-family: "Inter", bold;
     margin-top: -20px;
-    margin-bottom: -20px;
-    margin-left: -30px;
-    margin-right: -30px;
+    margin-left: 0px;
     padding: 50px;
     font-size: 30px;
-    border: none;
-    float: right;
     text-align: left;
     flex-direction: column;
 }
 
 .content {
-    width: 100%;
+    //width: 100%;
     font-family: "Lucida Console", "Courier New", monospace; 
-    margin-bottom: 10px;
-    margin-left: -30px;
-    border: none;
+    margin-bottom: 20px;
+    margin-left: 50px;
+    margin-right: 100px;
+    text-align: left;
+    flex-direction: column;
 }
 
-.hint button {
-    border: none;
-    margin-left: 10px;
+.hint {
+    margin-top: 20px;
     margin-right: 20px;
-    background-color: white;
-    width: 100px;
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    height: 25px;
+
 }
+
+.hint input {
+   
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+    background-color: rgb(73, 58, 58);
+  }
+  
+
