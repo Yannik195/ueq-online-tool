@@ -5,28 +5,39 @@ import moment from 'moment'
 import Popup from "../../Components/Popup";
 
 
-
 export function Fill() {
+  //Parameters
   const { link_uuid } = useParams()
+
+  //React Router
   let navigate = useNavigate();
+
+  //Items
   let items_german = [["unerfreulich", "erfreulich"], ["unverständlich", "verständlich"], ["kreativ", "phantasielos"], ["leicht zu lernen", "schwer zu lernen"], ["wertvoll", "minderwertig"], ["langweilig", "spannend"], ["uninteressant", "interessant"], ["unberechenbar", "voraussagbar"], ["schnell", "langsam"], ["originell", "konventionell"], ["behindernd", "unterstützend"], ["gut", "schlecht"], ["kompliziert", "einfach"], ["abstoßend", "anziehend"], ["herkömmlich", "neuartig"], ["unangenehm", "angenehm"], ["sicher", "unsicher"], ["aktivierend", "einschläfernd"], ["erwartungskonform", "nicht erwartungskonform"], ["ineffizient", "effizient"], ["übersichtlich", "verwirrend"], ["unpragmatisch", "pragmatisch"], ["aufgeräumt", "überladen"], ["attraktiv", "unattraktiv"], ["sympathisch", "unsympathisch"], ["konservativ", "innovativ"]]
+
+  //Result
   const [result, setResult] = useState([4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4])
+
+  //Demographics
   const [demographics, setDemographics] = useState({
     age: 0,
     gender: null,
     education: 0
   })
 
+  //Popup
+  const [editNamePopup, seteditNamePopupVisibility] = useState(false)
+
   //Questionnaire
   const [q, setQuestionnaire] = useState({});
 
   //Query Data
   useEffect(() => {
-    console.log(link_uuid);
+    console.log("Load Data");
     fetch(`http://localhost:3001/api/q/fill/${link_uuid}`)
       .then(response => response.json())
       .then(data => setQuestionnaire(data));
-  }, []);
+  }, [editNamePopup]);
 
   function handleDemographicsChange(event) {
     const value = event.target.value;
@@ -64,9 +75,6 @@ export function Fill() {
       })
   }
 
-  //Popup
-  const [buttonPopup, setButtonPopup] = useState(false)
-
   return (
     <header className="App-header">
       <h1>UEQ Online Fragebogen</h1>
@@ -76,10 +84,8 @@ export function Fill() {
       <h2>{q.product}</h2>
       <p>{q.description}</p>
 
-      <button onClick={() => setButtonPopup(true)}>Name bearbeiten</button>
-      <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
-        
-      </Popup>
+      <button onClick={() => seteditNamePopupVisibility(true)}>Name bearbeiten</button>
+      <Popup visible={editNamePopup} setVisible={seteditNamePopupVisibility} />
 
 
       <h3>Was ist ein Questionnaire?</h3>
@@ -171,12 +177,9 @@ export function Fill() {
           <br></br>
         </label>
 
-
-
         <input type="submit" value="Submit" />
       </form>
 
     </header>
   );
 }
-

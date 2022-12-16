@@ -1,49 +1,36 @@
 import React from "react";
 import './Popup.scss'
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import axios from "axios";
-import { useParams } from "react-router-dom"
+import { useParams, useNavigate } from "react-router-dom"
 import { useForm } from "react-hook-form";
 
-export function Popup(props) {
 
+export function Popup(props) {
   const { link_uuid } = useParams();
   const [q, setQuestionnaire] = useState({});
-  const [nameedit, setNameedit] = useState({ product: '' })
-
+  let navigate = useNavigate();
   const {
     register,
     handleSubmit,
     formState: { errors }
   } = useForm();
 
-  useEffect(() => {
-    console.log(link_uuid);
-    const editname = async () => {
-      await fetch(`http://localhost:3001/api/q/fill/${link_uuid}`)
-        .then(response => response.json())
-        .then(data => setQuestionnaire(data));
-    }
-    editname();
-  }, []);
-
+  //Update Name
   const onSubmit = (values) => {
-    //event.preventDefault()
-    console.log("Values", values.product);
     axios.patch(`http://localhost:3001/api/q`, {
       link_uuid: link_uuid,
       product: values.product,
     })
       .then(res => {
-        //Todo Close popup window
-        window.location.reload(false);
-
-        //Todo Update LinkUUID in Backend for the Product
-        //Todo Reload Page to update new name
+        //Navigate to ne URL
+        navigate(`/q/fill/${res.data.link_uuid}`)
+        //Close Popup
+        props.setVisible(false)
       })
   }
 
-  return (props.trigger) ? (
+  return (props.visible) ? (
     <div className="popup">
       <div className="popup-inner">
         <h1>Name des Produkts ändern</h1>
@@ -60,9 +47,10 @@ export function Popup(props) {
           <h3 className="newName" id='product'>{q.product}</h3>
           <button type="submit">Speichern</button>
         </form>
-        <button className="close-btn" onClick={() => props.setTrigger(false)}>Abbrechen</button>
+        <button className="close-btn" onClick={() => props.setVisible(false)}>Abbrechen</button>
       </div>
     </div>
   ) : "";
 }
+
 export default Popup;

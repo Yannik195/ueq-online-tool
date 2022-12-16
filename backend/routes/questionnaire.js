@@ -75,35 +75,43 @@ router.post("/", async (req, res) => {
 router.patch("/", async (req, res) => {
   console.log("Update Productname", req.body);
 
-try {
-  const filter_ID = {link_uuid: req.body.link_uuid};
- 
+  try {
+    //Determines which product to update
+    const filter = {
+      link_uuid: req.body.link_uuid
+    };
 
-  const update_Name = { product: req.body.product };
+    //Determines which properties to update
+    const update = {
+      product: req.body.product,
+      link_uuid: createLinkUUID(req.body.product) //Create a new link for the product
+    };
 
-  
+    //Update the questionnaire
+    let updateQuestionaire = await Questionnaire.findOneAndUpdate(filter, update, {
+      new: true,
+      upsert: true
+    });
 
-  let updateQuestionaire = await Questionnaire.findOneAndUpdate(filter_ID, update_Name ,{
-    new: true,
-    upsert: true
-  });
+    console.log("Updated Questionnaire", updateQuestionaire)
+    res.send(updateQuestionaire)
+  } catch (err) {
+    res.status(400).send(err)
 
-  
-
-  console.log(updateQuestionaire)
-  res.send(updateQuestionaire)
-} catch (err) {
-  res.status(400).send(err)
- 
-}
+  }
 
 })
 
 module.exports = router
 
-function createLinkUUID(str) {
+/* 
+    A function for generatring a LinkUUID
+    It takes the Product, replaces spaces with an "-"
+    and adds u unique identifier at the end of it
+ */
+function createLinkUUID(productName) {
   // Replace spaces with dashes
-  const replacedString = str.replace(/ /g, "-");
+  const replacedString = productName.replace(/ /g, "-");
 
   // Add a dash at the end of the string
   const withDash = `${replacedString}-`;
