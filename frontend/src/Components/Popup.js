@@ -6,7 +6,7 @@ import { useParams, useNavigate } from "react-router-dom"
 import { useForm } from "react-hook-form";
 
 
-export function Popup(props) {
+function Popup(props) {
   const { link_uuid } = useParams();
   const [q, setQuestionnaire] = useState({});
   let navigate = useNavigate();
