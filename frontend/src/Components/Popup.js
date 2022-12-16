@@ -23,7 +23,7 @@ export function Popup(props) {
       product: values.product,
     })
       .then(res => {
-        //Navigate to ne URL
+        //Navigate to new URL
         navigate(`/q/fill/${res.data.link_uuid}`)
         //Close Popup
         props.setVisible(false)
