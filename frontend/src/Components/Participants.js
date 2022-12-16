@@ -5,7 +5,7 @@ import './Participants.css';
 
 
 export default function Participants(props) {
-  const { number } = props;
+  const { number, link_uuid } = props;
 
   return (
     <div className="participants">
@@ -16,7 +16,7 @@ export default function Participants(props) {
         <h2>{number} Teilnehmer</h2>
         <p>
           Teile den Survey-Link mit potentiellen Teilnehmern.{' '}
-          <a href="http://localhost:3000/q/fill/:id">Link</a>
+          <a href={`http://localhost:3000/q/fill/${link_uuid}`}>Link</a>
         </p>
       </div>
     </div>

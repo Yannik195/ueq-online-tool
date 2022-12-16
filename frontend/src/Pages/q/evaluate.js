@@ -76,8 +76,8 @@ export function Evaluate() {
       <h1>Evaluate</h1>
       <button onClick={() => navigate(`/q/fill/${link_uuid}`)}>Fill</button>
 
-      <Participants number={results.length} />
-      <ResultsTable results={results} />;
+      <Participants number={results.length} link_uuid={link_uuid} />
+      <ResultsTable results={results} />
 
       <p>{q.product}</p>
       <Bar data={data} />
@@ -85,4 +85,3 @@ export function Evaluate() {
     </header>
   );
 }
-
