@@ -88,10 +88,6 @@ export function Fill() {
       <Popup visible={editNamePopup} setVisible={seteditNamePopupVisibility} questionnaire={q} />
 
 
-      <button onClick={() => seteditNamePopupVisibility(true)}>Name bearbeiten</button>
-      <Popup visible={editNamePopup} setVisible={seteditNamePopupVisibility} />
-
-
       <Infobanner
         title="Was ist Questionnaire?"
         content="Ein Questionaire (Fragebogen) ist ein Instrument zur Datenerhebung. Fragebogen werden vor allem in Psychologie und Sozialwissenschaften verbreitet eingesetzt, um soziale und politische Einstellungen, Meinungen, Interessen und psychologische Merkmale zu erfassen.">
