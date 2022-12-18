@@ -2,8 +2,8 @@ import { useParams, useNavigate } from "react-router-dom"
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import moment from 'moment'
-import Popup from "../../Components/Popup";
-
+import Popup from "../../Components/Popup"
+import Infobanner from "../../Components/Infobanner"
 
 export function Fill() {
   //Parameters
@@ -88,16 +88,20 @@ export function Fill() {
       <Popup visible={editNamePopup} setVisible={seteditNamePopupVisibility} />
 
 
-      <h3>Was ist ein Questionnaire?</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>
+      <button onClick={() => seteditNamePopupVisibility(true)}>Name bearbeiten</button>
+      <Popup visible={editNamePopup} setVisible={seteditNamePopupVisibility} />
+
+
+      <Infobanner
+        title="Was ist Questionnaire?"
+        content="Ein Questionaire (Fragebogen) ist ein Instrument zur Datenerhebung. Fragebogen werden vor allem in Psychologie und Sozialwissenschaften verbreitet eingesetzt, um soziale und politische Einstellungen, Meinungen, Interessen und psychologische Merkmale zu erfassen.">
+      </Infobanner>
 
       <form onSubmit={handleSubmit}>
         <h2>Fragebogen</h2>
         <p>Um das Produkt zu bewerten, füllen Sie bitte den nachfolgenden Fragebogen aus. Er besteht aus Gegensatzpaaren von Eigenschaften, die das Produkt haben kann. Abstufungen zwischen den Gegensätzen sind durch Kreise dargestellt. Durch Ankreuzen eines dieser Kreise können Sie Ihre Zustimmung zu einem Begriff äußern.
           Entscheiden Sie möglichst spontan. Es ist wichtig, dass Sie nicht lange über die Begriffe nachdenken, damit Ihre unmittelbare Einschätzung zum Tragen kommt.
           Es gibt keine „richtige“ oder „falsche“ Antwort. Ihre persönliche Meinung zählt!</p>
-
-
         <h2>Angaben zu Person</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>
 
@@ -179,7 +183,6 @@ export function Fill() {
 
         <input type="submit" value="Submit" />
       </form>
-
     </header>
   );
 }
