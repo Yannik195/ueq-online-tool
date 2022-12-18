@@ -1,7 +1,8 @@
 const mongoose = require("mongoose")
 
 const resultSchema = new mongoose.Schema({
-  result: [Number],
+  values: [Number],
+  valuesTransformed: [Number],
   questionnaire: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Questionnaire'

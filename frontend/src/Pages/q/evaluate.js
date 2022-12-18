@@ -35,12 +35,18 @@ export const options = {
   },
 };
 
-const createResults = () => {
+//Todo adjust fake Results
+//Create 200 fake Results
+const createDummyResults = () => {
   return Array.from({ length: 200 }, () =>
-    Array.from({ length: 26 }, () => Math.ceil(Math.random() * 7))
+    Array.from({ length: 26 }, () => (
+      Math.ceil(Math.random() * 7) //A Random Number between 0 and 7
+      - 4 //Subtract 4 from it
+    )
+    )
   );
 };
-const results = createResults();
+const results = createDummyResults();
 
 export function Evaluate() {
   const { link_uuid } = useParams()
@@ -48,13 +54,35 @@ export function Evaluate() {
   const [q, setQuestionnaire] = useState({});
 
   //Fetch Data 
-  //TODO Query data with React Query
   useEffect(() => {
     console.log(link_uuid);
     fetch(`http://localhost:3001/api/q/evaluate/${link_uuid}`)
       .then(response => response.json())
       .then(data => setQuestionnaire(data))
+      .then(console.log(q))
   }, []);
+
+  function getValues(obj) {
+    // initialize empty arrays to store the values and value_transformed properties
+    let values = [];
+    let valuesTransformed = [];
+
+    // iterate over the result array
+    for (let i = 0; i < obj.results.length; i++) {
+      // get the value and value_transformed properties
+      let value = obj.results[i].value;
+      let valueTransformed = obj.results[i].value_transformed;
+
+      // add the values to the appropriate arrays
+      values.push(value);
+      valuesTransformed.push(valueTransformed);
+    }
+
+
+    console.log(valuesTransformed)
+    // return the arrays
+    return [values, valuesTransformed];
+  }
 
   let data = {
     labels: ['Attractiveness', 'Perspicuity', 'Efficiency', 'Dependability', 'Stimulation', 'Novelty'],
@@ -77,9 +105,8 @@ export function Evaluate() {
       <button onClick={() => navigate(`/q/fill/${link_uuid}`)}>Fill</button>
 
       <Participants number={results.length} />
-      <ResultsTable results={results} />;
+      <ResultsTable results={results} />
 
-      <p>{q.product}</p>
       <Bar data={data} />
 
     </header>

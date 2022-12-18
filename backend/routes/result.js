@@ -23,8 +23,12 @@ router.post("/", async (req, res) => {
     res.status(400).send(err)
   }
 
+  //Takes the req.body and extracts the values and values_transformed
+  let [values, valuesTransformed] = getValues(req.body);
+
   let result = new Result({
-    result: req.body.result,
+    values: values,
+    valuesTransformed: valuesTransformed,
     link_uuid: req.body.link_uuid,
     subject: savedSubject._id,
   })
@@ -55,3 +59,31 @@ router.post("/", async (req, res) => {
 
 
 module.exports = router
+
+
+/**
+ * Extracts the "value" and "value_transformed" properties from the objects in the "result" array of the given object,
+ * and returns them as two separate arrays.
+ *
+ * @param {object} obj - The object containing the "result" array
+ * @returns {array} - An array containing two elements: the first element is an array of "value" properties,
+ *                    and the second element is an array of "value_transformed" properties
+ */
+function getValues(obj) {
+  let values = [];
+  let valuesTransformed = [];
+
+  // iterate over the result array
+  for (let i = 0; i < obj.result.length; i++) {
+    // get the value and value_transformed properties
+    let value = obj.result[i].value;
+    let valueTransformed = obj.result[i].value_transformed;
+
+    // add the values to the appropriate arrays
+    values.push(value);
+    valuesTransformed.push(valueTransformed);
+  }
+
+  // return the arrays
+  return [values, valuesTransformed];
+}
