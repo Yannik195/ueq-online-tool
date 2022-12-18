@@ -4,7 +4,6 @@ import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom"
 import { useForm } from "react-hook-form";
 
-
 function Popup(props) {
   const { link_uuid } = useParams();
   let navigate = useNavigate();
@@ -14,8 +13,7 @@ function Popup(props) {
     formState: { errors }
   } = useForm();
 
-
-  //Update Name
+ //Update Name
   const onSubmit = (values) => {
     axios.patch(`http://localhost:3001/api/q`, {
       link_uuid: link_uuid,
@@ -28,6 +26,7 @@ function Popup(props) {
         props.setVisible(false)
       })
   }
+
 
   return (props.visible) ? (
     <div className="popup">
@@ -50,5 +49,4 @@ function Popup(props) {
     </div>
   ) : "";
 }
-
 export default Popup;
