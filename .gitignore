@@ -4,6 +4,9 @@ backend/node_modules
 .DS_Store
 .idea
 
+data
+
+.idea
 
 #React
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
