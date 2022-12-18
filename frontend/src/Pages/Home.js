@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import Hero from "../Components/Hero"
 
 
 export function Home() {
@@ -8,6 +9,7 @@ export function Home() {
   }
 
   return <div>
+    <Hero></Hero>
     <section>
       <h1>Jetzt online UEQ Fragebogen anlegen und analysieren</h1>
       <p>lorem ipsum dolor sit amet, consectetur adip. Lorem ipsum dolor sit amet, consectetur adip.</p>
