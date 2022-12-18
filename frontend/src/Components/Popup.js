@@ -1,6 +1,6 @@
 import React from "react";
 import './Popup.scss'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom"
 import { useForm } from "react-hook-form";
@@ -15,6 +15,16 @@ function Popup(props) {
     handleSubmit,
     formState: { errors }
   } = useForm();
+
+  useEffect(() => {
+    console.log(link_uuid);
+    const editname = async () => {
+      await fetch(`http://localhost:3001/api/q/fill/${link_uuid}`)
+        .then(response => response.json())
+        .then(data => setQuestionnaire(data));
+    }
+    editname();
+  }, []);
 
   //Update Name
   const onSubmit = (values) => {
@@ -44,8 +54,7 @@ function Popup(props) {
               maxLength: 35,
             })}
           />
-          <h3 className="newName" id='product'>{q.product}</h3>
-          <button type="submit">Speichern</button>
+          <button className="save-btn" type="submit">Speichern</button>
         </form>
         <button className="close-btn" onClick={() => props.setVisible(false)}>Abbrechen</button>
       </div>
