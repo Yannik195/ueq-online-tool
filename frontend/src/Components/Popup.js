@@ -1,6 +1,5 @@
 import React from "react";
 import './Popup.scss'
-import { useState, useEffect } from 'react';
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom"
 import { useForm } from "react-hook-form";
@@ -8,7 +7,6 @@ import { useForm } from "react-hook-form";
 
 function Popup(props) {
   const { link_uuid } = useParams();
-  const [q, setQuestionnaire] = useState({});
   let navigate = useNavigate();
   const {
     register,
@@ -16,15 +14,6 @@ function Popup(props) {
     formState: { errors }
   } = useForm();
 
-  useEffect(() => {
-    console.log(link_uuid);
-    const editname = async () => {
-      await fetch(`http://localhost:3001/api/q/fill/${link_uuid}`)
-        .then(response => response.json())
-        .then(data => setQuestionnaire(data));
-    }
-    editname();
-  }, []);
 
   //Update Name
   const onSubmit = (values) => {
@@ -47,7 +36,7 @@ function Popup(props) {
         <form onSubmit={handleSubmit(onSubmit)}>
           <input
             id='product'
-            placeholder={q.product}
+            placeholder={props.questionnaire.product}
             aria-invalid={errors.product ? "true" : "false"}
             {...register("product", {
               required: true,

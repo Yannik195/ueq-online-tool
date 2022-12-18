@@ -85,7 +85,7 @@ export function Fill() {
       <p>{q.description}</p>
 
       <button onClick={() => seteditNamePopupVisibility(true)}>Name bearbeiten</button>
-      <Popup visible={editNamePopup} setVisible={seteditNamePopupVisibility} />
+      <Popup visible={editNamePopup} setVisible={seteditNamePopupVisibility} questionnaire={q} />
 
 
       <h3>Was ist ein Questionnaire?</h3>
