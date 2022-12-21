@@ -55,12 +55,13 @@ router.post("/", async (req, res) => {
     email: req.body.email,
   })
 
-  // sendMail function with email.js
-  sendMail(link_uuid);
 
   try {
     // Attempt to save the questionnaire to the MongoDB database using the `save()` method provided by Mongoose
     let savedQuestionnaire = await questionnaire.save()
+
+    // sendMail function with email.js
+    sendMail(link_uuid);
 
     // If the questionnaire is successfully saved, log a message and send a 201 (Created) response with the saved questionnaire
     console.log("Saved questionnaire to DB", savedQuestionnaire)
