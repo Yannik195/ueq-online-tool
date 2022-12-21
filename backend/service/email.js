@@ -1,8 +1,6 @@
 const axios = require('axios');
 const questionnaire = require('../models/questionnaire');
 
-const link_url_variable = "www.test123.de";
-
 const sendMail = async function (link_uuid){
     axios({
         method: 'post',
@@ -10,8 +8,7 @@ const sendMail = async function (link_uuid){
         data: {
             "TemplateId": 29991310,
             "TemplateModel": {
-                "link_url": `${questionnaire.newUUID}`,
-                "password": "testpassword",
+                "link_url": `http://localhost:3000/q/fill/${link_uuid}`
             },
             "From": "pp031@hdm-stuttgart.de",
             "To": "pp031@hdm-stuttgart.de",
@@ -20,7 +17,7 @@ const sendMail = async function (link_uuid){
             "TrackLinks": "HtmlOnly",
             "MessageStream": "outbound"
         }, headers: {
-            "X-Postmark-Server-Token": "Muss hier eingefügt werden!"
+            "X-Postmark-Server-Token": process.env.REACT_APP_POSTMARK_API_TOKEN
         }
 
     }).then(res => {
@@ -30,5 +27,5 @@ const sendMail = async function (link_uuid){
     })
 }
 
-sendMail();
+module.exports = sendMail;
 

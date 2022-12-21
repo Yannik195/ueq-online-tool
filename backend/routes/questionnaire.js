@@ -1,5 +1,6 @@
 const router = require("express").Router()
 const Questionnaire = require("../models/questionnaire")
+const sendMail = require("../service/email")
 
 
 //TODO mit passwort sichern
@@ -53,6 +54,8 @@ router.post("/", async (req, res) => {
     password: req.body.password,
     email: req.body.email,
   })
+
+  sendMail(link_uuid);
 
   try {
     // Attempt to save the questionnaire to the MongoDB database using the `save()` method provided by Mongoose
