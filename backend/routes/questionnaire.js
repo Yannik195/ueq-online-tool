@@ -55,6 +55,7 @@ router.post("/", async (req, res) => {
     email: req.body.email,
   })
 
+  // sendMail function with email.js
   sendMail(link_uuid);
 
   try {
