@@ -1,0 +1,48 @@
+
+.team {
+    //margin: 70px;
+    text-align: center;
+    margin-bottom: 100px;
+    position: absolute;
+
+    display: flex;
+    flex-wrap: wrap;
+    //align-items: center;
+    
+    
+  }
+  
+  .border {
+    //margin: 50px;
+    font-family:'Merriweather', serif;
+    padding: 25px;
+    //margin-top: -80px;
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .person {
+    //display: flexbox;
+    margin: 40px;
+  }
+  
+  .circular { 
+    display: inline-block;
+    //position: relative; 
+    width: 200px; 
+    height: 200px; 
+    overflow: hidden; 
+    border-radius: 50%; 
+  }
+  
+  .circular img {
+    width: 100%; 
+    height: auto;
+  }
+  
+  
+  .cont {
+    //position: relative;
+    //flex-direction: column-reverse;
+    align-items: center;
+  }
