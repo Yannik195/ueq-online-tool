@@ -1,115 +1,643 @@
-import { useParams, useNavigate } from "react-router-dom"
+import { useParams, useNavigate, Link } from "react-router-dom"
 import { useState, useEffect } from 'react';
+import axios from 'axios';
 import ResultsTable from "../../Components/ResultsTable.js"
+import MeanValuePerItemChart from "../../Components/MeanValuePerItemChart.js"
+import ScaleMeansVarianceTable from "../../Components/ScalesMeanVarianceTable.js"
+import ScaleMeansVarianceChart from "../../Components/ScalesMeanVarianceChart.js"
+import DistributionOfAnswers from "../../Components/DistributionOfAnswers.js"
 import Participants from "../../Components/Participants.js"
-import { Bar } from 'react-chartjs-2';
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend,
-} from 'chart.js';
-
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend
-);
-
-export const options = {
-  responsive: true,
-  plugins: {
-    legend: {
-      position: 'top',
+import styles from "./Evaluate.module.css"
+const items = {
+  scales: {
+    attractiveness: {
+      index: 1,
+      german: "Attraktivität",
+      english: "Attractiveness"
     },
-    title: {
-      display: true,
-      text: 'Chart.js Bar Chart',
+    perspicuity: {
+      index: 2,
+      german: "Durchschaubarkeit",
+      english: "Perspicuity"
     },
+    efficiency: {
+      index: 3,
+      german: "Effizienz",
+      english: "Efficiency"
+    },
+    dependability: {
+      index: 4,
+      german: "Steuerbarkeit",
+      english: "Dependability"
+    },
+    stimulation: {
+      index: 5,
+      german: "Stimulation",
+      english: "Stimulation"
+    },
+    novelty: {
+      index: 6,
+      german: "Originalität",
+      english: "Novelty"
+    }
   },
+  items: [
+    {
+      index: 1,
+      terms: {
+        german: {
+          positive: "erfreulich",
+          negative: "unerfreulich",
+        },
+        english: {
+          positive: "enjoyable",
+          negative: "annoying",
+        }
+      },
+      scale: 1,
+      reversed: true,
+      value: 4,
+      value_transformed: 0
+    },
+    {
+      index: 2,
+      terms: {
+        german: {
+          positive: "verständlich",
+          negative: "unverständlich",
+        },
+        english: {
+          positive: "understandable",
+          negative: "not understandable",
+        }
+      },
+      scale: 2,
+      reversed: true,
+      value: 4,
+      value_transformed: 0
+    },
+    {
+      index: 3,
+      terms: {
+        german: {
+          positive: "kreativ",
+          negative: "phantasielos",
+        },
+        english: {
+          positive: "creative",
+          negative: "dull",
+        }
+      },
+      scale: 6,
+      reversed: false,
+      value: 4,
+      value_transformed: 0
+    },
+    {
+      index: 4,
+      terms: {
+        german: {
+          positive: "leicht zu lernen",
+          negative: "schwer zu lernen",
+        },
+        english: {
+          positive: "easy to learn",
+          negative: "difficult to learn",
+        }
+      },
+      scale: 2,
+      reversed: false,
+      value: 4,
+      value_transformed: 0
+    },
+    {
+      index: 5,
+      terms: {
+        german: {
+          positive: "wertvoll",
+          negative: "minderwertig",
+        },
+        english: {
+          positive: "valuable",
+          negative: "inferior",
+        },
+      },
+      scale: 5,
+      reversed: false,
+      value: 4,
+      value_transformed: 0
+    },
+    {
+      index: 6,
+      terms: {
+        german: {
+          positive: "spannend",
+          negative: "langweilig",
+        },
+        english: {
+          positive: "exciting",
+          negative: "boring",
+        }
+      },
+      scale: 5,
+      reversed: true,
+      value: 4,
+      value_transformed: 0
+    },
+    {
+      index: 7,
+      terms: {
+        german: {
+          positive: "interessant",
+          negative: "uninteressant",
+        },
+        english: {
+          positive: "interesting",
+          negative: "not interesting",
+        }
+      },
+      scale: 5,
+      reversed: true,
+      value: 4,
+      value_transformed: 0
+    },
+    {
+      index: 8,
+      terms: {
+        german: {
+          positive: "voraussagbar",
+          negative: "unberechenbar",
+        },
+        english: {
+          positive: "predictable",
+          negative: "unpredictable",
+        }
+      },
+      scale: 4,
+      reversed: true,
+      value: 4,
+      value_transformed: 0,
+    },
+    {
+      index: 9,
+      terms: {
+        german: {
+          positive: "schnell",
+          negative: "langsam",
+        },
+        english: {
+          positive: "fast",
+          negative: "slow",
+        }
+      },
+      scale: 3,
+      reversed: false,
+      value: 4,
+      value_transformed: 0,
+    },
+    {
+      index: 10,
+      terms: {
+        german: {
+          positive: "originell",
+          negative: "konventionell",
+        },
+        english: {
+          positive: "inventive",
+          negative: "conventional",
+        }
+      },
+      scale: 6,
+      reversed: false,
+      value: 4,
+      value_transformed: 0,
+    },
+    {
+      index: 11,
+      terms: {
+        german: {
+          positive: "behindernd",
+          negative: "unterstützend",
+        },
+        english: {
+          positive: "supportive",
+          negative: "obstructive",
+        }
+      },
+      scale: 4,
+      reversed: true,
+      value: 4,
+      value_transformed: 0,
+    },
+    {
+      index: 12,
+      terms: {
+        german: {
+          positive: "gut",
+          negative: "schlecht",
+        },
+        english: {
+          positive: "good",
+          negative: "bad",
+        }
+      },
+      scale: 1,
+      reversed: false,
+      value: 4,
+      value_transformed: 0,
+    },
+    {
+      index: 13,
+      terms: {
+        german: {
+          positive: "einfach",
+          negative: "kompliziert",
+        },
+        english: {
+          positive: "easy",
+          negative: "complicated",
+        }
+      },
+      scale: 2,
+      reversed: true,
+      value: 4,
+      value_transformed: 0
+    },
+    {
+      index: 14,
+      terms: {
+        german: {
+          positive: "anziehend",
+          negative: "abstoßend",
+        },
+        english: {
+          positive: "pleasing",
+          negative: "unlikable",
+        }
+      },
+      scale: 1,
+      reversed: true,
+      value: 4,
+      value_transformed: 0
+    },
+    {
+      index: 15,
+      terms: {
+        german: {
+          positive: "neuartig",
+          negative: "herkömmlich",
+        },
+        english: {
+          positive: "leading edge",
+          negative: "usual",
+        }
+      },
+      scale: 6,
+      reversed: true,
+      value: 4,
+      value_transformed: 0
+    },
+    {
+      index: 16,
+      terms: {
+        german: {
+          positive: "angenehm",
+          negative: "unangenehm",
+        },
+        english: {
+          positive: "pleasent",
+          negative: "unpleasant",
+        }
+      },
+      scale: 1,
+      reversed: true,
+      value: 4,
+      value_transformed: 0
+    },
+    {
+      index: 17,
+      terms: {
+        german: {
+          positive: "sicher",
+          negative: "unsicher",
+        },
+        english: {
+          positive: "secure",
+          negative: "not secure",
+        }
+      },
+      scale: 4,
+      reversed: false,
+      value: 4,
+      value_transformed: 0
+    },
+    {
+      index: 18,
+      terms: {
+        german: {
+          positive: "aktivierend",
+          negative: "einschläfernd",
+        },
+        english: {
+          positive: "motivating",
+          negative: "demotivating",
+        }
+      },
+      scale: 5,
+      reversed: false,
+      value: 4,
+      value_transformed: 0
+    },
+    {
+      index: 19,
+      terms: {
+        german: {
+          positive: "erwartungskonform",
+          negative: "nicht erwartungskonform",
+        },
+        english: {
+          positive: "meets expectations",
+          negative: "does not meet expectations",
+        }
+      },
+      scale: 4,
+      reversed: false,
+      value: 4,
+      value_transformed: 0
+    },
+    {
+      index: 20,
+      terms: {
+        german: {
+          positive: "effizient",
+          negative: "ineffizient",
+        },
+        english: {
+          positive: "efficient",
+          negative: "inefficient",
+        }
+      },
+      scale: 3,
+      reversed: true,
+      value: 4,
+      value_transformed: 0
+    },
+    {
+      index: 21,
+      terms: {
+        german: {
+          positive: "übersichtlich",
+          negative: "verwirrend",
+        },
+        english: {
+          positive: "clear",
+          negative: "confusing",
+        }
+      },
+      scale: 2,
+      reversed: false,
+      value: 4,
+      value_transformed: 0
+    },
+    {
+      index: 22,
+      terms: {
+        german: {
+          positive: "pragmatisch",
+          negative: "unpragmatisch",
+        },
+        english: {
+          positive: "practical",
+          negative: "impractical",
+        }
+      },
+      scale: 3,
+      reversed: true,
+      value: 4,
+      value_transformed: 0
+    },
+    {
+      index: 23,
+      terms: {
+        german: {
+          positive: "aufgeräumt",
+          negative: "überladen",
+        },
+        english: {
+          positive: "organized",
+          negative: "cluttered",
+        }
+      },
+      scale: 3,
+      reversed: false,
+      value: 4,
+      value_transformed: 0
+    },
+    {
+      index: 24,
+      terms: {
+        german: {
+          positive: "attraktiv",
+          negative: "unattraktiv",
+        },
+        english: {
+          positive: "attractive",
+          negative: "unattractive",
+        }
+      },
+      scale: 1,
+      reversed: false,
+      value: 4,
+      value_transformed: 0
+    },
+    {
+      index: 25,
+      terms: {
+        german: {
+          positive: "sympathisch",
+          negative: "unsympathisch",
+        },
+        english: {
+          positive: "friendly",
+          negative: "unfriendly",
+        }
+      },
+      scale: 1,
+      reversed: false,
+      value: 4,
+      value_transformed: 0
+    },
+    {
+      index: 26,
+      terms: {
+        german: {
+          positive: "konservativ",
+          negative: "innovativ",
+        },
+        english: {
+          positive: "conservative",
+          negative: "innovative",
+        }
+      },
+      scale: 6,
+      reversed: true,
+      value: 4,
+      value_transformed: 0
+    }
+  ]
+}
+
+const calculateAttractivenessPerPerson = arr => {
+  const mean = arr => arr.reduce((a, b) => a + b, 0) / arr.length;
+
+  const result = [];
+  for (const obj of arr) {
+    const values = [obj.valuesTransformed[0],
+    obj.valuesTransformed[11],
+    obj.valuesTransformed[13],
+    obj.valuesTransformed[15],
+    obj.valuesTransformed[23],
+    obj.valuesTransformed[24]
+    ];
+    result.push(mean(values));
+  }
+
+  return result;
 };
 
-//Todo adjust fake Results
-//Create 200 fake Results
-const createDummyResults = () => {
-  return Array.from({ length: 200 }, () =>
-    Array.from({ length: 26 }, () => (
-      Math.ceil(Math.random() * 7) //A Random Number between 0 and 7
-      - 4 //Subtract 4 from it
-    )
-    )
-  );
+const calculatePerspicuityPerPerson = arr => {
+  const mean = arr => arr.reduce((a, b) => a + b, 0) / arr.length;
+
+  const result = [];
+  for (const obj of arr) {
+    const values = [obj.valuesTransformed[1],
+    obj.valuesTransformed[3],
+    obj.valuesTransformed[12],
+    obj.valuesTransformed[20]
+    ];
+    result.push(mean(values));
+  }
+
+  return result;
 };
-const results = createDummyResults();
+
+const calculateEfficiencyPerPerson = arr => {
+  const mean = arr => arr.reduce((a, b) => a + b, 0) / arr.length;
+
+  const result = [];
+  for (const obj of arr) {
+    const values = [obj.valuesTransformed[8],
+    obj.valuesTransformed[19],
+    obj.valuesTransformed[21],
+    obj.valuesTransformed[22]
+    ];
+    result.push(mean(values));
+  }
+
+  return result;
+};
+
+const calculateDependabilityPerPerson = arr => {
+  const mean = arr => arr.reduce((a, b) => a + b, 0) / arr.length;
+
+  const result = [];
+  for (const obj of arr) {
+    const values = [obj.valuesTransformed[7],
+    obj.valuesTransformed[10],
+    obj.valuesTransformed[16],
+    obj.valuesTransformed[18]
+    ];
+    result.push(mean(values));
+  }
+
+  return result;
+};
+
+const calculateStimulationPerPerson = arr => {
+  const mean = arr => arr.reduce((a, b) => a + b, 0) / arr.length;
+
+  const result = [];
+  for (const obj of arr) {
+    const values = [obj.valuesTransformed[4],
+    obj.valuesTransformed[5],
+    obj.valuesTransformed[6],
+    obj.valuesTransformed[17]
+    ];
+    result.push(mean(values));
+  }
+
+  return result;
+};
+
+const calculateNoveltyPerPerson = arr => {
+  const mean = arr => arr.reduce((a, b) => a + b, 0) / arr.length;
+
+  const result = [];
+  for (const obj of arr) {
+    const values = [obj.valuesTransformed[2],
+    obj.valuesTransformed[9],
+    obj.valuesTransformed[14],
+    obj.valuesTransformed[25]
+    ];
+    result.push(mean(values));
+  }
+
+  return result;
+};
+
+function calculateScaleMeansPerPerson(data) {
+  const attractiveness = calculateAttractivenessPerPerson(data);
+  const perspicuity = calculatePerspicuityPerPerson(data);
+  const efficiency = calculateEfficiencyPerPerson(data);
+  const dependability = calculateDependabilityPerPerson(data);
+  const stimulation = calculateStimulationPerPerson(data);
+  const novelty = calculateNoveltyPerPerson(data);
+
+  return {
+    attractiveness,
+    perspicuity,
+    efficiency,
+    dependability,
+    stimulation,
+    novelty
+  };
+}
 
 export function Evaluate() {
   const { link_uuid } = useParams()
   let navigate = useNavigate();
   const [q, setQuestionnaire] = useState({});
+  let [isLoading, setLoading] = useState(true)
 
-  //Fetch Data 
   useEffect(() => {
-    console.log(link_uuid);
-    fetch(`http://localhost:3001/api/q/evaluate/${link_uuid}`)
-      .then(response => response.json())
-      .then(data => setQuestionnaire(data))
-      .then(console.log(q))
-  }, []);
-
-  function getValues(obj) {
-    // initialize empty arrays to store the values and value_transformed properties
-    let values = [];
-    let valuesTransformed = [];
-
-    // iterate over the result array
-    for (let i = 0; i < obj.results.length; i++) {
-      // get the value and value_transformed properties
-      let value = obj.results[i].value;
-      let valueTransformed = obj.results[i].value_transformed;
-
-      // add the values to the appropriate arrays
-      values.push(value);
-      valuesTransformed.push(valueTransformed);
-    }
+    //Query Data
+    axios.get(`http://localhost:3001/api/q/evaluate/${link_uuid}`)
+      .then(function (response) {
+        setQuestionnaire(response.data)
+      })
+      .catch(function (error) {
+        console.log(error);
+      }).finally(function () {
+        setLoading(false)
+      })
+  }, [])
 
 
-    console.log(valuesTransformed)
-    // return the arrays
-    return [values, valuesTransformed];
+  if (isLoading) {
+    return <span>Loading</span>
   }
-
-  let data = {
-    labels: ['Attractiveness', 'Perspicuity', 'Efficiency', 'Dependability', 'Stimulation', 'Novelty'],
-    datasets: [{
-      label: 'Mean Value Per Item',
-      data: [2.2, -1.1, 2.1, 2.4, 2.1, 1.7],
-      backgroundColor: [
-        '#FFA049',
-      ],
-      borderColor: [
-        '#ffffff'
-      ]
-    }]
-  }
-
-
   return (
-    <header className="App-header">
+    <div className={styles.evaluate}>
+      <Link to={`/q/fill/${link_uuid}`}>{q.product}</Link> <span> > </span> <Link to={`/q/evaluate/${link_uuid}`}>Evaluate</Link>
       <h1>Evaluate</h1>
-      <button onClick={() => navigate(`/q/fill/${link_uuid}`)}>Fill</button>
-
-      <Participants number={results.length} />
-      <ResultsTable results={results} />
-
-      <Bar data={data} />
-
-    </header>
+      <h2>{q.product}</h2>
+      <p>{q.description}</p>
+      <Participants number={q.results.length} link_uuid={`${link_uuid}`} />
+      <ResultsTable results={q.results} />
+      <MeanValuePerItemChart results={q.results} />
+      <DistributionOfAnswers results={q.results} />
+      <ScaleMeansVarianceChart results={calculateScaleMeansPerPerson(q.results)} />
+      <ScaleMeansVarianceTable results={calculateScaleMeansPerPerson(q.results)} />
+    </div>
   );
 }
-

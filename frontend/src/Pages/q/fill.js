@@ -525,6 +525,7 @@ export function Fill() {
       }
     })
     setResult(newArray)
+    console.log("Result", result);
   }
 
   function transformValue(item) {
@@ -535,10 +536,28 @@ export function Fill() {
     }
   }
 
+  function getValuesTransformed() {
+    const transformedValues = [];
+
+    for (const item of items.items) {
+      transformedValues.push(item.value_transformed);
+    }
+
+    console.log("Transformed Values", transformedValues);
+
+    return transformedValues;
+  }
+
+  function extractValueTransformedFromItems() {
+    console.log("Items", result);
+    return result.map(item => item.value_transformed);
+  }
+
+
   const handleSubmit = (event) => {
     event.preventDefault()
     axios.post(`http://localhost:3001/api/result`, {
-      result: result,
+      values_transformed: extractValueTransformedFromItems(),
       link_uuid: link_uuid,
       subject: {
         age: demographics.age,
@@ -572,7 +591,7 @@ export function Fill() {
 
 
         <h2>Angaben zu Person</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>
+        <p>Collecting user data is important for understanding and analyzing the results of a questionnaire. Age, gender, and education level can all impact a user's experience and responses. By including these demographics in the data collection, it allows for a more comprehensive understanding of the results and how they may vary among different groups. This can help to identify any potential biases or outliers in the data and provide a more accurate representation of the user experience.</p>
 
         <label htmlFor="age">
           <strong>Age</strong>
