@@ -2,11 +2,14 @@ import { useParams, useNavigate } from "react-router-dom"
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import moment from 'moment'
-
-
+import Popup from "../../Components/Popup"
+import Infobanner from "../../Components/Infobanner"
 
 export function Fill() {
+  //Parameters
   const { link_uuid } = useParams()
+
+  //React Router
   let navigate = useNavigate();
 
   const items = {
@@ -495,16 +498,19 @@ export function Fill() {
     education: 0
   })
 
+  //Popup
+  const [editNamePopup, seteditNamePopupVisibility] = useState(false)
+
   //Questionnaire
   const [q, setQuestionnaire] = useState({});
 
   //Query Data
   useEffect(() => {
-    console.log(link_uuid);
+    console.log("Load Data");
     fetch(`http://localhost:3001/api/q/fill/${link_uuid}`)
       .then(response => response.json())
       .then(data => setQuestionnaire(data));
-  }, []);
+  }, [editNamePopup]);
 
   function handleDemographicsChange(event) {
     const value = event.target.value;
@@ -580,16 +586,20 @@ export function Fill() {
       <h2>{q.product}</h2>
       <p>{q.description}</p>
 
-      <h3>Was ist ein Questionnaire?</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>
+      <button onClick={() => seteditNamePopupVisibility(true)}>Name bearbeiten</button>
+      <Popup visible={editNamePopup} setVisible={seteditNamePopupVisibility} questionnaire={q} />
+
+
+      <Infobanner
+        title="Was ist Questionnaire?"
+        content="Ein Questionaire (Fragebogen) ist ein Instrument zur Datenerhebung. Fragebogen werden vor allem in Psychologie und Sozialwissenschaften verbreitet eingesetzt, um soziale und politische Einstellungen, Meinungen, Interessen und psychologische Merkmale zu erfassen.">
+      </Infobanner>
 
       <form onSubmit={handleSubmit}>
         <h2>Fragebogen</h2>
         <p>Um das Produkt zu bewerten, füllen Sie bitte den nachfolgenden Fragebogen aus. Er besteht aus Gegensatzpaaren von Eigenschaften, die das Produkt haben kann. Abstufungen zwischen den Gegensätzen sind durch Kreise dargestellt. Durch Ankreuzen eines dieser Kreise können Sie Ihre Zustimmung zu einem Begriff äußern.
           Entscheiden Sie möglichst spontan. Es ist wichtig, dass Sie nicht lange über die Begriffe nachdenken, damit Ihre unmittelbare Einschätzung zum Tragen kommt.
           Es gibt keine „richtige“ oder „falsche“ Antwort. Ihre persönliche Meinung zählt!</p>
-
-
         <h2>Angaben zu Person</h2>
         <p>Collecting user data is important for understanding and analyzing the results of a questionnaire. Age, gender, and education level can all impact a user's experience and responses. By including these demographics in the data collection, it allows for a more comprehensive understanding of the results and how they may vary among different groups. This can help to identify any potential biases or outliers in the data and provide a more accurate representation of the user experience.</p>
 
@@ -669,12 +679,8 @@ export function Fill() {
           <br></br>
         </label>
 
-
-
         <input type="submit" value="Submit" />
       </form>
-
     </header>
   );
 }
-

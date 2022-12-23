@@ -1,0 +1,56 @@
+$orange: rgba(255, 160, 73, 1);
+
+
+.hero {
+  background-image: url("../images/hero_small_opacity.jpg");
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background-position: bottom 30% left 50%;
+  background-size: cover;
+  padding: 32px 32px;
+}
+
+
+.h1 {
+  margin: 0;
+  font-size: 2.2rem;
+  font-weight: 900;
+}
+
+.p {
+ color: #000000;
+ font-size: 1.2rem;
+ font-weight: 500;
+  line-height: 1.5;
+}
+
+.h1, .p {
+  max-width: 400px;
+}
+
+.orange {
+  color: $orange;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.button {
+  height: 50px;
+  border: 4px $orange solid;
+  cursor: pointer;
+  font-weight: 900;
+  font-size: 1rem;
+}
+
+.button:hover {
+  height: 50px;
+  box-sizing: border-box;
+  color: #000000;
+  background-color: #ffffff;
+  border: 4px #000000 solid;
+  transition: 0.2s;
+}
