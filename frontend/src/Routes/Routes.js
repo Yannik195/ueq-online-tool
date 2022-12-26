@@ -12,7 +12,7 @@ export default function Routes() {
       <Route path="/q/fill/:link_uuid" element={<Fill />} />
       <Route path="/q/create/" element={<Create />} />
       <Route path="/q/evaluate/:link_uuid" element={<Evaluate />} />
-      <Route path="/q/confirmation/" element={<Confirmation />} />
+      <Route path="/confirmation" element={<Confirmation />} />
     </RoutesDom>
   )
 }
