@@ -572,8 +572,8 @@ export function Fill() {
       }
     })
       .then(res => {
-        console.log(res);
         console.log(res.data);
+        navigate("/confirmation")
       })
   }
 
