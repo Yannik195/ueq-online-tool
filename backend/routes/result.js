@@ -6,7 +6,7 @@ const Questionnaire = require("../models/questionnaire")
 
 //Save Result
 router.post("/", async (req, res) => {
-  console.log("Save Result", req.body);
+  console.log("Save Result");
 
   let subject = new Subject({
     age: req.body.subject.age,
@@ -24,7 +24,7 @@ router.post("/", async (req, res) => {
   }
 
   let result = new Result({
-    result: req.body.result,
+    valuesTransformed: req.body.values_transformed,
     link_uuid: req.body.link_uuid,
     subject: savedSubject._id,
   })
@@ -46,14 +46,12 @@ router.post("/", async (req, res) => {
       if (err) {
         console.log(err);
       } else {
-        console.log("Saved result", savedResult);
+        console.log("Update Questionnaire", savedResult);
         res.status(200).send(savedResult)
       }
     }
   );
 })
-
-
 
 
 module.exports = router

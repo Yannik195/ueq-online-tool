@@ -12,13 +12,486 @@ export function Fill() {
   //React Router
   let navigate = useNavigate();
 
-  //Items
-  let items_german = [["unerfreulich", "erfreulich"], ["unverständlich", "verständlich"], ["kreativ", "phantasielos"], ["leicht zu lernen", "schwer zu lernen"], ["wertvoll", "minderwertig"], ["langweilig", "spannend"], ["uninteressant", "interessant"], ["unberechenbar", "voraussagbar"], ["schnell", "langsam"], ["originell", "konventionell"], ["behindernd", "unterstützend"], ["gut", "schlecht"], ["kompliziert", "einfach"], ["abstoßend", "anziehend"], ["herkömmlich", "neuartig"], ["unangenehm", "angenehm"], ["sicher", "unsicher"], ["aktivierend", "einschläfernd"], ["erwartungskonform", "nicht erwartungskonform"], ["ineffizient", "effizient"], ["übersichtlich", "verwirrend"], ["unpragmatisch", "pragmatisch"], ["aufgeräumt", "überladen"], ["attraktiv", "unattraktiv"], ["sympathisch", "unsympathisch"], ["konservativ", "innovativ"]]
+  const items = {
+    scales: {
+      attractiveness: {
+        index: 1,
+        german: "Attraktivität",
+        english: "Attractiveness"
+      },
+      perspicuity: {
+        index: 2,
+        german: "Durchschaubarkeit",
+        english: "Perspicuity"
+      },
+      efficiency: {
+        index: 3,
+        german: "Effizienz",
+        english: "Efficiency"
+      },
+      dependability: {
+        index: 4,
+        german: "Steuerbarkeit",
+        english: "Dependability"
+      },
+      stimulation: {
+        index: 5,
+        german: "Stimulation",
+        english: "Stimulation"
+      },
+      novelty: {
+        index: 6,
+        german: "Originalität",
+        english: "Novelty"
+      }
+    },
+    items: [
+      {
+        index: 1,
+        terms: {
+          german: {
+            positive: "erfreulich",
+            negative: "unerfreulich",
+          },
+          english: {
+            positive: "enjoyable",
+            negative: "annoying",
+          }
+        },
+        scale: 1,
+        reversed: true,
+        value: 4,
+        value_transformed: 0
+      },
+      {
+        index: 2,
+        terms: {
+          german: {
+            positive: "verständlich",
+            negative: "unverständlich",
+          },
+          english: {
+            positive: "understandable",
+            negative: "not understandable",
+          }
+        },
+        scale: 2,
+        reversed: true,
+        value: 4,
+        value_transformed: 0
+      },
+      {
+        index: 3,
+        terms: {
+          german: {
+            positive: "kreativ",
+            negative: "phantasielos",
+          },
+          english: {
+            positive: "creative",
+            negative: "dull",
+          }
+        },
+        scale: 6,
+        reversed: false,
+        value: 4,
+        value_transformed: 0
+      },
+      {
+        index: 4,
+        terms: {
+          german: {
+            positive: "leicht zu lernen",
+            negative: "schwer zu lernen",
+          },
+          english: {
+            positive: "easy to learn",
+            negative: "difficult to learn",
+          }
+        },
+        scale: 2,
+        reversed: false,
+        value: 4,
+        value_transformed: 0
+      },
+      {
+        index: 5,
+        terms: {
+          german: {
+            positive: "wertvoll",
+            negative: "minderwertig",
+          },
+          english: {
+            positive: "valuable",
+            negative: "inferior",
+          },
+        },
+        scale: 5,
+        reversed: false,
+        value: 4,
+        value_transformed: 0
+      },
+      {
+        index: 6,
+        terms: {
+          german: {
+            positive: "spannend",
+            negative: "langweilig",
+          },
+          english: {
+            positive: "exciting",
+            negative: "boring",
+          }
+        },
+        scale: 5,
+        reversed: true,
+        value: 4,
+        value_transformed: 0
+      },
+      {
+        index: 7,
+        terms: {
+          german: {
+            positive: "interessant",
+            negative: "uninteressant",
+          },
+          english: {
+            positive: "interesting",
+            negative: "not interesting",
+          }
+        },
+        scale: 5,
+        reversed: true,
+        value: 4,
+        value_transformed: 0
+      },
+      {
+        index: 8,
+        terms: {
+          german: {
+            positive: "voraussagbar",
+            negative: "unberechenbar",
+          },
+          english: {
+            positive: "predictable",
+            negative: "unpredictable",
+          }
+        },
+        scale: 4,
+        reversed: true,
+        value: 4,
+        value_transformed: 0,
+      },
+      {
+        index: 9,
+        terms: {
+          german: {
+            positive: "schnell",
+            negative: "langsam",
+          },
+          english: {
+            positive: "fast",
+            negative: "slow",
+          }
+        },
+        scale: 3,
+        reversed: false,
+        value: 4,
+        value_transformed: 0,
+      },
+      {
+        index: 10,
+        terms: {
+          german: {
+            positive: "originell",
+            negative: "konventionell",
+          },
+          english: {
+            positive: "inventive",
+            negative: "conventional",
+          }
+        },
+        scale: 6,
+        reversed: false,
+        value: 4,
+        value_transformed: 0,
+      },
+      {
+        index: 11,
+        terms: {
+          german: {
+            positive: "behindernd",
+            negative: "unterstützend",
+          },
+          english: {
+            positive: "supportive",
+            negative: "obstructive",
+          }
+        },
+        scale: 4,
+        reversed: true,
+        value: 4,
+        value_transformed: 0,
+      },
+      {
+        index: 12,
+        terms: {
+          german: {
+            positive: "gut",
+            negative: "schlecht",
+          },
+          english: {
+            positive: "good",
+            negative: "bad",
+          }
+        },
+        scale: 1,
+        reversed: false,
+        value: 4,
+        value_transformed: 0,
+      },
+      {
+        index: 13,
+        terms: {
+          german: {
+            positive: "einfach",
+            negative: "kompliziert",
+          },
+          english: {
+            positive: "easy",
+            negative: "complicated",
+          }
+        },
+        scale: 2,
+        reversed: true,
+        value: 4,
+        value_transformed: 0
+      },
+      {
+        index: 14,
+        terms: {
+          german: {
+            positive: "anziehend",
+            negative: "abstoßend",
+          },
+          english: {
+            positive: "pleasing",
+            negative: "unlikable",
+          }
+        },
+        scale: 1,
+        reversed: true,
+        value: 4,
+        value_transformed: 0
+      },
+      {
+        index: 15,
+        terms: {
+          german: {
+            positive: "neuartig",
+            negative: "herkömmlich",
+          },
+          english: {
+            positive: "leading edge",
+            negative: "usual",
+          }
+        },
+        scale: 6,
+        reversed: true,
+        value: 4,
+        value_transformed: 0
+      },
+      {
+        index: 16,
+        terms: {
+          german: {
+            positive: "angenehm",
+            negative: "unangenehm",
+          },
+          english: {
+            positive: "pleasent",
+            negative: "unpleasant",
+          }
+        },
+        scale: 1,
+        reversed: true,
+        value: 4,
+        value_transformed: 0
+      },
+      {
+        index: 17,
+        terms: {
+          german: {
+            positive: "sicher",
+            negative: "unsicher",
+          },
+          english: {
+            positive: "secure",
+            negative: "not secure",
+          }
+        },
+        scale: 4,
+        reversed: false,
+        value: 4,
+        value_transformed: 0
+      },
+      {
+        index: 18,
+        terms: {
+          german: {
+            positive: "aktivierend",
+            negative: "einschläfernd",
+          },
+          english: {
+            positive: "motivating",
+            negative: "demotivating",
+          }
+        },
+        scale: 5,
+        reversed: false,
+        value: 4,
+        value_transformed: 0
+      },
+      {
+        index: 19,
+        terms: {
+          german: {
+            positive: "erwartungskonform",
+            negative: "nicht erwartungskonform",
+          },
+          english: {
+            positive: "meets expectations",
+            negative: "does not meet expectations",
+          }
+        },
+        scale: 4,
+        reversed: false,
+        value: 4,
+        value_transformed: 0
+      },
+      {
+        index: 20,
+        terms: {
+          german: {
+            positive: "effizient",
+            negative: "ineffizient",
+          },
+          english: {
+            positive: "efficient",
+            negative: "inefficient",
+          }
+        },
+        scale: 3,
+        reversed: true,
+        value: 4,
+        value_transformed: 0
+      },
+      {
+        index: 21,
+        terms: {
+          german: {
+            positive: "übersichtlich",
+            negative: "verwirrend",
+          },
+          english: {
+            positive: "clear",
+            negative: "confusing",
+          }
+        },
+        scale: 2,
+        reversed: false,
+        value: 4,
+        value_transformed: 0
+      },
+      {
+        index: 22,
+        terms: {
+          german: {
+            positive: "pragmatisch",
+            negative: "unpragmatisch",
+          },
+          english: {
+            positive: "practical",
+            negative: "impractical",
+          }
+        },
+        scale: 3,
+        reversed: true,
+        value: 4,
+        value_transformed: 0
+      },
+      {
+        index: 23,
+        terms: {
+          german: {
+            positive: "aufgeräumt",
+            negative: "überladen",
+          },
+          english: {
+            positive: "organized",
+            negative: "cluttered",
+          }
+        },
+        scale: 3,
+        reversed: false,
+        value: 4,
+        value_transformed: 0
+      },
+      {
+        index: 24,
+        terms: {
+          german: {
+            positive: "attraktiv",
+            negative: "unattraktiv",
+          },
+          english: {
+            positive: "attractive",
+            negative: "unattractive",
+          }
+        },
+        scale: 1,
+        reversed: false,
+        value: 4,
+        value_transformed: 0
+      },
+      {
+        index: 25,
+        terms: {
+          german: {
+            positive: "sympathisch",
+            negative: "unsympathisch",
+          },
+          english: {
+            positive: "friendly",
+            negative: "unfriendly",
+          }
+        },
+        scale: 1,
+        reversed: false,
+        value: 4,
+        value_transformed: 0
+      },
+      {
+        index: 26,
+        terms: {
+          german: {
+            positive: "konservativ",
+            negative: "innovativ",
+          },
+          english: {
+            positive: "conservative",
+            negative: "innovative",
+          }
+        },
+        scale: 6,
+        reversed: true,
+        value: 4,
+        value_transformed: 0
+      }
+    ]
+  }
 
-  //Result
-  const [result, setResult] = useState([4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4])
-
-  //Demographics
+  const [result, setResult] = useState(items.items)
   const [demographics, setDemographics] = useState({
     age: 0,
     gender: null,
@@ -49,19 +522,48 @@ export function Fill() {
 
   const handleFormChange = (index, event) => {
     let newArray = result.map((item, i) => {
-      if (index === i) {
-        return parseInt(event.target.value)
+      if (item.index === index + 1) {
+        item.value = parseInt(event.target.value)
+        item.value_transformed = transformValue(item)
+        return item
       } else {
         return item
       }
     })
     setResult(newArray)
+    console.log("Result", result);
   }
+
+  function transformValue(item) {
+    if (item.reversed) {
+      return item.value - 4;
+    } else {
+      return 4 - item.value;
+    }
+  }
+
+  function getValuesTransformed() {
+    const transformedValues = [];
+
+    for (const item of items.items) {
+      transformedValues.push(item.value_transformed);
+    }
+
+    console.log("Transformed Values", transformedValues);
+
+    return transformedValues;
+  }
+
+  function extractValueTransformedFromItems() {
+    console.log("Items", result);
+    return result.map(item => item.value_transformed);
+  }
+
 
   const handleSubmit = (event) => {
     event.preventDefault()
     axios.post(`http://localhost:3001/api/result`, {
-      result,
+      values_transformed: extractValueTransformedFromItems(),
       link_uuid: link_uuid,
       subject: {
         age: demographics.age,
@@ -99,7 +601,7 @@ export function Fill() {
           Entscheiden Sie möglichst spontan. Es ist wichtig, dass Sie nicht lange über die Begriffe nachdenken, damit Ihre unmittelbare Einschätzung zum Tragen kommt.
           Es gibt keine „richtige“ oder „falsche“ Antwort. Ihre persönliche Meinung zählt!</p>
         <h2>Angaben zu Person</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>
+        <p>Collecting user data is important for understanding and analyzing the results of a questionnaire. Age, gender, and education level can all impact a user's experience and responses. By including these demographics in the data collection, it allows for a more comprehensive understanding of the results and how they may vary among different groups. This can help to identify any potential biases or outliers in the data and provide a more accurate representation of the user experience.</p>
 
         <label htmlFor="age">
           <strong>Age</strong>
@@ -147,10 +649,10 @@ export function Fill() {
           <br></br>
         </label>
 
-        {items_german.map((items, i) => {
+        {items.items.map((item, i) => {
           return (
             <div key={i}>
-              <span>{items[0]}</span>
+              <span>{item.reversed ? item.terms.english.negative : item.terms.english.positive}</span>
               <input type="radio" id={i} name={i} value="1" onChange={event => handleFormChange(i, event)} />
               <input type="radio" id={i} name={i} value="2" onChange={event => handleFormChange(i, event)} />
               <input type="radio" id={i} name={i} value="3" onChange={event => handleFormChange(i, event)} />
@@ -158,7 +660,7 @@ export function Fill() {
               <input type="radio" id={i} name={i} value="5" onChange={event => handleFormChange(i, event)} />
               <input type="radio" id={i} name={i} value="6" onChange={event => handleFormChange(i, event)} />
               <input type="radio" id={i} name={i} value="7" onChange={event => handleFormChange(i, event)} />
-              <span>{items[1]}</span>
+              <span>{!item.reversed ? item.terms.english.negative : item.terms.english.positive}</span>
             </div>
           )
         }
