@@ -14,10 +14,10 @@ export function Confirmation() {
       </header>
       <main className={styles.confirmation_main}>
         <img className={styles.image1} src={image1} alt="womenpciture" />
-        <p className={styles.text2}>Du möchtest auch UEQ Daten erheben und auswerten?</p>
-        <p className={styles.text3}>Erstelle jetzt kostenlose UEQ-Fragebögen und werte sie Online aus.</p>
+        <h2 className={styles.text2}>Du möchtest auch UEQ Daten erheben und auswerten?</h2>
+        <p className={styles.text3}>Jetzt kostenlos UEQ erstellen und online auswerten.</p>
         <div className={styles.button1}>
-          <button onClick={() => navigate("/q/confirmation")} className={styles.btn1}>UEQ erstellen</button>
+          <button onClick={() => navigate("/q/create")} className={styles.btn1}>UEQ erstellen</button>
         </div>
       </main>
       <div className={styles.Footer}></div>
