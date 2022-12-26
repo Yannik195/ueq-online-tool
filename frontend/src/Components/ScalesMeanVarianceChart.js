@@ -31,12 +31,19 @@ export const options = {
   },
 };
 
+const mean = arr => arr.reduce((a, b) => a + b, 0) / arr.length;
+const variance = arr => {
+  const m = mean(arr);
+  return mean(arr.map(x => (x - m) ** 2));
+};
+
 export default function ScaleMeansVarianceChart({ results }) {
+  console.log("Results", results);
   let data = {
     labels: ['Attractiveness', 'Perspicuity', 'Efficiency', 'Dependability', 'Stimulation', 'Novelty'],
     datasets: [{
       label: 'Mean Value Per Item',
-      data: [results.attractiveness, results.perspicuity, results.efficiency, results.dependability, results.stimulation, results.novelty],
+      data: [mean(results.attractiveness), mean(results.perspicuity), mean(results.efficiency), mean(results.dependability), mean(results.stimulation), mean(results.novelty)],
       backgroundColor: [
         '#FFA049',
       ],
