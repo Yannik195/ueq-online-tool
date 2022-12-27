@@ -1,0 +1,87 @@
+$blue-background-1: #A2D2FF;
+$lightblue-background-1: #BDE0FE;
+$pink-background-1: #FFAFCC;
+$purple-background-1: #CDB4DB;
+
+.team {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.card {
+  margin: 12px;
+  padding: 12px 24px;
+  border-radius: 12px;
+}
+
+.card h2 {
+  color: #ffffff;
+  margin: 0;
+}
+
+.card p {
+  color: #ffffffcc;
+  margin: 0
+}
+
+.card img {
+  border-radius: 50%;
+  aspect-ratio: 1 / 1;
+  height: 72px;
+  object-fit: cover;
+}
+
+/* Yannik */
+.card:nth-child(1) {
+  background-color: $blue-background-1;
+}
+
+/* Pasi */
+.card:nth-child(2) {
+  background-color: $lightblue-background-1;
+}
+
+/* Liljana */
+.card:nth-child(3) {
+  background-color: $pink-background-1;
+}
+
+/* Phuc */
+.card:nth-child(4) {
+  background-color: $purple-background-1;
+}
+
+.top {
+  display: grid;
+  grid-template-columns: auto 6fr;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.circle {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  display: flex;
+  place-self: center;
+  margin: 0 12px;
+}
+
+.title {
+  display: flex;
+}
+
+.icon {
+  color: #ffffff;
+  margin: 0 4px;
+  height: 24px;
+}
+
+@media (min-width: 900px) {
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}

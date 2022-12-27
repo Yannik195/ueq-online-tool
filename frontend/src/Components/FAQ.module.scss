@@ -1,0 +1,85 @@
+$purple-text-1: #2c095d;
+$purple-text-2: #2c095ddd;
+$purple-background-4: #8338ec22;
+$purple-background-3: #8338ec55;
+
+$pink-text-1: #520023;
+$pink-text-2: #520023dd;
+$pink-background-4: #FF006E22;
+$pink-background-3: #FF006E55;
+
+$blue-text-1: #002766;
+$blue-text-2: #002766dd;
+$blue-background-4: #3A86FF22;
+$blue-background-3: #3A86FF55;
+
+$orange-text-1: #642102;
+$orange-text-2: #642102dd;
+$orange-background-4: #FB560722;
+$orange-background-3: #FB560755;
+
+.faq {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.card {
+  margin: 12px;
+  padding: 4px 12px;
+}
+
+/* First Card */
+.card:nth-child(1) {
+  background-color: $purple-background-4;
+  border-left: solid 8px $purple-background-3;
+}
+.card:nth-child(1) h3 {
+  color: $purple-text-1;
+}
+.card:nth-child(1) p {
+  color: $purple-text-2;
+}
+
+/* Second Card */
+.card:nth-child(2) {
+  background-color: $pink-background-4;
+  border-left: solid 8px $pink-background-3;
+}
+.card:nth-child(2) h3 {
+  color: $pink-text-1;
+}
+.card:nth-child(2) p {
+  color: $pink-text-2;
+}
+
+/* Third Card */
+.card:nth-child(3) {
+  background-color: $blue-background-4;
+  border-left: solid 8px $blue-background-3;
+}
+.card:nth-child(3) h3 {
+  color: $blue-text-1;
+}
+.card:nth-child(3) p {
+  color: $blue-text-2;
+}
+
+/* Fourth Card */
+.card:nth-child(4) {
+  background-color: $orange-background-4;
+  border-left: solid 8px $orange-background-3;
+}
+.card:nth-child(4) h3 {
+  color: $orange-text-1;
+}
+.card:nth-child(4) p {
+  color: $orange-text-2;
+}
+
+
+@media (min-width: 900px) {
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}

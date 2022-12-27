@@ -1,0 +1,183 @@
+$orange: rgba(255, 160, 73, 1);
+
+.banner {
+  background-color: $orange;
+  border-radius: 35px;
+  margin: 50px;
+  color: white;
+  font-family:'Merriweather', serif;
+  padding: 25px;
+  //margin-top: -80px;
+}
+
+.h1 {
+  margin: 20px;
+  font-size: 2.2rem;
+  font-weight: 900;
+}
+
+.h2 {
+  margin: 20px;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.h3 {
+  margin: 20px;
+  font-size: 1.0rem;
+  font-weight: 500;
+}
+
+.p {
+  margin: 20px;
+  color: #000000;
+  font-size: 1.2rem;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.h1, .h2, .h3, .p {
+  max-width: 90%;
+  padding: 20px;
+}
+
+.orange {
+  color: $orange;
+}
+
+.row {
+    display: grid;
+    grid-auto-flow: column;
+    box-sizing: border-box;
+    flex-direction: row;
+    margin: 20px;
+  }
+  
+  .title {
+    font-weight: bolder;
+    position: relative;
+    margin-left: 20px;
+    margin-right: 20px;
+    font-size: 30px;
+  }
+  
+  .content {
+    position: relative;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    font-size: 25px;
+    font-weight: lighter;
+  }
+  
+  .rowLeft {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: justify;
+  
+  }
+  
+  .rowMiddle {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: justify;
+  
+  }
+  
+  .rowRight {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: justify;
+  
+  }
+
+.questionnaire {
+    background-image: url("../images/pexels-lukas-590022.jpg");
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background-position: bottom 30% left 50%;
+    background-size: cover;
+    padding: 32px 32px;
+    margin-top: 60px;
+}
+
+.backgroundText {
+    max-width: 90%;
+    background-color: white;
+    border-radius: 40px;
+    margin: 50px;
+    width: 800px;
+    height: 800px;
+    margin-left: auto;
+}
+
+.button {
+  margin-left: 30px;
+  height: 50px;
+  border: 4px $orange solid;
+  cursor: pointer;
+  font-weight: 900;
+  font-size: 1rem;
+}
+
+.button:hover {
+  height: 50px;
+  box-sizing: border-box;
+  color: #000000;
+  background-color: #ffffff;
+  border: 4px #000000 solid;
+  transition: 0.2s;
+}
+
+.info {
+  margin-left: 30px;
+}
+
+.team {
+  text-align: center;
+  margin-bottom: 100px;
+  position: absolute;
+  margin: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  //align-items: center;
+  
+  
+}
+
+.border {
+  margin: 50px;
+  font-family:'Merriweather', serif;
+  padding: 25px;
+  //margin-top: -80px;
+  display: flex;
+  flex-direction: row;
+}
+
+.person {
+  //display: flexbox;
+  margin: 40px;
+}
+
+.circular { 
+  display: inline-block;
+  //position: relative; 
+  width: 200px; 
+  height: 200px; 
+  overflow: hidden; 
+  border-radius: 50%; 
+}
+
+.circular img {
+  width: 100%; 
+  height: auto;
+}
+
+
+.cont {
+  //position: relative;
+  //flex-direction: column-reverse;
+  align-items: center;
+}
