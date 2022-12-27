@@ -26,18 +26,37 @@ select {
   border-radius: 4px;
   margin: 12px;
   padding: 12px;
+  display: grid;
+  grid-template-areas: "item1 inputs item2";
+  grid-template-columns: 3fr 8fr 3fr;
+  justify-content: space-between;
+}
+
+@media (max-width: 1050px) {
+  .row {
+    grid-template-areas:
+      "item1 item2"
+      "inputs inputs";
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.item1 {
+  grid-area: item1;
+  justify-self: start;
+}
+
+.item2 {
+  grid-area: item2;
+  justify-self: end;
+}
+
+.inputs {
+  grid-area: inputs;
+  display: grid;
+  grid-auto-flow: column;
 }
 
 .row:nth-child(2n) {
   background-color: #00000011;
-}
-
-.items {
-  display: flex;
-  justify-content: space-between;
-}
-
-.inputs {
-  display: grid;
-  grid-auto-flow: column;
 }
