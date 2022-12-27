@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { faker } from '@faker-js/faker';
+import styles from "./Create.module.css"
 
 
 export function Create() {
@@ -32,7 +33,7 @@ export function Create() {
   }
 
   return (
-    <div>
+    <div className={styles.container}>
       <h1>Create a new questionnaire</h1>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>
 

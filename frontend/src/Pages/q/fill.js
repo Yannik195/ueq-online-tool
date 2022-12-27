@@ -4,6 +4,7 @@ import axios from 'axios';
 import moment from 'moment'
 import Popup from "../../Components/Popup"
 import Infobanner from "../../Components/Infobanner"
+import styles from "./Fill.module.css"
 
 export function Fill() {
   //Parameters
@@ -578,7 +579,7 @@ export function Fill() {
   }
 
   return (
-    <header className="App-header">
+    <div className={styles.container}>
       <h1>UEQ Online Fragebogen</h1>
       <p>{moment(q.createdAt).format("DD.MM.YYYY")}</p>
       <p>{q.email}</p>
@@ -596,10 +597,6 @@ export function Fill() {
       </Infobanner>
 
       <form onSubmit={handleSubmit}>
-        <h2>Fragebogen</h2>
-        <p>Um das Produkt zu bewerten, füllen Sie bitte den nachfolgenden Fragebogen aus. Er besteht aus Gegensatzpaaren von Eigenschaften, die das Produkt haben kann. Abstufungen zwischen den Gegensätzen sind durch Kreise dargestellt. Durch Ankreuzen eines dieser Kreise können Sie Ihre Zustimmung zu einem Begriff äußern.
-          Entscheiden Sie möglichst spontan. Es ist wichtig, dass Sie nicht lange über die Begriffe nachdenken, damit Ihre unmittelbare Einschätzung zum Tragen kommt.
-          Es gibt keine „richtige“ oder „falsche“ Antwort. Ihre persönliche Meinung zählt!</p>
         <h2>Angaben zu Person</h2>
         <p>Collecting user data is important for understanding and analyzing the results of a questionnaire. Age, gender, and education level can all impact a user's experience and responses. By including these demographics in the data collection, it allows for a more comprehensive understanding of the results and how they may vary among different groups. This can help to identify any potential biases or outliers in the data and provide a more accurate representation of the user experience.</p>
 
@@ -649,24 +646,35 @@ export function Fill() {
           <br></br>
         </label>
 
-        {items.items.map((item, i) => {
-          return (
-            <div key={i}>
-              <span>{item.reversed ? item.terms.english.negative : item.terms.english.positive}</span>
-              <input type="radio" id={i} name={i} value="1" onChange={event => handleFormChange(i, event)} />
-              <input type="radio" id={i} name={i} value="2" onChange={event => handleFormChange(i, event)} />
-              <input type="radio" id={i} name={i} value="3" onChange={event => handleFormChange(i, event)} />
-              <input type="radio" id={i} name={i} value="4" onChange={event => handleFormChange(i, event)} />
-              <input type="radio" id={i} name={i} value="5" onChange={event => handleFormChange(i, event)} />
-              <input type="radio" id={i} name={i} value="6" onChange={event => handleFormChange(i, event)} />
-              <input type="radio" id={i} name={i} value="7" onChange={event => handleFormChange(i, event)} />
-              <span>{!item.reversed ? item.terms.english.negative : item.terms.english.positive}</span>
-            </div>
-          )
-        }
-        )}
+        <div className={styles.ueq}>
+          <h2>UEQ Fragebogen</h2>
+          <p>Um das Produkt zu bewerten, füllen Sie bitte den nachfolgenden Fragebogen aus. Er besteht aus Gegensatzpaaren von Eigenschaften, die das Produkt haben kann. Abstufungen zwischen den Gegensätzen sind durch Kreise dargestellt. Durch Ankreuzen eines dieser Kreise können Sie Ihre Zustimmung zu einem Begriff äußern.
+            Entscheiden Sie möglichst spontan. Es ist wichtig, dass Sie nicht lange über die Begriffe nachdenken, damit Ihre unmittelbare Einschätzung zum Tragen kommt.
+            Es gibt keine „richtige“ oder „falsche“ Antwort. Ihre persönliche Meinung zählt!</p>
 
-        <label htmlFor="consent">
+          {items.items.map((item, i) => {
+            return (
+              <div className={styles.row} key={i}>
+                <span className={styles.item1}>{item.reversed ? item.terms.english.negative : item.terms.english.positive}</span>
+                <span className={styles.item2}>{!item.reversed ? item.terms.english.negative : item.terms.english.positive}</span>
+                <div className={styles.inputs}>
+                  <input type="radio" id={i} name={i} value="1" onChange={event => handleFormChange(i, event)} />
+                  <input type="radio" id={i} name={i} value="2" onChange={event => handleFormChange(i, event)} />
+                  <input type="radio" id={i} name={i} value="3" onChange={event => handleFormChange(i, event)} />
+                  <input type="radio" id={i} name={i} value="4" onChange={event => handleFormChange(i, event)} />
+                  <input type="radio" id={i} name={i} value="5" onChange={event => handleFormChange(i, event)} />
+                  <input type="radio" id={i} name={i} value="6" onChange={event => handleFormChange(i, event)} />
+                  <input type="radio" id={i} name={i} value="7" onChange={event => handleFormChange(i, event)} />
+
+                </div>
+              </div>
+            )
+          }
+          )}
+        </div>
+
+
+        <label className={styles.consent} htmlFor="consent">
           <input
             type="checkbox"
             name="consent"
@@ -679,8 +687,8 @@ export function Fill() {
           <br></br>
         </label>
 
-        <input type="submit" value="Submit" />
+        <button type="submit" value="Submit">Submit</button>
       </form>
-    </header>
+    </div>
   );
 }
