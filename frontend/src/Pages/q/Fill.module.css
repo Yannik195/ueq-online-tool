@@ -1,0 +1,43 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.container input,
+textarea,
+select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 2px solid #00000022;
+  border-radius: 4px;
+}
+
+.consent input {
+  width: auto;
+}
+
+.ueq input {
+  width: auto;
+}
+
+.row {
+  border-radius: 4px;
+  margin: 12px;
+  padding: 12px;
+}
+
+.row:nth-child(2n) {
+  background-color: #00000011;
+}
+
+.items {
+  display: flex;
+  justify-content: space-between;
+}
+
+.inputs {
+  display: grid;
+  grid-auto-flow: column;
+}

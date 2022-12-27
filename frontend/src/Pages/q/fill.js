@@ -4,6 +4,7 @@ import axios from 'axios';
 import moment from 'moment'
 import Popup from "../../Components/Popup"
 import Infobanner from "../../Components/Infobanner"
+import styles from "./Fill.module.css"
 
 export function Fill() {
   //Parameters
@@ -578,7 +579,7 @@ export function Fill() {
   }
 
   return (
-    <header className="App-header">
+    <div className={styles.container}>
       <h1>UEQ Online Fragebogen</h1>
       <p>{moment(q.createdAt).format("DD.MM.YYYY")}</p>
       <p>{q.email}</p>
@@ -649,24 +650,34 @@ export function Fill() {
           <br></br>
         </label>
 
-        {items.items.map((item, i) => {
-          return (
-            <div key={i}>
-              <span>{item.reversed ? item.terms.english.negative : item.terms.english.positive}</span>
-              <input type="radio" id={i} name={i} value="1" onChange={event => handleFormChange(i, event)} />
-              <input type="radio" id={i} name={i} value="2" onChange={event => handleFormChange(i, event)} />
-              <input type="radio" id={i} name={i} value="3" onChange={event => handleFormChange(i, event)} />
-              <input type="radio" id={i} name={i} value="4" onChange={event => handleFormChange(i, event)} />
-              <input type="radio" id={i} name={i} value="5" onChange={event => handleFormChange(i, event)} />
-              <input type="radio" id={i} name={i} value="6" onChange={event => handleFormChange(i, event)} />
-              <input type="radio" id={i} name={i} value="7" onChange={event => handleFormChange(i, event)} />
-              <span>{!item.reversed ? item.terms.english.negative : item.terms.english.positive}</span>
-            </div>
-          )
-        }
-        )}
+        <div className={styles.ueq}>
+          <h2>UEQ</h2>
 
-        <label htmlFor="consent">
+          {items.items.map((item, i) => {
+            return (
+              <div className={styles.row} key={i}>
+                <div className={styles.items}>
+                  <span>{item.reversed ? item.terms.english.negative : item.terms.english.positive}</span>
+                  <span>{!item.reversed ? item.terms.english.negative : item.terms.english.positive}</span>
+                </div>
+                <div className={styles.inputs}>
+                  <input type="radio" id={i} name={i} value="1" onChange={event => handleFormChange(i, event)} />
+                  <input type="radio" id={i} name={i} value="2" onChange={event => handleFormChange(i, event)} />
+                  <input type="radio" id={i} name={i} value="3" onChange={event => handleFormChange(i, event)} />
+                  <input type="radio" id={i} name={i} value="4" onChange={event => handleFormChange(i, event)} />
+                  <input type="radio" id={i} name={i} value="5" onChange={event => handleFormChange(i, event)} />
+                  <input type="radio" id={i} name={i} value="6" onChange={event => handleFormChange(i, event)} />
+                  <input type="radio" id={i} name={i} value="7" onChange={event => handleFormChange(i, event)} />
+
+                </div>
+              </div>
+            )
+          }
+          )}
+        </div>
+
+
+        <label className={styles.consent} htmlFor="consent">
           <input
             type="checkbox"
             name="consent"
@@ -679,8 +690,8 @@ export function Fill() {
           <br></br>
         </label>
 
-        <input type="submit" value="Submit" />
+        <button type="submit" value="Submit">Submit</button>
       </form>
-    </header>
+    </div>
   );
 }
