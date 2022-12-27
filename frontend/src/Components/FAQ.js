@@ -2,7 +2,7 @@ import styles from "./FAQ.module.scss"
 
 export default function FAQ() {
   return (
-    <section className={styles.hero}>
+    <section className={styles.faq}>
       <h2>FAQ</h2>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
       <div className={styles.container}>
