@@ -633,6 +633,7 @@ export function Evaluate() {
         }
       })
       .then((response) => {
+        console.log("Excel Response", response.data);
         window.open(URL.createObjectURL(response.data));
       })
       .catch((error) => console.log(error));
