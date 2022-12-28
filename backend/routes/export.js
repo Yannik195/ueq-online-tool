@@ -33,7 +33,7 @@ async function generateExcel(questionnaire) {
 
   const workbook = new ExcelJS.Workbook()
 
-  await workbook.xlsx.readFile(`${__dirname}/../excel/${questionnaire.link_uuid}.xlsx`)
+  await workbook.xlsx.readFile(`${__dirname}/../excel/UEQ_Data_Analysis_Tool_Version10.xlsx`)
     .then(function () {
 
       var worksheet = workbook.getWorksheet("Data");
