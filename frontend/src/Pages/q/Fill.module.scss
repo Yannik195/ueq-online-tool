@@ -59,5 +59,32 @@ select {
 }
 
 .row:nth-child(2n) {
-  background-color: #00000011;
+  background-color: #00356622;
+}
+
+
+$blue-text-1: #003566;
+$blue-text-2: #003566dd;
+$blue-background-2: #003566;
+$blue-background-3: #00356655;
+$blue-background-4: #00356622;
+
+.language{
+  padding: 4px 12px;
+  background-color: $blue-background-4;
+  border-left: solid 8px $blue-background-3;
+}
+
+.language h3 {
+  color: $blue-text-1;
+}
+
+.language p {
+  color: $blue-text-2;
+}
+
+.language select {
+  color: #ffffff;
+  font-weight: 700;
+  background-color: $blue-background-2;
 }

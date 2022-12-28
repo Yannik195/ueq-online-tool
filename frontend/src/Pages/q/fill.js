@@ -4,7 +4,7 @@ import axios from 'axios';
 import moment from 'moment'
 import Popup from "../../Components/Popup"
 import Infobanner from "../../Components/Infobanner"
-import styles from "./Fill.module.css"
+import styles from "./Fill.module.scss"
 
 export function Fill() {
   //Parameters
@@ -505,6 +505,14 @@ export function Fill() {
   //Questionnaire
   const [q, setQuestionnaire] = useState({});
 
+  //language
+  const [selectedLanguage, setSelectedLanguage] = useState("english");
+
+  const handleLanguageChange = event => {
+    console.log(event.target.value);
+    setSelectedLanguage(event.target.value);
+  }
+
   //Query Data
   useEffect(() => {
     console.log("Load Data");
@@ -584,6 +592,17 @@ export function Fill() {
       })
   }
 
+  function getItem(item, isLeft, selectedLanguage) {
+    const positiveTerm = item.terms[selectedLanguage].positive;
+    const negativeTerm = item.terms[selectedLanguage].negative;
+
+    if (item.reversed) {
+      return isLeft ? negativeTerm : positiveTerm;
+    } else {
+      return isLeft ? positiveTerm : negativeTerm;
+    }
+  }
+
   return (
     <div className={styles.container}>
       <h1>UEQ Online Fragebogen</h1>
@@ -658,11 +677,20 @@ export function Fill() {
             Entscheiden Sie möglichst spontan. Es ist wichtig, dass Sie nicht lange über die Begriffe nachdenken, damit Ihre unmittelbare Einschätzung zum Tragen kommt.
             Es gibt keine „richtige“ oder „falsche“ Antwort. Ihre persönliche Meinung zählt!</p>
 
+
+          <div className={styles.language}>
+            <h3>Not your preferred language?</h3>
+            <p>Simply select your preferred language below.</p>
+            <select name="language" id="language" onChange={handleLanguageChange}>
+              <option value="english" selected="true">English</option>
+              <option value="german">German</option>
+            </select>
+          </div>
           {items.items.map((item, i) => {
             return (
               <div className={styles.row} key={i}>
-                <span className={styles.item1}>{item.reversed ? item.terms.english.negative : item.terms.english.positive}</span>
-                <span className={styles.item2}>{!item.reversed ? item.terms.english.negative : item.terms.english.positive}</span>
+                <span className={styles.item1}>{getItem(item, true, selectedLanguage)}</span>
+                <span className={styles.item2}>{getItem(item, false, selectedLanguage)}</span>
                 <div className={styles.inputs}>
                   <input type="radio" id={i} name={i} value="1" onChange={event => handleFormChange(i, event)} />
                   <input type="radio" id={i} name={i} value="2" onChange={event => handleFormChange(i, event)} />
