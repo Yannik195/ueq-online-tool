@@ -20,8 +20,6 @@ router.get("/excel/:link_uuid", async (req, res) => {
       const file = `${__dirname}/../excel/export/${questionnaire.link_uuid}.xlsx`;
       //const file = `${__dirname}/../excel/UEQ_Data_Analysis_Tool_Version10.xlsx`;
       console.log(file);
-      res.setHeader('Content-disposition', 'attachment; filename=data.xlsx');
-      res.setHeader('Content-type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
       res.download(file);
     }
   } catch (err) {
