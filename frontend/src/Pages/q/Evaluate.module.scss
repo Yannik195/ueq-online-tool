@@ -1,0 +1,41 @@
+$green-text-1: #0E581E;
+$green-text-2: #0E581Edd;
+$green-background-2: #80ED99;
+$green-background-3: #80ED9955;
+$green-background-4: #80ED9922;
+
+.evaluate {
+  max-width: 1200px;
+  width: 95%;
+  margin: auto;
+}
+
+.downloadExcel{
+  padding: 4px 12px 16px 12px;
+  background-color: $green-background-4;
+  border-left: solid 8px $green-background-3;
+}
+
+.downloadExcel h3 {
+  color: $green-text-1;
+}
+
+.downloadExcel p {
+  color: $green-text-2;
+}
+
+.downloadExcel a {
+  color: $green-text-1;
+}
+
+.downloadButton {
+  background-color: $green-background-2;
+  color: $green-text-1;
+  display: flex;
+  align-items: center;
+}
+
+.downloadExcel .icon {
+  margin-right: 8px;
+  font-size: 1.5rem;
+}

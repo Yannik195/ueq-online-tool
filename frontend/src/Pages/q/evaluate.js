@@ -1,4 +1,4 @@
-import { useParams, useNavigate, Link } from "react-router-dom"
+import { useParams, Link } from "react-router-dom"
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import ResultsTable from "../../Components/ResultsTable.js"
@@ -7,7 +7,10 @@ import ScaleMeansVarianceTable from "../../Components/ScalesMeanVarianceTable.js
 import ScaleMeansVarianceChart from "../../Components/ScalesMeanVarianceChart.js"
 import DistributionOfAnswers from "../../Components/DistributionOfAnswers.js"
 import Participants from "../../Components/Participants.js"
-import styles from "./Evaluate.module.css"
+import styles from "./Evaluate.module.scss"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFileExcel } from '@fortawesome/free-solid-svg-icons';
+
 const items = {
   scales: {
     attractiveness: {
@@ -605,7 +608,6 @@ function calculateScaleMeansPerPerson(data) {
 
 export function Evaluate() {
   const { link_uuid } = useParams()
-  let navigate = useNavigate();
   const [q, setQuestionnaire] = useState({});
   let [isLoading, setLoading] = useState(true)
 
@@ -622,6 +624,21 @@ export function Evaluate() {
       })
   }, [])
 
+  async function excel() {
+    axios.get(`http://localhost:3001/api/export/excel/${link_uuid}`,
+      {
+        responseType: 'blob',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/pdf'
+        }
+      })
+      .then((response) => {
+        window.open(URL.createObjectURL(response.data));
+      })
+      .catch((error) => console.log(error));
+  }
+
 
   if (isLoading) {
     return <span>Loading</span>
@@ -633,6 +650,17 @@ export function Evaluate() {
       <h2>{q.product}</h2>
       <p>{q.description}</p>
       <Participants number={q.results.length} link_uuid={`${link_uuid}`} />
+
+      <div className={styles.downloadExcel}>
+        <h3>Need more data?</h3>
+        <p>You can download your data in the official Excel file from the <a href="https://www.ueq-online.org/">official source</a> of the UEQ.</p>
+
+        <button className={styles.downloadButton} onClick={excel}>
+          <FontAwesomeIcon className={styles.icon} icon={faFileExcel} />
+          Download Excel
+        </button>
+      </div>
+
       <ResultsTable results={q.results} />
       <MeanValuePerItemChart results={q.results} />
       <DistributionOfAnswers results={q.results} />

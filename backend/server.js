@@ -14,11 +14,13 @@ mongoose.connect(process.env.DB_CONNECT,
 //Import Routes
 const questionnaireRoutes = require("./routes/questionnaire")
 const resultRoutes = require("./routes/result")
+const exportRoutes = require("./routes/export")
 
 
 //Route Middleware
 app.use("/api/q", questionnaireRoutes)
 app.use("/api/result", resultRoutes)
+app.use("/api/export", exportRoutes)
 
 
 //Start Server
