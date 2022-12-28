@@ -7,7 +7,7 @@ const sendMail = async function (link_uuid) {
     data: {
       "TemplateId": 29991310,
       "TemplateModel": {
-        "link_url": `http://localhost:3000/q/fill/${link_uuid}`
+        "link_url": `${process.env.REACT_APP_BACKEND_URL}/q/fill/${link_uuid}`
       },
       "From": "pp031@hdm-stuttgart.de",
       "To": "pp031@hdm-stuttgart.de",

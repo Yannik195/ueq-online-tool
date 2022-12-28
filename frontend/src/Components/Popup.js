@@ -13,9 +13,9 @@ function Popup(props) {
     formState: { errors }
   } = useForm();
 
- //Update Name
+  //Update Name
   const onSubmit = (values) => {
-    axios.patch(`http://localhost:3001/api/q`, {
+    axios.patch(`${process.env.REACT_APP_BACKEND_URL}/api/q`, {
       link_uuid: link_uuid,
       product: values.product,
     })

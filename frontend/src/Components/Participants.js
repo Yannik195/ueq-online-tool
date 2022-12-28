@@ -17,7 +17,7 @@ export default function Participants(props) {
         <p>
           Teile den Survey-Link mit deinen Teilnehmern:
         </p>
-        <p><a href={`http://localhost:3000/q/fill/${link_uuid}`}>{`http://localhost:3000/q/fill/${link_uuid}`}</a>
+        <p><a href={`${process.env.REACT_APP_BACKEND_URL}/q/fill/${link_uuid}`}>{`${process.env.REACT_APP_BACKEND_URL}/q/fill/${link_uuid}`}</a>
         </p>
       </div>
     </div>

@@ -494,7 +494,7 @@ export function Fill() {
 
   const [result, setResult] = useState(items.items)
   const [demographics, setDemographics] = useState({
-    age: 0,
+    age: null,
     gender: null,
     education: 0
   })
@@ -516,7 +516,7 @@ export function Fill() {
   //Query Data
   useEffect(() => {
     console.log("Load Data");
-    fetch(`http://localhost:3001/api/q/fill/${link_uuid}`)
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/api/q/fill/${link_uuid}`)
       .then(response => response.json())
       .then(data => setQuestionnaire(data));
   }, [editNamePopup]);
@@ -576,7 +576,7 @@ export function Fill() {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    axios.post(`http://localhost:3001/api/result`, {
+    axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/result`, {
       values: extractValuesFromItems(),
       values_transformed: extractValueTransformedFromItems(),
       link_uuid: link_uuid,

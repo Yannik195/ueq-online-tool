@@ -17,7 +17,7 @@ export function Create() {
 
   const onSubmit = (data) => {
     console.log(data);
-    axios.post(`http://localhost:3001/api/q`, data)
+    axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/q`, data)
       .then(res => {
         console.log(res);
         console.log(res.data);

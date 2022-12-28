@@ -613,7 +613,7 @@ export function Evaluate() {
 
   useEffect(() => {
     //Query Data
-    axios.get(`http://localhost:3001/api/q/evaluate/${link_uuid}`)
+    axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/q/evaluate/${link_uuid}`)
       .then(function (response) {
         setQuestionnaire(response.data)
       })
@@ -625,7 +625,7 @@ export function Evaluate() {
   }, [])
 
   async function excel() {
-    axios.get(`http://localhost:3001/api/export/excel/${link_uuid}`,
+    axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/export/excel/${link_uuid}`,
       {
         responseType: 'blob',
         headers: {

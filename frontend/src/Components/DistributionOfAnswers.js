@@ -1,7 +1,5 @@
 import { Bar } from 'react-chartjs-2';
 
-//http://localhost:3000/q/evaluate/Bespoke-Plastic-Chicken-9218ed1c-a5d9-4bac-bbac-569e91df7420
-
 export default function DistributionOfAnswers(props) {
   const { results } = props;
   const items_german = [['unerfreulich', 'erfreulich'],
