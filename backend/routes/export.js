@@ -18,8 +18,8 @@ router.get("/excel/:link_uuid", async (req, res) => {
       let excel = await generateExcel(questionnaire)
       console.log(excel);
     } finally {
-      //const file = `${__dirname}/../excel/${questionnaire.link_uuid}.xlsx`;
-      const file = `${__dirname}/../excel/UEQ_Data_Analysis_Tool_Version10.xlsx`;
+      const file = `${__dirname}/../excel/export/${questionnaire.link_uuid}.xlsx`;
+      //const file = `${__dirname}/../excel/UEQ_Data_Analysis_Tool_Version10.xlsx`;
       console.log(file);
       res.setHeader('Content-disposition', 'attachment; filename=data.xlsx');
       res.setHeader('Content-type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
@@ -47,7 +47,7 @@ async function generateExcel(questionnaire) {
         row.commit()
       }
 
-      return workbook.xlsx.writeFile(`${__dirname}/../excel/${questionnaire.link_uuid}.xlsx`);
+      return workbook.xlsx.writeFile(`${__dirname}/../excel/export/${questionnaire.link_uuid}.xlsx`);
     })
 }
 
