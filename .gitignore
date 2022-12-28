@@ -6,8 +6,6 @@ backend/node_modules
 
 data
 
-backend/excel/export
-
 #React
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
