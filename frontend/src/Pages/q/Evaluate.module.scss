@@ -38,13 +38,11 @@ $green-background-4: #80ED9922;
 .downloadExcel .icon {
   margin-right: 8px;
   font-size: 1.5rem;
+  width: 18px;
 }
 
 .spinner {
-  animation: spin infinite 5s linear;
-
-  /*You can increase or decrease the timer (5s) to 
-     increase or decrease the speed of the spinner*/
+  animation: spin infinite 2s linear;
 }
 
 @keyframes spin {
