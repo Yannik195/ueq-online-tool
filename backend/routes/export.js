@@ -45,7 +45,7 @@ async function generateExcel(questionnaire) {
         row.commit()
       }
 
-      return workbook.xlsx.writeFile(`excel/${questionnaire.link_uuid}.xlsx`);
+      return workbook.xlsx.writeFile(`${__dirname}/../excel/${questionnaire.link_uuid}.xlsx`);
     })
 }
 
