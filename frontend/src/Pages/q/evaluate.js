@@ -9,7 +9,7 @@ import DistributionOfAnswers from "../../Components/DistributionOfAnswers.js"
 import Participants from "../../Components/Participants.js"
 import styles from "./Evaluate.module.scss"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFileExcel } from '@fortawesome/free-solid-svg-icons';
+import { faFileExcel, faSpinner, faCircleNotch } from '@fortawesome/free-solid-svg-icons';
 
 const items = {
   scales: {
@@ -610,6 +610,7 @@ export function Evaluate() {
   const { link_uuid } = useParams()
   const [q, setQuestionnaire] = useState({});
   let [isLoading, setLoading] = useState(true)
+  let [isExcelLoading, setExcelLoading] = useState(false)
 
   useEffect(() => {
     //Query Data
@@ -625,6 +626,7 @@ export function Evaluate() {
   }, [])
 
   async function excel() {
+    setExcelLoading(true)
     axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/export/excel/${link_uuid}`,
       {
         responseType: 'blob',
@@ -633,6 +635,7 @@ export function Evaluate() {
         }
       })
       .then((response) => {
+        setExcelLoading(false)
         console.log("Excel Response", response.data);
         //window.open(URL.createObjectURL(response.data));
 
@@ -670,7 +673,10 @@ export function Evaluate() {
         <p>You can download your data in the official Excel file from the <a href="https://www.ueq-online.org/">official source</a> of the UEQ.</p>
 
         <button className={styles.downloadButton} onClick={excel}>
-          <FontAwesomeIcon className={styles.icon} icon={faFileExcel} />
+          {isExcelLoading ?
+            <FontAwesomeIcon className={`${styles.icon} ${styles.spinner}`} icon={faCircleNotch} />
+            : <FontAwesomeIcon className={styles.icon} icon={faFileExcel} />
+          }
           Download Excel
         </button>
       </div>
