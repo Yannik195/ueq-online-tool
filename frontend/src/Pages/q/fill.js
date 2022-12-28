@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom"
 import { useState } from 'react';
 import axios from 'axios';
-import { useTranslation } from "react-i18next";
-import i18next from 'i18next';
+
+
 
 
 
@@ -18,11 +18,7 @@ import i18next from 'i18next';
       name: 'English',
       country_code: 'gb'
     },
-    {
-      code: 'fr', 
-      name: 'Français',
-      country_code: 'fr'
-    },
+    
     ]
 
   const GlobeIcon = ({width = 24, height =24 }) => (
@@ -32,8 +28,7 @@ import i18next from 'i18next';
   )
 
 export function Fill() {
-  
-  const [locale, setLocale] = useState('en');
+
   const { id } = useParams()
   let items_german = [["unerfreulich", "erfreulich"], ["unverständlich", "verständlich"], ["kreativ", "phantasielos"], 
   ["leicht zu lernen", "schwer zu lernen"], ["wertvoll", "minderwertig"], ["langweilig", "spannend"], ["uninteressant", "interessant"], 
@@ -42,6 +37,30 @@ export function Fill() {
   ["aktivierend", "einschläfernd"], ["erwartungskonform", "nicht erwartungskonform"], ["ineffizient", "effizient"], 
   ["übersichtlich", "verwirrend"], ["unpragmatisch", "pragmatisch"], ["aufgeräumt", "überladen"], ["attraktiv", "unattraktiv"], 
   ["sympathisch", "unsympathisch"], ["konservativ", "innovativ"]]
+  let items_englisch = [["annoying", "enjoyable"], ["not understandable", "understandable"], ["creative", "dull"], 
+  ["easy to learn ", "easy to learn"], ["valuable", "inferior"], ["boring", "exciting"], ["not interesting", "interesting"], 
+  ["unpredictable", "predictable"], ["fast", "slow"], ["inventive", "conventional"], ["obstructive", "supportive"], ["good", "bad"], 
+  ["complicated", "easy"], ["unlikable", "pleasing"], ["usual", "leading edge"], ["unpleasant", "pleasant"], ["secure", "not secure"], 
+  ["motivating", "demotivating"], ["meets expectations", "does not meet expectations"], ["inefficient", "efficient"], 
+  ["clear", "confusing"], ["impractical", "practical"], ["organized", "cluttered"], ["attractive", "unattractive"], 
+  ["friendly", "unfriendly"], ["conservative", "innovative"]]
+
+  /* const [data, setData] = useState(items_german);
+  const updateState = () => {
+    const newState = data.map(obj[0] => { 
+      if(!obj ) {
+        return {items_englisch};
+      } else {
+        return obj
+      }
+      
+    });
+    setData(newState);
+  }; */
+
+  const [adjective, setAdjective] = useState(items_german);
+
+
   const [result, setResult] = useState([4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4])
   const [demographics, setDemographics] = useState({
     age: 0,
@@ -83,8 +102,10 @@ export function Fill() {
         console.log(res.data);
       })
   }
+ 
 
   return (
+     
     <header className="App-header">
       <h1>UEQ Online Fragebogen</h1>
       <span>14.10.2022</span>
@@ -133,7 +154,8 @@ export function Fill() {
           />
         </label>
         <div className="container">
-      <div className='d-flex justify-content-end'>
+    <div className='d-flex justify-content-end'>
+ 
       <div className="dropdown">
   <button className="btn btn-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
     <GlobeIcon />
@@ -141,21 +163,30 @@ export function Fill() {
   <ul className="dropdown-menu">
     {languages.map(({code, name, country_code}) => (
       <li key={country_code}>
-        <button className="dropdown-item" onClick={ () => i18next.changeLanguage(code)}>
+        <button className="dropdown-item"onClick={()=> setAdjective(items_englisch)}>
           <span className={`fi fi-${country_code} mx-2`}
           ></span>
-          {name}
+                     {name}
+
         </button>
         </li>
     ))}
     
-
+    
+  
   </ul>
 </div>
-        </div>
-        </div>
 
-        {items_german.map((items, i) => {
+        </div>   
+{/*  <select value={adjective} onChange={(event) => setAdjective(event.target.value)}>
+                <option value={items_german}>Deutsch</option>
+                <option value={items_englisch}>English</option>
+       
+            </select>  
+            <p>{adjective}</p> */}
+            
+  
+    <p>{adjective.map((items, i) => {
           return (
             
             <div key={i}>
@@ -172,7 +203,10 @@ export function Fill() {
             
           )
         }
-        )}
+        )}</p>
+    
+        </div>
+
         Ja, Ich bin mit der Einverständniserklärung einverstanden.
         <input type="submit" value="Submit" />
       </form>
