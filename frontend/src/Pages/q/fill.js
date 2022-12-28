@@ -560,10 +560,16 @@ export function Fill() {
     return result.map(item => item.value_transformed);
   }
 
+  function extractValuesFromItems() {
+    console.log("Items", result);
+    return result.map(item => item.value);
+  }
+
 
   const handleSubmit = (event) => {
     event.preventDefault()
     axios.post(`http://localhost:3001/api/result`, {
+      values: extractValuesFromItems(),
       values_transformed: extractValueTransformedFromItems(),
       link_uuid: link_uuid,
       subject: {

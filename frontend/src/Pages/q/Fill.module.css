@@ -1,6 +1,7 @@
 .container {
   max-width: 1200px;
   margin: 0 auto;
+  width: 95%;
 }
 
 .container input,
@@ -24,7 +25,7 @@ select {
 
 .row {
   border-radius: 4px;
-  margin: 12px;
+  margin: 12px 0;
   padding: 12px;
   display: grid;
   grid-template-areas: "item1 inputs item2";

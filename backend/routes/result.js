@@ -24,6 +24,7 @@ router.post("/", async (req, res) => {
   }
 
   let result = new Result({
+    values: req.body.values,
     valuesTransformed: req.body.values_transformed,
     link_uuid: req.body.link_uuid,
     subject: savedSubject._id,
