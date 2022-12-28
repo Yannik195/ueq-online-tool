@@ -17,7 +17,8 @@ router.get("/excel/:link_uuid", async (req, res) => {
     try {
       await generateExcel(questionnaire)
     } finally {
-      const file = `${__dirname}/../excel/${questionnaire.link_uuid}.xlsx`;
+      //const file = `${__dirname}/../excel/${questionnaire.link_uuid}.xlsx`;
+      const file = `${__dirname}/../excel/UEQ_Data_Analysis_Tool_Version10.xlsx`;
       console.log(file);
       res.setHeader('Content-disposition', 'attachment; filename=data.xlsx');
       res.setHeader('Content-type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
