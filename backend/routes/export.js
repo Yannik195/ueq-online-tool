@@ -19,8 +19,9 @@ router.get("/excel/:link_uuid", async (req, res) => {
     } finally {
       const file = `${__dirname}/../excel/${questionnaire.link_uuid}.xlsx`;
       console.log(file);
+      res.setHeader('Content-disposition', 'attachment; filename=data.xlsx');
+      res.setHeader('Content-type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
       res.download(file);
-      //TODO delete file after export
     }
   } catch (err) {
     res.status(400).send(err)
