@@ -15,7 +15,8 @@ router.get("/excel/:link_uuid", async (req, res) => {
     })
 
     try {
-      await generateExcel(questionnaire)
+      let excel = await generateExcel(questionnaire)
+      console.log(excel);
     } finally {
       //const file = `${__dirname}/../excel/${questionnaire.link_uuid}.xlsx`;
       const file = `${__dirname}/../excel/UEQ_Data_Analysis_Tool_Version10.xlsx`;
