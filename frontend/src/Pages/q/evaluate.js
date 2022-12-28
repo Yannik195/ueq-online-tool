@@ -629,8 +629,7 @@ export function Evaluate() {
       {
         responseType: 'blob',
         headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/pdf'
+          'Content-Type': 'blob',
         }
       })
       .then((response) => {
