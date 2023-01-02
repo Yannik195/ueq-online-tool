@@ -21,10 +21,11 @@ $orange-background-3: #FB560755;
 .faq {
   max-width: 1200px;
   margin: 0 auto;
+  max-width: 95%;
 }
 
 .card {
-  margin: 12px;
+  margin: 12px 0;
   padding: 4px 12px;
 }
 
@@ -81,5 +82,10 @@ $orange-background-3: #FB560755;
   .container {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    gap: 0 12px;
   }
+
+    .card {
+      margin: 6px 0;
+    }
 }

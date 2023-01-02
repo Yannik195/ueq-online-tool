@@ -6,10 +6,11 @@ $purple-background-1: #CDB4DB;
 .team {
   max-width: 1200px;
   margin: 0 auto;
+  max-width: 95%;
 }
 
 .card {
-  margin: 12px;
+  margin: 12px 0;
   padding: 12px 24px;
   border-radius: 12px;
 }
@@ -53,7 +54,7 @@ $purple-background-1: #CDB4DB;
 
 .top {
   display: grid;
-  grid-template-columns: auto 6fr;
+  grid-template-columns: auto 6fr ;
   gap: 12px;
   align-items: center;
   margin-bottom: 12px;
@@ -83,5 +84,10 @@ $purple-background-1: #CDB4DB;
   .container {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    gap: 12px;
   }
+
+    .card {
+      margin: 0;
+    }
 }

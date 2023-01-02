@@ -86,7 +86,6 @@ export default function Hero() {
                     <p>{person.title}</p>
                     <div className={styles.circle} />
                     {person.links.map((link, i) => {
-                      console.log(link);
                       return (
                         <a href={link.link}>
                           <FontAwesomeIcon className={styles.icon} icon={link.icon} />
