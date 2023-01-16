@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-const sendMail = async function (link_uuid) {
+const sendMail = async function (link_uuid, email) {
   axios({
     method: 'post',
     url: 'https://api.postmarkapp.com/email/withTemplate',
@@ -10,7 +10,7 @@ const sendMail = async function (link_uuid) {
         "link_url": `${process.env.REACT_APP_BACKEND_URL}/q/fill/${link_uuid}`
       },
       "From": "pp031@hdm-stuttgart.de",
-      "To": "pp031@hdm-stuttgart.de",
+      "To": email,
       "Tag": "Access",
       "TrackOpens": true,
       "TrackLinks": "HtmlOnly",
