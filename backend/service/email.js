@@ -1,13 +1,14 @@
 const axios = require('axios');
 
 const sendMail = async function (link_uuid, email) {
+  const frontend_url = "https://ueq-frontend.onrender.com/#"
   axios({
     method: 'post',
     url: 'https://api.postmarkapp.com/email/withTemplate',
     data: {
       "TemplateId": 29991310,
       "TemplateModel": {
-        "link_url": `${process.env.REACT_APP_BACKEND_URL}/q/fill/${link_uuid}`
+        "link_url": `${frontend_url}/q/fill/${link_uuid}`
       },
       "From": "pp031@hdm-stuttgart.de",
       "To": email,
