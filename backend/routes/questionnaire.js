@@ -61,7 +61,7 @@ router.post("/", async (req, res) => {
     let savedQuestionnaire = await questionnaire.save()
 
     // sendMail function with email.js
-    sendMail(link_uuid);
+    sendMail(link_uuid, req.body.email);
 
     // If the questionnaire is successfully saved, log a message and send a 201 (Created) response with the saved questionnaire
     console.log("Saved questionnaire to DB", savedQuestionnaire)
