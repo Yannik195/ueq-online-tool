@@ -1,3 +1,7 @@
+https://www.hdm-stuttgart.de/stage/projekt_detail/projekt_details?projekt_ID=4020
+
+https://ueq-online-tool.de
+
 ## Dependencies
 
 - `cors`: This package is a middleware that enables Cross-Origin Resource Sharing (CORS) in the application. It allows the server to accept requests from a different domain than the one it is hosted on.
