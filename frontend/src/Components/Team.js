@@ -45,7 +45,7 @@ export default function Hero() {
       name: "Liljana",
       image: liljana,
       title: "Web Developer",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      description: "Warum hat die produktive Kerze ihren Job gekündigt? Weil sie sich ausgebrannt hatte.",
       links: [
         {
           type: "Github",
@@ -73,7 +73,7 @@ export default function Hero() {
   return (
     <section className={styles.team}>
       <h1>Team</h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      <p>Projektteam des UEQ Online Tools, Wintersemester 22/23</p>
       <div className={styles.container}>
         {team.map((person, i) => {
           return (
