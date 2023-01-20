@@ -681,8 +681,8 @@ export function Evaluate() {
         </button>
       </div>
 
-      <ResultsTable results={q.results} />
       <MeanValuePerItemChart results={q.results} />
+      <ResultsTable results={q.results} />
       <DistributionOfAnswers results={q.results} />
       <ScaleMeansVarianceChart results={calculateScaleMeansPerPerson(q.results)} />
       <ScaleMeansVarianceTable results={calculateScaleMeansPerPerson(q.results)} />
