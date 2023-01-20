@@ -8,8 +8,9 @@
 
 # ueq
 
-![alt text](https://upload.wikimedia.org/wikipedia/commons/0/09/1-1267462282CoNq.jpg)
 ![alt text](https://github.com/Yannik195/ueq-online-tool/blob/main/slides/slide1.pdf?raw=true)
+![alt text](https://github.com/Yannik195/ueq-online-tool/blob/main/slides/slide1.svg?raw=true)
+![alt text](https://github.com/Yannik195/ueq-online-tool/blob/main/slides/slide1.png?raw=true)
 
 ## Description
 
