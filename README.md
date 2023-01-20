@@ -14,6 +14,10 @@
 
 ![App.js](https://github.com/Yannik195/ueq-online-tool/blob/main/snaps/appjs.png?raw=true)
 
+https://github.com/Yannik195/ueq-online-tool/blob/main/snaps/appjs.png?raw=true
+
+<img src="https://github.com/Yannik195/ueq-online-tool/blob/main/snaps/appjs.png?raw=true" alt="Kitten" title="A cute kitten" width="150" height="100" />
+
 ## Description
 
 ueq is a tool for creating and managing questionnaires.
