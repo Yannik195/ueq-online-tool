@@ -8,9 +8,11 @@
 
 # ueq
 
-![alt text](https://github.com/Yannik195/ueq-online-tool/blob/main/slides/slide1.pdf?raw=true)
-![alt text](https://github.com/Yannik195/ueq-online-tool/blob/main/slides/slide1.svg?raw=true)
-![alt text](https://github.com/Yannik195/ueq-online-tool/blob/main/slides/slide1.png?raw=true)
+![Slide 1](https://github.com/Yannik195/ueq-online-tool/blob/main/slides/slide1.svg?raw=true)
+![Slide 2](https://github.com/Yannik195/ueq-online-tool/blob/main/slides/slide2.svg?raw=true)
+![Slide 3](https://github.com/Yannik195/ueq-online-tool/blob/main/slides/slide3.svg?raw=true)
+
+![App.js](https://github.com/Yannik195/ueq-online-tool/blob/main/snaps/appjs.png?raw=true)
 
 ## Description
 
