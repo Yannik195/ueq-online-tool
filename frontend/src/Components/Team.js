@@ -14,7 +14,7 @@ export default function Hero() {
       name: "Yannik",
       image: yannik,
       title: "Web Developer",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      description: "Viel hilft viel - Albert Einstein",
       links: [
         {
           type: "Github",
