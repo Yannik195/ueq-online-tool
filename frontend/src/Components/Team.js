@@ -29,15 +29,15 @@ export default function Hero() {
       ]
     },
     {
-      name: "Pasi",
+      name: "Pascal",
       image: pasi,
       title: "Web Developer",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      description: "Wenn du etwas so machst, wie du es seit zehn Jahren gemacht hast, dann sind die Chancen groß, dass du es falsch machst.",
       links: [
         {
           type: "Github",
           icon: faGithub,
-          link: ""
+          link: "https://github.com/PascalPalitzsch"
         }
       ]
     },
@@ -50,7 +50,7 @@ export default function Hero() {
         {
           type: "Github",
           icon: faGithub,
-          link: ""
+          link: "https://github.com/LilJane96"
         }
       ]
     },
@@ -63,7 +63,7 @@ export default function Hero() {
         {
           type: "Github",
           icon: faGithub,
-          link: ""
+          link: "https://github.com/hpvo69"
         }
       ]
     },
