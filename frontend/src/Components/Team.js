@@ -58,7 +58,7 @@ export default function Hero() {
       name: "Phuc",
       image: phuc,
       title: "Web Developer",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      description: "你好，我叫Phuc。",
       links: [
         {
           type: "Github",
