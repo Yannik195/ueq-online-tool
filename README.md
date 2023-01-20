@@ -16,7 +16,7 @@
 
 https://github.com/Yannik195/ueq-online-tool/blob/main/snaps/appjs.png?raw=true
 
-<img src="https://github.com/Yannik195/ueq-online-tool/blob/main/snaps/appjs.png?raw=true" alt="Kitten" title="A cute kitten" width="150" height="100" />
+<img src="https://github.com/Yannik195/ueq-online-tool/blob/main/snaps/appjs.png?raw=true" alt="Kitten" title="A cute kitten" width="100vw" height="100" />
 
 ## Description
 
