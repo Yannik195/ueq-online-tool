@@ -5,7 +5,7 @@ const mongoose = require("mongoose")
 require('dotenv').config()
 
 app.use(cors(
-  { origin: "https://ueq-online-tool.de" }
+  { origin: "https://www.ueq-online-tool.de" }
 ));
 app.use(express.json())
 
