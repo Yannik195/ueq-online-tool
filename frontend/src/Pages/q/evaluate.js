@@ -681,7 +681,8 @@ export function Evaluate() {
           Download Excel
         </button>
       </div>
-     
+
+      <AgeChart></AgeChart>
       <ResultsTable results={q.results} />
       <MeanValuePerItemChart results={q.results} />
       <DistributionOfAnswers results={q.results} />
