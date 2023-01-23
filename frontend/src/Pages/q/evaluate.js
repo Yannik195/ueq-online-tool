@@ -10,6 +10,7 @@ import Participants from "../../Components/Participants.js"
 import styles from "./Evaluate.module.scss"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFileExcel, faSpinner, faCircleNotch } from '@fortawesome/free-solid-svg-icons';
+import ReactGA from "react-ga4";
 
 const items = {
   scales: {
@@ -627,6 +628,13 @@ export function Evaluate() {
 
   async function excel() {
     setExcelLoading(true)
+
+    //Google Analytics Event Tracking Excel download
+    ReactGA.event({
+      category: "Downloads",
+      action: "Excel file",
+    });
+
     axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/export/excel/${link_uuid}`,
       {
         responseType: 'blob',
