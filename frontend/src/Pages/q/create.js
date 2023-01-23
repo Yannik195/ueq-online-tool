@@ -16,7 +16,7 @@ export function Create() {
   } = useForm();
 
   const onSubmit = (data) => {
-    //trackevent with google analytics
+    //Track UEQ Creation in Google Analytics
     ReactGA.event({
       category: "UEQ",
       action: "Create",
