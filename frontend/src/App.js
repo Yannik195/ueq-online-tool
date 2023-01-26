@@ -19,7 +19,7 @@ function App() {
     <div className="App">
       <Navbar className={styles.navbar} />
       <Routes className={styles.content} />
-      <Footer className={styles.footer} />
+      {/* <Footer className={styles.footer} /> */}
     </div>
   );
 }
