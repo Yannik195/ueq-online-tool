@@ -64,6 +64,12 @@ app.use("/api/export", exportRoutes)
 
 # Tech
 
+## Prototyping 
+
+### Figma
+Um unsere Vorstellungen von Design und Funktionalität festzuhalten, haben wir Figma verwendet.
+Figma ist eine kollaborative Software zur Erstellung von Prototypen im Bereich UX oder UI Design. Es wird hauptsächlich als Webanwendung verwendet. Darüber hinaus läuft Figma auch als Desktop-Applikation für MacOS und Windows sowie als Mobile-Applikation für Android und iOS. Figma-Designs können modular aufgebaut und in Echtzeit mit anderen geteilt werden. Wir haben diese Software verwendet, um das Design des Projekts umzusetzen. Wir entwarfen einen Prototyp, der in die Webanwendung implementiert werden sollte. 
+
 ## Frameworks
 
 ### React.js
