@@ -670,7 +670,7 @@ export function Evaluate() {
   }
   return (
     <div className={styles.evaluate}>
-      <Link to={`/q/fill/${link_uuid}`}>{q.product}</Link> <span> > </span> <Link to={`/q/evaluate/${link_uuid}`}>Evaluate</Link>
+      <Link to={`/q/fill/${link_uuid}`}>{q.product}</Link> <span>  </span> <Link to={`/q/evaluate/${link_uuid}`}>Evaluate</Link>
       <h1>Evaluate</h1>
       <h2>{q.product}</h2>
       <p>{q.description}</p>

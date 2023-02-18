@@ -5,6 +5,8 @@ import moment from 'moment'
 import Popup from "../../Components/Popup"
 import Infobanner from "../../Components/Infobanner"
 import styles from "./Fill.module.scss"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLock } from '@fortawesome/free-solid-svg-icons';
 
 export function Fill() {
   //Parameters
@@ -608,7 +610,10 @@ export function Fill() {
       <h1>UEQ Online Fragebogen</h1>
       <p>{moment(q.createdAt).format("DD.MM.YYYY")}</p>
       <p>{q.email}</p>
-      <button onClick={() => navigate(`/q/evaluate/${link_uuid}`)}>Evaluation</button>
+      <button onClick={() => navigate(`/q/evaluate/${link_uuid}`)}>
+     Evaluation
+     <FontAwesomeIcon className={styles.icon} icon={faLock} />
+      </button>
       <h2>{q.product}</h2>
       <p>{q.description}</p>
 
