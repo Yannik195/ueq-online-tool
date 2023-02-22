@@ -10,7 +10,7 @@ import Participants from "../../Components/Participants.js"
 import styles from "./Evaluate.module.scss"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFileExcel, faSpinner, faCircleNotch } from '@fortawesome/free-solid-svg-icons';
-import AgeChart from "../../Components/AgeChart.js"
+import AgeChart from "../../Components/AgeChart";
 
 const items = {
   scales: {
@@ -610,6 +610,7 @@ function calculateScaleMeansPerPerson(data) {
 export function Evaluate() {
   const { link_uuid } = useParams()
   const [q, setQuestionnaire] = useState({});
+  const [age, setAge] = useState()
   let [isLoading, setLoading] = useState(true)
   let [isExcelLoading, setExcelLoading] = useState(false)
 
@@ -618,6 +619,7 @@ export function Evaluate() {
     axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/q/evaluate/${link_uuid}`)
       .then(function (response) {
         setQuestionnaire(response.data)
+        setAge(response.data)
       })
       .catch(function (error) {
         console.log(error);
@@ -687,6 +689,7 @@ export function Evaluate() {
       <DistributionOfAnswers results={q.results} />
       <ScaleMeansVarianceChart results={calculateScaleMeansPerPerson(q.results)} />
       <ScaleMeansVarianceTable results={calculateScaleMeansPerPerson(q.results)} />
+      <AgeChart results={q.results}></AgeChart>
     </div>
   );
 }

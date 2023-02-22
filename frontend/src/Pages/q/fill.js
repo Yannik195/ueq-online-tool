@@ -500,7 +500,7 @@ export function Fill() {
   })
 
   //Age
-  //const [saveAges, setAges] = useState
+  const [saveAges, setAges] = useState()
 
   //Popup
   const [editNamePopup, seteditNamePopupVisibility] = useState(false)
@@ -584,15 +584,16 @@ export function Fill() {
       values_transformed: extractValueTransformedFromItems(),
       link_uuid: link_uuid,
       subject: {
-        age: demographics.age,
+        age: saveAges,
         gender: demographics.gender,
         education: demographics.education,
       }
     })
       .then(res => {
-        console.log(res.data);
+        console.log("Was?", res.data);
         navigate("/confirmation")
       })
+      console.log("Test", saveAges)
   }
 
   function getItem(item, isLeft, selectedLanguage) {
@@ -636,8 +637,8 @@ export function Fill() {
             min="0"
             max="99"
             name="age"
-            value={demographics.age}
-            onChange={handleDemographicsChange}
+            value={saveAges}
+            onChange={(event) => setAges(event.target.value)}
           />
           <br></br>
         </label>
