@@ -16,18 +16,6 @@ ChartJS.register(ArcElement, Tooltip, Legend, CategoryScale,
   Tooltip,
   Legend);
 
-  export const options = {
-    responsive: true,
-    plugins: {
-      legend: {
-        position: 'top',
-      },
-      title: {
-        display: true,
-        text: 'Chart.js Bar Chart',
-      },
-    },
-  };
 
 export default function AgeChart({ results }) {
  console.log("Results", results)

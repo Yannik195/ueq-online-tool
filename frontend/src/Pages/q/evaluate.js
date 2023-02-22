@@ -683,7 +683,7 @@ export function Evaluate() {
           Download Excel
         </button>
       </div>
-     
+
       <ResultsTable results={q.results} />
       <MeanValuePerItemChart results={q.results} />
       <DistributionOfAnswers results={q.results} />
