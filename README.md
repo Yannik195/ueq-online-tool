@@ -62,6 +62,19 @@ app.use("/api/export", exportRoutes)
 
 # Projektbericht
 
+## Pascal Palitzsch
+
+Um eine gut gestaltete Benutzeroberfläche für unsere Anwendung umzusetzen und zu optimieren war es nötig häufig mit HTML und CSS zu arbeiten.
+Im Laufe des Projekts habe ich mich auch mit React auseinandergesetzt. Anfangs hatte ich Schwierigkeiten, mich in diese neue Technologie einzuarbeiten. Aber mit der Zeit war das immer einfacher.
+
+Während der Arbeit mit React habe ich sehr viel gelernt, insbesondere über die Funktionsweise, die Installation und Verwendung. Durch diese Erfahrung habe ich mein Wissen in diesem Bereich vertieft und bin sicherer im Umgang mit React geworden.
+
+Ein weiterer wichtiger Teil des Projekts war die Einrichtung und Verwendung von Postmark, einem E-Mail-Service, der speziell für die Zustellung von E-Mails entwickelt wurde. Ich habe mich intensiv mit der Einrichtung des Services und der Verwendung der API auseinandergesetzt. Diese Erfahrung hat mir gezeigt, wie wichtig es ist, sich mit Tools und Diensten auseinanderzusetzen, um die Funktionalität der Anwendung zu erweitern und zu verbessern.
+
+Während des Projekts gab es natürlich auch Herausforderungen und Probleme, die ich alleine nicht bewältigen konnte. Doch ich hatte immer Hilfe aus dem Team und konnte von den Erfahrungen und Kenntnissen meiner Kommilitonen profitieren.
+
+Insgesamt war das Projekt eine wertvolle Erfahrung für mich, da ich nicht nur meine Fähigkeiten in HTML und CSS verbessert habe, sondern auch neue Technologien wie React und Postmark kennengelernt habe. Die Zusammenarbeit mit dem Team war sehr produktiv und ich bin dankbar für die Unterstützung, die ich erhalten habe.
+
 # Tech
 
 ## Frameworks
@@ -105,3 +118,39 @@ Ein Universally Unique Identifier (UUID) ist ein eindeutiger Bezeichner für ein
 ## UEQ Items Sprache ändern
 
 Die Funktionalität, die Items des UEQ in einer anderen Sprache anzupassen, ist ein wichtiger Aspekt, um den UEQ möglichst vielen Menschen zugänglich zu machen. Dies wurde durch die Verwendung von React und seinem State Management Hook ermöglicht. Um diese Funktionalität bereitzustellen, wurde ein benutzerdefinierter Hook mit dem Namen "useLanguage" erstellt. Mit diesem Hook ist es möglich, die Sprache des UEQ dynamisch zu ändern
+
+## E-Mail Service Postmark
+
+Postmark ist ein cloudbasierter E-Mail-Service. Der Service ist auf die Zustellung von E-Mails, wie z.B. Bestätigungs-E-Mails, Benachrichtigungen und Updates, spezialisiert und gewährleistet eine zuverlässige und schnelle Zustellung dieser E-Mails.
+
+Postmark bietet eine benutzerfreundliche Oberfläche sowie eine REST-API, die es Entwicklern ermöglicht, nahtlosen Zugang zum Service zu erhalten und den Versand von E-Mails in ihre Anwendungen zu integrieren. Der Service umfasst auch eine Reihe von Tools, die es Benutzern ermöglichen, den Erfolg ihrer E-Mail-Kampagnen zu verfolgen und zu optimieren.
+
+Zu den Funktionen von Postmark gehören unter anderem eine hohe Zustellbarkeit von E-Mails, die automatische Entfernung von ungültigen E-Mail-Adressen aus Mailinglisten, die Möglichkeit, personalisierte E-Mails zu versenden, sowie ein umfassendes Dashboard, das Einblicke in die Performance der E-Mail-Kampagnen liefert. Darüber hinaus bietet Postmark auch eine umfassende API-Dokumentation und einen hervorragenden Kundenservice, der Benutzern bei Fragen oder Problemen zur Verfügung steht.
+
+# Wofür verwenden wir Postmark?
+
+Wir verwenden Postmark um dem Benutzer den generierten Link per E-Mail zu senden und somit zu verhindern, dass ein angelegter UEQ-Fragebogen nicht mehr wiedergefunden werden kann.
+
+Unser Template für den E-Mail Service sieht dabei wie folgt aus:
+```html
+<h1>Hallo, Test!</h1>
+<p>Danke das sie einen UEQ Test erstellt haben.</p>
+<!-- Action -->
+<p>Hier finden sie ihren Zugang zu ihrer erstellen Umfrage:</p>
+<table class="attributes" width="100%" cellpadding="0" cellspacing="0">
+  <tr>
+    <td class="attributes_content">
+      <table width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+          <td class="attributes_item"><strong>Link:</strong> {{link_url}}</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<p>Danke,
+  <br>ihr UEQ Team der Hochschule der Medien.</p>
+```
+
+# E-Mail für den Benutzer:
+<img src="https://github.com/Yannik195/ueq-online-tool/blob/main/snaps/snaps/Postmark Email.PNG?raw=true" alt="EMail" title="EMail Benutzer" width="60vw" height="100" />
