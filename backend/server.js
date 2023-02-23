@@ -4,7 +4,9 @@ const app = express()
 const mongoose = require("mongoose")
 require('dotenv').config()
 
-app.use(cors());
+app.use(cors(
+  { origin: "https://www.ueq-online-tool.de" }
+));
 app.use(express.json())
 
 //Connect to MongoDB

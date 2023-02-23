@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { faker } from '@faker-js/faker';
 import styles from "./Create.module.css"
-
+import ReactGA from "react-ga4";
 
 export function Create() {
   let navigate = useNavigate();
@@ -16,6 +16,13 @@ export function Create() {
   } = useForm();
 
   const onSubmit = (data) => {
+    //Track UEQ Creation in Google Analytics
+    ReactGA.event({
+      category: "UEQ",
+      action: "Create",
+      value: 1
+    });
+
     console.log(data);
     axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/q`, data)
       .then(res => {

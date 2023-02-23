@@ -10,7 +10,7 @@ export default function Navbar() {
       <ul className={styles.ul}>
         <Link to="/" className={styles.logo}>
           <FontAwesomeIcon icon={faClipboard} />
-          <li>UEQ Online</li>
+          <li>UEQ Online Tool</li>
         </Link>
         <Link to="/q/create">
           <button className={styles.button}>Create UEQ</button>

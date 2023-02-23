@@ -14,7 +14,7 @@ export default function Hero() {
       name: "Yannik",
       image: yannik,
       title: "Web Developer",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      description: "Viel hilft viel - Albert Einstein",
       links: [
         {
           type: "Github",
@@ -29,15 +29,15 @@ export default function Hero() {
       ]
     },
     {
-      name: "Pasi",
+      name: "Pascal",
       image: pasi,
       title: "Web Developer",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      description: "Wenn du etwas so machst, wie du es seit zehn Jahren gemacht hast, dann sind die Chancen groß, dass du es falsch machst.",
       links: [
         {
           type: "Github",
           icon: faGithub,
-          link: ""
+          link: "https://github.com/PascalPalitzsch"
         }
       ]
     },
@@ -45,7 +45,7 @@ export default function Hero() {
       name: "Liljana",
       image: liljana,
       title: "Web Developer",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      description: "Warum hat die produktive Kerze ihren Job gekündigt? Weil sie sich ausgebrannt hatte.",
       links: [
         {
           type: "Github",
@@ -63,12 +63,12 @@ export default function Hero() {
       name: "Phuc",
       image: phuc,
       title: "Web Developer",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      description: "你好，我叫Phuc。",
       links: [
         {
           type: "Github",
           icon: faGithub,
-          link: ""
+          link: "https://github.com/hpvo69"
         }
       ]
     },
@@ -78,7 +78,7 @@ export default function Hero() {
   return (
     <section className={styles.team}>
       <h1>Team</h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      <p>Projektteam des UEQ Online Tools, Wintersemester 22/23</p>
       <div className={styles.container}>
         {team.map((person, i) => {
           return (

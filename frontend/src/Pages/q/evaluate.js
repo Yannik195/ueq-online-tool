@@ -11,6 +11,7 @@ import styles from "./Evaluate.module.scss"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFileExcel, faSpinner, faCircleNotch } from '@fortawesome/free-solid-svg-icons';
 import AgeChart from "../../Components/AgeChart";
+import ReactGA from "react-ga4";
 
 const items = {
   scales: {
@@ -630,6 +631,13 @@ export function Evaluate() {
 
   async function excel() {
     setExcelLoading(true)
+
+    //Google Analytics Event Tracking Excel download
+    ReactGA.event({
+      category: "Downloads",
+      action: "Excel file",
+    });
+
     axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/export/excel/${link_uuid}`,
       {
         responseType: 'blob',
@@ -687,6 +695,7 @@ export function Evaluate() {
       <AgeChart results={q.results}></AgeChart>
       <ResultsTable results={q.results} />
       <MeanValuePerItemChart results={q.results} />
+      <ResultsTable results={q.results} />
       <DistributionOfAnswers results={q.results} />
       <ScaleMeansVarianceChart results={calculateScaleMeansPerPerson(q.results)} />
       <ScaleMeansVarianceTable results={calculateScaleMeansPerPerson(q.results)} />
