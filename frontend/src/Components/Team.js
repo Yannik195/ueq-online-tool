@@ -51,6 +51,11 @@ export default function Hero() {
           type: "Github",
           icon: faGithub,
           link: "https://github.com/LilJane96"
+        },
+        {
+          type: "LinkedIn",
+          icon: faLinkedin,
+          link: "https://www.linkedin.com/in/liljana-stefanelli-060b13200/"
         }
       ]
     },

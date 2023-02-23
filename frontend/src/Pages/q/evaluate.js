@@ -10,6 +10,7 @@ import Participants from "../../Components/Participants.js"
 import styles from "./Evaluate.module.scss"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFileExcel, faSpinner, faCircleNotch } from '@fortawesome/free-solid-svg-icons';
+import AgeChart from "../../Components/AgeChart";
 import ReactGA from "react-ga4";
 
 const items = {
@@ -610,6 +611,7 @@ function calculateScaleMeansPerPerson(data) {
 export function Evaluate() {
   const { link_uuid } = useParams()
   const [q, setQuestionnaire] = useState({});
+  const [age, setAge] = useState()
   let [isLoading, setLoading] = useState(true)
   let [isExcelLoading, setExcelLoading] = useState(false)
 
@@ -618,6 +620,7 @@ export function Evaluate() {
     axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/q/evaluate/${link_uuid}`)
       .then(function (response) {
         setQuestionnaire(response.data)
+        setAge(response.data)
       })
       .catch(function (error) {
         console.log(error);
@@ -670,7 +673,7 @@ export function Evaluate() {
   }
   return (
     <div className={styles.evaluate}>
-      <Link to={`/q/fill/${link_uuid}`}>{q.product}</Link> <span> > </span> <Link to={`/q/evaluate/${link_uuid}`}>Evaluate</Link>
+      <Link to={`/q/fill/${link_uuid}`}>{q.product}</Link> <span> &#60; </span> <Link to={`/q/evaluate/${link_uuid}`}>Evaluate</Link>
       <h1>Evaluate</h1>
       <h2>{q.product}</h2>
       <p>{q.description}</p>
@@ -689,6 +692,8 @@ export function Evaluate() {
         </button>
       </div>
 
+      <AgeChart results={q.results}></AgeChart>
+      <ResultsTable results={q.results} />
       <MeanValuePerItemChart results={q.results} />
       <ResultsTable results={q.results} />
       <DistributionOfAnswers results={q.results} />

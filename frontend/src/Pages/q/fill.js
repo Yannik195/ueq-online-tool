@@ -221,8 +221,8 @@ export function Fill() {
         index: 11,
         terms: {
           german: {
-            positive: "behindernd",
-            negative: "unterstützend",
+            positive: "unterstützend",
+            negative: "behindernd",
           },
           english: {
             positive: "supportive",
@@ -476,8 +476,8 @@ export function Fill() {
         index: 26,
         terms: {
           german: {
-            positive: "konservativ",
-            negative: "innovativ",
+            positive: "innovativ",
+            negative: "konservativ",
           },
           english: {
             positive: "conservative",
@@ -498,6 +498,9 @@ export function Fill() {
     gender: null,
     education: 0
   })
+
+  //Age
+  const [saveAges, setAges] = useState()
 
   //Popup
   const [editNamePopup, seteditNamePopupVisibility] = useState(false)
@@ -581,15 +584,16 @@ export function Fill() {
       values_transformed: extractValueTransformedFromItems(),
       link_uuid: link_uuid,
       subject: {
-        age: demographics.age,
+        age: saveAges,
         gender: demographics.gender,
         education: demographics.education,
       }
     })
       .then(res => {
-        console.log(res.data);
+        console.log("Was?", res.data);
         navigate("/confirmation")
       })
+      console.log("Test", saveAges)
   }
 
   function getItem(item, isLeft, selectedLanguage) {
@@ -633,8 +637,8 @@ export function Fill() {
             min="0"
             max="99"
             name="age"
-            value={demographics.age}
-            onChange={handleDemographicsChange}
+            value={saveAges}
+            onChange={(event) => setAges(event.target.value)}
           />
           <br></br>
         </label>
@@ -647,6 +651,8 @@ export function Fill() {
             <option value="null">Auswählen</option>
             <option value="male">Mann</option>
             <option value="female">Frau</option>
+            <option value="diverse">Divers</option>
+            <option value="noAnswer">Keine Angabe</option>
           </select>
           <br></br>
         </label>
