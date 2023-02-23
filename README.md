@@ -64,7 +64,7 @@ app.use("/api/export", exportRoutes)
 
 ## Pascal Palitzsch
 
-Um eine gut gestaltete Benutzeroberfläche für unsere Anwendung zu gestalten und zu optimieren war es nötig häufig mit HTML und CSS zu arbeiten.
+Um eine gut gestaltete Benutzeroberfläche für unsere Anwendung umzusetzen und zu optimieren war es nötig häufig mit HTML und CSS zu arbeiten.
 Im Laufe des Projekts habe ich mich auch mit React auseinandergesetzt. Anfangs hatte ich Schwierigkeiten, mich in diese neue Technologie einzuarbeiten. Aber mit der Zeit war das immer einfacher.
 
 Während der Arbeit mit React habe ich sehr viel gelernt, insbesondere über die Funktionsweise, die Installation und Verwendung. Durch diese Erfahrung habe ich mein Wissen in diesem Bereich vertieft und bin sicherer im Umgang mit React geworden.
