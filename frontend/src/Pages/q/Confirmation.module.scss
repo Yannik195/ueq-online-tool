@@ -8,31 +8,34 @@
   font-size: 20px;
 }
 
-
 .wrapper {
   display: flex;
-  min-height: 30vh;
   flex-direction: column;
+  min-height: 30vh;
 }
 
 .image1 {
   float: left;
+  max-width: 100%;
+  height: auto;
 }
 
 .text2 {
   text-align: center;
   margin-top: 130px;
   font-weight: bold;
-  color: black
+  color: black;
 }
 
 .text3 {
   text-align: center;
-  color: black
+  color: black;
 }
+
 .button1 {
   text-align: center;
-  margin-right: 140px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .btn1 {
@@ -41,7 +44,6 @@
   color: white;
   padding: 15px 32px;
   text-align: center;
-  position: absolute;
   display: inline-block;
   font-weight: bold;
   border-radius: 12px;
@@ -60,9 +62,22 @@
   background: white;
 }
 
-@media (max-width: 300px) {
-  .wrapper, .image1, .text2, .text3, .button1, .btn1, 
-  .confirmation_header, .confirmation_main  {
-    width: 100%; /* The width is 100%, when the viewport is 800px or smaller */
+@media (max-width: 900px) {
+  .image1 {
+    width: 100%;
+    float: none;
+  }
+  
+  .text2 {
+    margin-top: 50px;
+  }
+  
+  .button1 {
+    margin-right: 0;
+    margin-left: 0;
+  }
+  
+  .wrapper, .image1, .text2, .text3, .button1, .btn1, .confirmation_header, .confirmation_main {
+    width: 100%;
   }
 }
