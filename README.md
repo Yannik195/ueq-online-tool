@@ -159,4 +159,4 @@ Unser Template für den E-Mail Service sieht dabei wie folgt aus:
 ```
 
 # E-Mail für den Benutzer:
-<img src="https://github.com/Yannik195/ueq-online-tool/blob/main/snaps/snaps/Postmark Email.PNG?raw=true" alt="EMail" title="EMail Benutzer" width="60vw" height="100" />
+<img src="https://github.com/Yannik195/ueq-online-tool/blob/main/snaps/Postmark%20Email.PNG?raw=true" alt="EMail" title="EMail Benutzer" width="60vw" height="100" />
