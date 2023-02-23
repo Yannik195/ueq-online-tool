@@ -684,12 +684,12 @@ export function Evaluate() {
         </button>
       </div>
 
+      <AgeChart results={q.results}></AgeChart>
       <ResultsTable results={q.results} />
       <MeanValuePerItemChart results={q.results} />
       <DistributionOfAnswers results={q.results} />
       <ScaleMeansVarianceChart results={calculateScaleMeansPerPerson(q.results)} />
       <ScaleMeansVarianceTable results={calculateScaleMeansPerPerson(q.results)} />
-      <AgeChart results={q.results}></AgeChart>
     </div>
   );
 }

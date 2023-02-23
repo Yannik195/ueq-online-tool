@@ -69,7 +69,7 @@ export default function AgeChart({ results }) {
     labels: ["-18","18-24", "25-29", "30-34", "35-39", "40-44", "45-49", "50-54", "55-59", "60+"],
     datasets: [
       {
-        label: "# of Votes",
+        label: "ages",
         data: [unterachtzehn, achtzehn, fünfundzwanzig, dreißig, fünfunddreisig, vierzig, fünfundvierzig, fünfzig, fünfundfünfzig, oversechsig],
         backgroundColor: [
           "rgba(255, 175, 255, 0.2)",
@@ -102,9 +102,9 @@ export default function AgeChart({ results }) {
   }
 
     return (
-        <div>
-            <h1>Age of the subjects</h1>
-            <Pie data={chartData}  />
+        <div >
+            <h2>Age of the subjects</h2>
+            <Pie data={chartData} />
         </div>
     )
 }
