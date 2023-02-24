@@ -108,19 +108,19 @@ Auf der Seite „fill“ können die Nutzer neben dem Fragebogen auch ihr Alter 
 
 ## Excel Export
 
-Der Excel-Export-Feature in der Anwendung ermöglicht es den Benutzern, ihre erhobenen UEQ-Daten effizient und präzise in ein offizielles Excel-Dokument zu exportieren. Diese Funktionalität wird durch die Verwendung der excel.js Node-Bibliothek auf dem Server implementiert und ermöglicht es den Benutzern, die Auswertung direkt im offiziellen Excel-Dokument durchzuführen.****
+Der Excel-Export-Feature in der Anwendung ermöglicht es den Benutzern, ihre erhobenen UEQ-Daten effizient und präzise in ein offizielles Excel-Dokument zu exportieren. Diese Funktionalität wird durch die Verwendung der excel.js Node-Bibliothek auf dem Server implementiert und ermöglicht es den Benutzern, die Auswertung direkt im offiziellen Excel-Dokument durchzuführen.
 
 ## Evaluation
 
-Mit unserer Anwendung ist es möglich, die Auswertung von UEQ durchzuführen. Die Implementierung ermöglicht es, die wichtigsten Evaluierungen direkt in der Web-App durchzuführen. Dies wird durch die Verwendung der Chart.js Node Library realisiert.****
+Mit unserer Anwendung ist es möglich, die Auswertung von UEQ durchzuführen. Die Implementierung ermöglicht es, die wichtigsten Evaluierungen direkt in der Web-App durchzuführen. Dies wird durch die Verwendung der Chart.js Node Library realisiert.
 
 ## Link
 
-Um den Fragebogen an Probanden zu verteilen, kann die URL genutzt werden. Die URL enthält einen Universally Unique Identifier (UUID), welcher den UEQ eindeutig identifiziert. Das Verwenden einer UUID bietet eine zusätzliche Sicherheit, da es eine eindeutige und unveränderliche Referenz darstellt und somit Missbrauch oder Zugriff durch unbefugte Personen verhindert werden kann.****
+Um den Fragebogen an Probanden zu verteilen, kann die URL genutzt werden. Die URL enthält einen Universally Unique Identifier (UUID), welcher den UEQ eindeutig identifiziert. Das Verwenden einer UUID bietet eine zusätzliche Sicherheit, da es eine eindeutige und unveränderliche Referenz darstellt und somit Missbrauch oder Zugriff durch unbefugte Personen verhindert werden kann.
 
 ## UUID
 
-Ein Universally Unique Identifier (UUID) ist ein eindeutiger Bezeichner für ein digitales Objekt. In unserem Projekt nutzen wir die uuid NPM Library, um die UUIDs für die Verteilung des UEQ Fragebogens zu generieren. Ein Beispiel einer UUID kann sein: 51e88379-f42f-4844-a392-ad0b35aac5bf. In unserem Projekt nutzen wir das Schema Produktname-UUID, zum Beispiel Recycled-Rubber-Chips-51e88379-f42f-4844-a392-ad0b35aac5bf.****
+Ein Universally Unique Identifier (UUID) ist ein eindeutiger Bezeichner für ein digitales Objekt. In unserem Projekt nutzen wir die uuid NPM Library, um die UUIDs für die Verteilung des UEQ Fragebogens zu generieren. Ein Beispiel einer UUID kann sein: 51e88379-f42f-4844-a392-ad0b35aac5bf. In unserem Projekt nutzen wir das Schema Produktname-UUID, zum Beispiel Recycled-Rubber-Chips-51e88379-f42f-4844-a392-ad0b35aac5bf.
 
 ## UEQ Items Sprache ändern
 
