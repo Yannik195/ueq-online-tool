@@ -162,7 +162,7 @@ Unser Template für den E-Mail Service sieht dabei wie folgt aus:
 
 ### Die E-Mail die der Ersteller empfängt sieht wie folgt aus:
 
-<img src="[https://github.com/Yannik195/ueq-online-tool/blob/main/snaps/Postmark Email.PNG?raw=true](https://github.com/Yannik195/ueq-online-tool/blob/main/snaps/Postmark%20Email.PNG?raw=true)" alt="EMail" title="EMail Benutzer" />
+![Image 1](https://github.com/Yannik195/ueq-online-tool/blob/main/snaps/Postmark%20Email.PNG?raw=true)
 
 ### Infobanner
 
