@@ -94,7 +94,7 @@ MongoDB ist eine NoSQL-Datenbank, die ein alternatives Datenmodell als SQL-Daten
 
 Wenn eine Node.js-Anwendung mit MongoDB verbunden werden soll, wird häufig das Mongoose-Modul genutzt. Mongoose ist ein ODM (Object Data Mapping) für MongoDB, das es ermöglicht, die Daten als objektorientierte Modelle in der Anwendung zu verwalten, anstatt mit den Rohdaten in der Datenbank zu arbeiten. Mongoose erleichtert das Arbeiten mit MongoDB und bietet zusätzliche Funktionalitäten wie Validation und Middleware.
 
-# Chart.js
+## Chart.js
 
 Chart.js ist eine JavaScript-Bibliothek zur Erstellung von interaktiven, reaktionsfähigen und animierten Diagrammen, die in Webanwendungen verwendet werden können. Mit Chart.js können Entwickler verschiedene Arten von Diagrammen erstellen, z. B. Liniendiagramme, Tortendiagramme und Polardiagramme.
 
