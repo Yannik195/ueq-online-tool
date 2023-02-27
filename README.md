@@ -2,6 +2,8 @@ https://www.hdm-stuttgart.de/stage/projekt_detail/projekt_details?projekt_ID=402
 
 https://ueq-online-tool.de
 
+https://www.figma.com/file/PMaeLlpYEoCzo7G98NkxEI/UEQ-Online-Tool?node-id=0%3A1&t=MmkSCHGgUvnR1Fxp-0
+
 # Projektbericht
 
 # Einleitung
@@ -13,6 +15,10 @@ Der folgende Projektbericht beschreibt die Entwicklung einer Webanwendung zur Er
 ## Kick-Off
 
 Zu Beginn des Projekts haben wir einige Wochen lang samstags Kick-off-Events abgehalten, um das gesamte Team auf den gleichen Stand zu bringen und das Projekt zu planen. Im Fokus der technischen Aspekte lag es, sicherzustellen, dass alle Teammitglieder mit den notwendigen Technologien vertraut sind. Dazu zählten React, HTML, CSS, MongoDB und Node. Während dieser Kick-off-Events haben wir uns Zeit genommen, um das Projekt und seine Anforderungen im Detail zu besprechen und um sicherzustellen, dass alle Teammitglieder ein gemeinsames Verständnis für die Ziele und die Arbeitsweise des Projekts haben.
+
+## Konzept
+
+Wir starteten die Konzeptionsphase unseres Projekts mit einem Wireframe-Prototypen, den wir anschließend zu einem High-Fidelity-Prototypen weiterentwickelten. Dieser Prototyp half uns, eine klare Vorstellung von unserem Projekt zu gewinnen. Im Laufe des Projekts haben wir den Prototypen kontinuierlich angepasst, um unseren Anforderungen gerecht zu werden. Wir präsentierten ihn auch Herrn Schrepp, um unsere Vision mit ihm zu besprechen. Darüber hinaus verwendeten wir den Prototypen, um unsere Aufgaben in Trello zu definieren.
 
 ## Meetings
 
