@@ -118,7 +118,7 @@ Auf der Seite „fill“ können die Nutzer neben dem Fragebogen auch ihr Alter 
 
 Der Excel-Export-Feature in der Anwendung ermöglicht es den Benutzern, ihre erhobenen UEQ-Daten effizient und präzise in ein offizielles Excel-Dokument zu exportieren. Diese Funktionalität wird durch die Verwendung der excel.js Node-Bibliothek auf dem Server implementiert und ermöglicht es den Benutzern, die Auswertung direkt im offiziellen Excel-Dokument durchzuführen.
 
-```
+```javascript
 async function generateExcel(questionnaire) {
   const valuesArrays = questionnaire.results.map(object => object.values);
   console.log(valuesArrays);
