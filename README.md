@@ -36,6 +36,8 @@ Trello ist ein webbasiertes Tool zur Verwaltung von Projekten und Aufgaben, das 
 
 Während unserer wöchentlichen Meetings haben wir immer zuerst auf Trello geschaut, um sicherzustellen, dass wir alle auf dem gleichen Stand sind. Jeder hat zu seiner aktuellen Aufgabe etwas gesagt und wir haben uns über den Fortschritt und die nächsten Schritte ausgetauscht. Das hat uns geholfen, effektiver und fokussierter zu arbeiten und sicherzustellen, dass jeder im Team über den Fortschritt und die Herausforderungen auf dem Laufenden bleibt. Insgesamt hat uns Trello eine klare und strukturierte Methode zur Organisation unserer Arbeit bereitgestellt, was uns dabei geholfen hat, effektiver zu arbeiten und unser Projekt erfolgreich abzuschließen.
 
+![Trello Screenshot](https://github.com/Yannik195/ueq-online-tool/blob/main/snaps/trello_screenshot.png?raw=true)
+
 ## Martin Schrepp
 
 Zu Beginn unseres Projekts haben wir uns in einem Video-Call mit Dr. Martin Schrepp getroffen, der der Ersteller des UEQ ist und bei SAP arbeitet. In diesem Gespräch haben wir das Projekt und die Herausforderungen besprochen und wertvolle Tipps und Informationen von ihm bekommen. Dr. Schrepp hat uns dabei geholfen, das UEQ besser zu verstehen und unsere Ideen für das Projekt zu konkretisieren. Sein tiefes Verständnis für das UX-Design und seine Erfahrung im Bereich der Usability-Forschung haben uns dabei geholfen, unser Projekt auf das nächste Level zu bringen. Wir sind sehr dankbar für seine wertvollen Beiträge und die Zeit, die er für uns genommen hat. Seine Unterstützung hat dazu beigetragen, dass wir unser Ziel erreicht haben und eine erfolgreiche UEQ-Webanwendung erstellt haben.
