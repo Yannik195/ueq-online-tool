@@ -1,7 +1,7 @@
 const axios = require('axios');
 
 const sendMail = async function (link_uuid, email) {
-  const frontend_url = "https://ueq-frontend.onrender.com/#"
+  const frontend_url = "https://ueq-online-tool.de/#"
   axios({
     method: 'post',
     url: 'https://api.postmarkapp.com/email/withTemplate',

@@ -11,6 +11,7 @@ export function Confirmation() {
       <header className={styles.confirmation_header}>
         <h1 className={styles.h1}>Vielen Dank!</h1>
         <p className={styles.p}>Dein ausgefülltes Formular wurde erfolgreich abgeschickt.</p>
+        <button onClick={() => navigate(-1)} className={styles.btn2}>Zurück zum Fragebogen</button>
       </header>
       <main className={styles.confirmation_main}>
         <img className={styles.image1} src={image1} alt="womenpciture" />
