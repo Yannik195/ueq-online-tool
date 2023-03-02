@@ -173,22 +173,22 @@ Unser Template für den E-Mail Service sieht dabei wie folgt aus:
 
 ```html
 <h1>Hallo, Test!</h1>
-<p>Danke das sie einen UEQ Test erstellt haben.</p>
+<p>Vielen Dank, dass Sie einen UEQ-Test erstellt haben.</p>
 <!-- Action -->
-<p>Hier finden sie ihren Zugang zu ihrer erstellen Umfrage:</p>
+<p>Hier finden Sie den Zugang zu Ihrer erstellten Umfrage:</p>
 <table class="attributes" width="100%" cellpadding="0" cellspacing="0">
   <tr>
-	<td class="attributes_content">
-  	<table width="100%" cellpadding="0" cellspacing="0">
-    	<tr>
-      	<td class="attributes_item"><strong>Link:</strong> {{link_url}}</td>
-    	</tr>
-  	</table>
-	</td>
+    <td class="attributes_content">
+      <table width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+          <td class="attributes_item"><strong>Link:</strong> {{link_url}}</td>
+        </tr>
+      </table>
+    </td>
   </tr>
 </table>
-<p>Danke,
-  <br>ihr UEQ Team der Hochschule der Medien.</p>
+<p>Vielen Dank,
+  <br>Ihr UEQ-Team der Hochschule der Medien</p>
 ```
 
 ### Die E-Mail die der Ersteller empfängt sieht wie folgt aus:
